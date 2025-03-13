@@ -1,0 +1,266 @@
+{
+  "environments": {
+    "pprd": {
+      "color": "orange",
+      "applications": {
+        "JobSub": [
+          {"server": "olympias", "description": ""}
+        ],
+        "SSB": [
+          {"server": "matterhorn", "description": ""},
+          {"server": "makalu", "description": ""},
+          {"server": "manaslu", "description": ""}
+        ],
+        "AdminPages": [
+          {"server": "adminpages-pprd", "description": ""},
+          {"server": "adminpages8-pprd", "description": ""}
+        ],
+        "EEI": [
+          {"server": "alberta", "description": ""},
+          {"server": "augusta", "description": ""}
+        ],
+        "LumTest": [
+          {"server": "weathertop", "description": "admin"},
+          {"server": "dolmed", "description": "portal"},
+          {"server": "coldfells", "description": "portal"}
+        ],
+        "DB": [
+          {"server": "ural", "description": ""}
+        ],
+        "BEP": [
+          {"server": "trivor", "description": ""}
+        ],
+        "DW": [
+          {"server": "fairweather", "description": "app"},
+          {"server": "pioneer", "description": "app"}
+        ],
+        "PCI": [
+          {"server": "cascade", "description": ""},
+          {"server": "matterhorn", "description": ""}
+        ],
+        "BanPortals": [
+          {"server": "cascade", "description": ""},
+          {"server": "matterhorn", "description": ""}
+        ],
+        "PayPlan": [
+          {"server": "cascade", "description": ""},
+          {"server": "matterhorn", "description": ""}
+        ],
+        "WebLogic": [
+          {"server": "cascade", "description": ""},
+          {"server": "matterhorn", "description": ""}
+        ],
+        "Ethos": [
+          {"server": "saipal", "description": ""},
+          {"server": "sinai", "description": ""}
+        ],
+        "BAM": [
+          {"server": "diran", "description": ""}
+        ],
+        "IDP": [
+          {"server": "idptest", "description": ""}
+        ],
+        "Cloud Control": [
+          {"server": "ophir", "description": ""}
+        ],
+        "SSOManager": [
+          {"server": "ssomanagerpprd", "description": ""},
+          {"server": "ssomanager2", "description": ""}
+        ]
+      }
+    },
+    "devl": {
+      "color": "cyan",
+      "applications": {
+        "DB": [
+          {"server": "himalaya", "description": ""}
+        ],
+        "AdminPages": [
+          {"server": "adminpages-devl", "description": ""}
+        ]
+      }
+    },
+    "test": {
+      "color": "gray",
+      "applications": {
+        "SSB": [
+          {"server": "matterhorn", "description": ""}
+        ],
+        "ODS": [
+          {"server": "ff-app-tods-01", "description": ""}
+        ],
+        "SSO": [
+          {"server": "sso-test", "description": ""}
+        ]
+      }
+    },
+    "prod": {
+      "color": "blue",
+      "applications": {
+        "JobSub": [
+          {"server": "granite", "description": ""},
+          {"server": "harvard", "description": ""}
+        ],
+        "AdminPages": [
+          {"server": "adminpages-prod1", "description": ""},
+          {"server": "adminpages-prod2", "description": ""}
+        ],
+        "DW": [
+          {"server": "marble", "description": "app"},
+          {"server": "steele", "description": "app classic"},
+          {"server": "columbia", "description": "db"}
+        ],
+        "EEI": [
+          {"server": "cook", "description": ""},
+          {"server": "diablo", "description": ""},
+          {"server": "tamalpais", "description": ""},
+          {"server": "craig", "description": ""}
+        ],
+        "Lum": [
+          {"server": "bighorn", "description": "admin"},
+          {"server": "bridger", "description": "portal"},
+          {"server": "brooks", "description": "portal"},
+          {"server": "boulder", "description": "cas"}
+        ],
+        "SSB": [
+          {"server": "SSB2", "description": ""},
+          {"server": "SSB", "description": "SSB8"},
+          {"server": "trisul", "description": "SSB9"},
+          {"server": "warren", "description": "SSB9 emp"},
+          {"server": "warlow", "description": "SSB9"},
+          {"server": "everest", "description": ""}
+        ],
+        "Ethos": [
+          {"server": "wallace", "description": ""},
+          {"server": "wasser", "description": "api mgmtcenter"},
+          {"server": "trivor", "description": "bep"}
+        ],
+        "BanPortals": [
+          {"server": "catskill", "description": ""}
+        ],
+        "PayPlan": [
+          {"server": "catskill", "description": ""}
+        ],
+        "WebLogic": [
+          {"server": "catskill", "description": ""}
+        ],
+        "PCI": [
+          {"server": "catskill", "description": ""}
+        ],
+        "IDP": [
+          {"server": "idpprod", "description": ""}
+        ],
+        "ESM": [
+          {"server": "pumori", "description": ""}
+        ],
+        "DB": [
+          {"server": "castle", "description": ""},
+          {"server": "matterhorn", "description": ""}
+        ],
+        "ODS": [
+          {"server": "moroto", "description": ""},
+          {"server": "ff-app-ords-01", "description": ""},
+          {"server": "ff-app-pods-01", "description": ""}
+        ],
+        "Cloud Control": [
+          {"server": "ophir", "description": ""}
+        ],
+        "BAM": [
+          {"server": "spantik", "description": ""}
+        ],
+        "Robo": [
+          {"server": "bannertpa", "description": ""}
+        ],
+        "SSOManager": [
+          {"server": "ssomanager", "description": ""}
+        ]
+      }
+    }
+  },
+  "servers": {
+    "olympias": {"environment": "pprd", "role": "JobSub", "description": ""},
+    "matterhorn": [
+      {"environment": "pprd", "role": "SSB", "description": ""},
+      {"environment": "pprd", "role": "PCI", "description": ""},
+      {"environment": "pprd", "role": "BanPortals", "description": ""},
+      {"environment": "pprd", "role": "PayPlan", "description": ""},
+      {"environment": "pprd", "role": "WebLogic", "description": ""},
+      {"environment": "test", "role": "SSB", "description": ""},
+      {"environment": "prod", "role": "DB", "description": ""}
+    ],
+    "makalu": {"environment": "pprd", "role": "SSB", "description": ""},
+    "manaslu": {"environment": "pprd", "role": "SSB", "description": ""},
+    "adminpages-pprd": {"environment": "pprd", "role": "AdminPages", "description": ""},
+    "adminpages8-pprd": {"environment": "pprd", "role": "AdminPages", "description": ""},
+    "alberta": {"environment": "pprd", "role": "EEI", "description": ""},
+    "augusta": {"environment": "pprd", "role": "EEI", "description": ""},
+    "weathertop": {"environment": "pprd", "role": "LumTest", "description": "admin"},
+    "dolmed": {"environment": "pprd", "role": "LumTest", "description": "portal"},
+    "coldfells": {"environment": "pprd", "role": "LumTest", "description": "portal"},
+    "ural": {"environment": "pprd", "role": "DB", "description": ""},
+    "trivor": [
+      {"environment": "pprd", "role": "BEP", "description": ""},
+      {"environment": "prod", "role": "Ethos", "description": "bep"}
+    ],
+    "fairweather": {"environment": "pprd", "role": "DW", "description": "app"},
+    "pioneer": {"environment": "pprd", "role": "DW", "description": "app"},
+    "cascade": [
+      {"environment": "pprd", "role": "PCI", "description": ""},
+      {"environment": "pprd", "role": "BanPortals", "description": ""},
+      {"environment": "pprd", "role": "PayPlan", "description": ""},
+      {"environment": "pprd", "role": "WebLogic", "description": ""}
+    ],
+    "saipal": {"environment": "pprd", "role": "Ethos", "description": ""},
+    "sinai": {"environment": "pprd", "role": "Ethos", "description": ""},
+    "diran": {"environment": "pprd", "role": "BAM", "description": ""},
+    "idptest": {"environment": "pprd", "role": "IDP", "description": ""},
+    "ophir": [
+      {"environment": "pprd", "role": "Cloud Control", "description": ""},
+      {"environment": "prod", "role": "Cloud Control", "description": ""}
+    ],
+    "ssomanagerpprd": {"environment": "pprd", "role": "SSOManager", "description": ""},
+    "ssomanager2": {"environment": "pprd", "role": "SSOManager", "description": ""},
+    "himalaya": {"environment": "devl", "role": "DB", "description": ""},
+    "adminpages-devl": {"environment": "devl", "role": "AdminPages", "description": ""},
+    "ff-app-tods-01": {"environment": "test", "role": "ODS", "description": ""},
+    "sso-test": {"environment": "test", "role": "SSO", "description": ""},
+    "granite": {"environment": "prod", "role": "JobSub", "description": ""},
+    "harvard": {"environment": "prod", "role": "JobSub", "description": ""},
+    "adminpages-prod1": {"environment": "prod", "role": "AdminPages", "description": ""},
+    "adminpages-prod2": {"environment": "prod", "role": "AdminPages", "description": ""},
+    "marble": {"environment": "prod", "role": "DW", "description": "app"},
+    "steele": {"environment": "prod", "role": "DW", "description": "app classic"},
+    "columbia": {"environment": "prod", "role": "DW", "description": "db"},
+    "cook": {"environment": "prod", "role": "EEI", "description": ""},
+    "diablo": {"environment": "prod", "role": "EEI", "description": ""},
+    "tamalpais": {"environment": "prod", "role": "EEI", "description": ""},
+    "craig": {"environment": "prod", "role": "EEI", "description": ""},
+    "bighorn": {"environment": "prod", "role": "Lum", "description": "admin"},
+    "bridger": {"environment": "prod", "role": "Lum", "description": "portal"},
+    "brooks": {"environment": "prod", "role": "Lum", "description": "portal"},
+    "boulder": {"environment": "prod", "role": "Lum", "description": "cas"},
+    "SSB2": {"environment": "prod", "role": "SSB", "description": ""},
+    "SSB": {"environment": "prod", "role": "SSB", "description": "SSB8"},
+    "trisul": {"environment": "prod", "role": "SSB", "description": "SSB9"},
+    "warren": {"environment": "prod", "role": "SSB", "description": "SSB9 emp"},
+    "warlow": {"environment": "prod", "role": "SSB", "description": "SSB9"},
+    "everest": {"environment": "prod", "role": "SSB", "description": ""},
+    "wallace": {"environment": "prod", "role": "Ethos", "description": ""},
+    "wasser": {"environment": "prod", "role": "Ethos", "description": "api mgmtcenter"},
+    "catskill": [
+      {"environment": "prod", "role": "BanPortals", "description": ""},
+      {"environment": "prod", "role": "PayPlan", "description": ""},
+      {"environment": "prod", "role": "WebLogic", "description": ""},
+      {"environment": "prod", "role": "PCI", "description": ""}
+    ],
+    "idpprod": {"environment": "prod", "role": "IDP", "description": ""},
+    "pumori": {"environment": "prod", "role": "ESM", "description": ""},
+    "castle": {"environment": "prod", "role": "DB", "description": ""},
+    "moroto": {"environment": "prod", "role": "ODS", "description": ""},
+    "ff-app-ords-01": {"environment": "prod", "role": "ODS", "description": ""},
+    "ff-app-pods-01": {"environment": "prod", "role": "ODS", "description": ""},
+    "spantik": {"environment": "prod", "role": "BAM", "description": ""},
+    "bannertpa": {"environment": "prod", "role": "Robo", "description": ""},
+    "ssomanager": {"environment": "prod", "role": "SSOManager", "description": ""}
+  }
+}

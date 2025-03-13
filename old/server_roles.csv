@@ -1,0 +1,69 @@
+server,roles
+adminpages-DEVL,"ESM, Postfix"
+adminpages-PPRD,"ESM, Postfix"
+adminpages-PROD1,"ESM, Postfix"
+AdminPages-PROD2,N/A
+adminpages8-DEVL,N/A
+adminpages8-PPRD,ESM
+alberta,"EEI, Postfix"
+annapurna,"BannerExtensibility, BannerGeneralSsb, ESM, EmployeeSelfService, Postfix, StudentSelfService"
+augusta,Postfix
+bighorn,"Luminus Admin Tier, Postfix"
+blackburn,"EEI510P, EEI57P, LUM5PROD, Postfix"
+boulder,Postfix
+bridger,"Luminus Admin Tier, Postfix"
+brooks,"Luminus Admin Tier, Postfix"
+castle,"APRD12, PROD12, Postfix"
+catskill,"BanPortals, Postfix, WebLogic"
+ccc-connector-PPRD,N/A
+ccc-connector-PROD,N/A
+coldfells,Postfix
+columbia,"DGWP, Postfix"
+cook,"EEI, Postfix"
+craig,"EEI, Postfix"
+Diablo,EEI
+Diran,"ESM, Postfix"
+dolmed,Postfix
+ettenmoors,Postfix
+everest,Postfix
+Fairweather,Postfix
+FF-APP-ORDS-01.solano.cc.ca.us,N/A
+FF-APP-PODS-01.solano.cc.ca.us,"ODSP, WebLogic"
+FF-APP-TODS-01.solano.cc.ca.us,"ODST, WebLogic"
+harvard,"CleanAddress, ESM, JobSub, Postfix, UC4"
+himalaya.solano.cc.ca.us,DEVL
+hubbard,Postfix
+IdPPROD,N/A
+IdpTEST.solano.cc.ca.us,N/A
+Kangto,Postfix
+Makalu,"BannerExtensibility, BannerGeneralSsb, ESM, EmployeeSelfService, Postfix"
+Manaslu,"ESM, FacultySelfService, FinanceSelfService, Postfix, StudentSelfService"
+Marble,Postfix
+Matterhorn,"BanPortals, ESM, Postfix"
+moroto,"PODS9, Postfix, WebLogic"
+Olympias,"CleanAddress, ESM, JobSub, Postfix"
+ophir.solano.cc.ca.us,"EMREP, Enterprise Manager Cloud Control, Postfix, WebLogic"
+palermo,"BannerExtensibility, BannerGeneralSsb, EmployeeSelfService, Postfix, StudentSelfService"
+pioneer.solano.cc.ca.us,"ESM, Postfix"
+Pumori,"ESM, Postfix"
+Saipal,Postfix
+Sinai,N/A
+Spantik,Postfix
+ssb,Postfix
+ssb2,"BanPortals, BannerGeneralSsb, Postfix"
+ssomanager,Postfix
+ssomanager2,Postfix
+ssomanagerpprd,Postfix
+steele,Postfix
+Tamalpais,EEI
+tambora,N/A
+Toba,N/A
+Trisul,Postfix
+Trivor,"ESM, Postfix"
+ural.solano.cc.ca.us,"ATST, DGWT, ESM, LTDB, PPRD, Postfix"
+Wallace,"ESM, Postfix"
+Warlow,ESM
+Warren,"BannerGeneralSsb, ESM, EmployeeSelfService, FinanceSelfService, Postfix"
+Wasser,N/A
+weathertop,Postfix
+whitney,"EEI510T, EEI53T, Postfix"

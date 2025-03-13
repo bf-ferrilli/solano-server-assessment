@@ -1,0 +1,2863 @@
+{
+  "environments": {
+    "pprd": {
+      "color": "orange",
+      "applications": {
+        "JobSub": [
+          {
+            "server": "olympias",
+            "description": "",
+            "os": "RHEL 8.9",
+            "osDetails": {
+              "server": "olympias",
+              "os": "Red Hat Enterprise Linux",
+              "version": "8.9",
+              "kernel": "4.18.0-513.24.1.el8",
+              "fullVersion": "8.9 (Ootpa)",
+              "codename": "Ootpa"
+            },
+            "backup": false
+          }
+        ],
+        "SSB": [
+          {
+            "server": "matterhorn",
+            "description": "",
+            "os": "RHEL 8.9",
+            "osDetails": {
+              "server": "matterhorn",
+              "os": "Red Hat Enterprise Linux",
+              "version": "8.9",
+              "kernel": "4.18.0-513.11.1.el8",
+              "fullVersion": "8.9 (Ootpa)",
+              "codename": "Ootpa"
+            },
+            "backup": false
+          },
+          {
+            "server": "makalu",
+            "description": "",
+            "os": "RHEL 8.10",
+            "osDetails": {
+              "server": "makalu",
+              "os": "Red Hat Enterprise Linux",
+              "version": "8.10",
+              "kernel": "4.18.0-553.36.1.el8",
+              "fullVersion": "8.10 (Ootpa)",
+              "codename": "Ootpa"
+            },
+            "backup": false
+          },
+          {
+            "server": "manaslu",
+            "description": "",
+            "os": "RHEL 8.10",
+            "osDetails": {
+              "server": "manaslu",
+              "os": "Red Hat Enterprise Linux",
+              "version": "8.10",
+              "kernel": "4.18.0-553.36.1.el8",
+              "fullVersion": "8.10 (Ootpa)",
+              "codename": "Ootpa"
+            },
+            "backup": false
+          }
+        ],
+        "AdminPages": [
+          {
+            "server": "adminpages-pprd",
+            "description": "",
+            "os": "RHEL 8.10",
+            "osDetails": {
+              "server": "adminpages-pprd",
+              "os": "Red Hat Enterprise Linux",
+              "version": "8.10",
+              "kernel": "4.18.0-553.36.1.el8",
+              "fullVersion": "8.10 (Ootpa)",
+              "codename": "Ootpa"
+            },
+            "backup": false
+          },
+          {
+            "server": "adminpages8-pprd",
+            "description": "",
+            "os": "RHEL 8.10",
+            "osDetails": {
+              "server": "adminpages8-pprd",
+              "os": "Red Hat Enterprise Linux",
+              "version": "8.10",
+              "kernel": "4.18.0-553.36.1.el8",
+              "fullVersion": "8.10 (Ootpa)",
+              "codename": "Ootpa"
+            },
+            "backup": false
+          }
+        ],
+        "LumTest": [
+          {
+            "server": "weathertop",
+            "description": "admin",
+            "os": "RHEL 7.9",
+            "osDetails": {
+              "server": "weathertop",
+              "os": "Red Hat Enterprise Linux Server",
+              "version": "7.9",
+              "kernel": "3.10.0-1160.59.1.el7.x86",
+              "fullVersion": "7.9 (Maipo)",
+              "codename": "Maipo"
+            },
+            "backup": false
+          }
+        ],
+        "DB": [
+          {
+            "server": "ural",
+            "description": "",
+            "os": "RHEL 7.9",
+            "backup": false
+          }
+        ],
+        "BEP": [
+          {
+            "server": "trivor",
+            "description": "",
+            "os": "RHEL 7.9",
+            "osDetails": {
+              "server": "trivor",
+              "os": "Red Hat Enterprise Linux Server",
+              "version": "7.9",
+              "kernel": "3.10.0-1160.62.1.el7.x86",
+              "fullVersion": "7.9 (Maipo)",
+              "codename": "Maipo"
+            },
+            "backup": false
+          }
+        ],
+        "DW": [
+          {
+            "server": "fairweather",
+            "description": "app",
+            "os": "RHEL 7.9",
+            "osDetails": {
+              "server": "fairweather",
+              "os": "Red Hat Enterprise Linux Server",
+              "version": "7.9",
+              "kernel": "3.10.0-1160.119.1.el7.x86",
+              "fullVersion": "7.9 (Maipo)",
+              "codename": "Maipo"
+            },
+            "backup": false
+          },
+          {
+            "server": "pioneer",
+            "description": "app",
+            "os": "RHEL 7.9",
+            "backup": false
+          }
+        ],
+        "PCI": [
+          {
+            "server": "cascade",
+            "description": "",
+            "backup": false
+          },
+          {
+            "server": "matterhorn",
+            "description": "",
+            "os": "RHEL 8.9",
+            "osDetails": {
+              "server": "matterhorn",
+              "os": "Red Hat Enterprise Linux",
+              "version": "8.9",
+              "kernel": "4.18.0-513.11.1.el8",
+              "fullVersion": "8.9 (Ootpa)",
+              "codename": "Ootpa"
+            },
+            "backup": false
+          }
+        ],
+        "BanPortals": [
+          {
+            "server": "cascade",
+            "description": "",
+            "backup": false
+          },
+          {
+            "server": "matterhorn",
+            "description": "",
+            "os": "RHEL 8.9",
+            "osDetails": {
+              "server": "matterhorn",
+              "os": "Red Hat Enterprise Linux",
+              "version": "8.9",
+              "kernel": "4.18.0-513.11.1.el8",
+              "fullVersion": "8.9 (Ootpa)",
+              "codename": "Ootpa"
+            },
+            "backup": false
+          }
+        ],
+        "PayPlan": [
+          {
+            "server": "cascade",
+            "description": "",
+            "backup": false
+          },
+          {
+            "server": "matterhorn",
+            "description": "",
+            "os": "RHEL 8.9",
+            "osDetails": {
+              "server": "matterhorn",
+              "os": "Red Hat Enterprise Linux",
+              "version": "8.9",
+              "kernel": "4.18.0-513.11.1.el8",
+              "fullVersion": "8.9 (Ootpa)",
+              "codename": "Ootpa"
+            },
+            "backup": false
+          }
+        ],
+        "WebLogic": [
+          {
+            "server": "cascade",
+            "description": "",
+            "backup": false
+          },
+          {
+            "server": "matterhorn",
+            "description": "",
+            "os": "RHEL 8.9",
+            "osDetails": {
+              "server": "matterhorn",
+              "os": "Red Hat Enterprise Linux",
+              "version": "8.9",
+              "kernel": "4.18.0-513.11.1.el8",
+              "fullVersion": "8.9 (Ootpa)",
+              "codename": "Ootpa"
+            },
+            "backup": false
+          }
+        ],
+        "Ethos": [
+          {
+            "server": "saipal",
+            "description": "",
+            "os": "RHEL 7.9",
+            "osDetails": {
+              "server": "saipal",
+              "os": "Red Hat Enterprise Linux Server",
+              "version": "7.9",
+              "kernel": "3.10.0-1160.119.1.el7.x86",
+              "fullVersion": "7.9 (Maipo)",
+              "codename": "Maipo"
+            },
+            "backup": false
+          },
+          {
+            "server": "sinai",
+            "description": "",
+            "os": "RHEL 8.10",
+            "osDetails": {
+              "server": "sinai",
+              "os": "Red Hat Enterprise Linux",
+              "version": "8.10",
+              "kernel": "4.18.0-553.32.1.el8",
+              "fullVersion": "8.10 (Ootpa)",
+              "codename": "Ootpa"
+            },
+            "backup": false
+          }
+        ],
+        "BAM": [
+          {
+            "server": "diran",
+            "description": "",
+            "os": "RHEL 8.9",
+            "osDetails": {
+              "server": "diran",
+              "os": "Red Hat Enterprise Linux",
+              "version": "8.9",
+              "kernel": "4.18.0-513.11.1.el8",
+              "fullVersion": "8.9 (Ootpa)",
+              "codename": "Ootpa"
+            },
+            "backup": false
+          }
+        ],
+        "IDP": [
+          {
+            "server": "idptest",
+            "description": "",
+            "os": "RHEL 8.6",
+            "backup": false
+          }
+        ],
+        "Cloud Control": [
+          {
+            "server": "ophir",
+            "description": "",
+            "os": "RHEL 7.4",
+            "backup": false
+          }
+        ],
+        "SSOManager": [
+          {
+            "server": "ssomanagerpprd",
+            "description": "",
+            "os": "RHEL 7.9",
+            "osDetails": {
+              "server": "ssomanagerpprd",
+              "os": "Red Hat Enterprise Linux Server",
+              "version": "7.9",
+              "kernel": "3.10.0-1160.62.1.el7.x86",
+              "fullVersion": "7.9 (Maipo)",
+              "codename": "Maipo"
+            },
+            "backup": false
+          },
+          {
+            "server": "ssomanager2",
+            "description": "",
+            "os": "RHEL 7.4",
+            "osDetails": {
+              "server": "ssomanager2",
+              "os": "Red Hat Enterprise Linux Server",
+              "version": "7.4",
+              "kernel": "3.10.0-693.11.6.el7.x86",
+              "fullVersion": "7.4 (Maipo)",
+              "codename": "Maipo"
+            },
+            "backup": false
+          }
+        ],
+        "AppNav": [
+          {
+            "server": "adminpages-pprd",
+            "description": "",
+            "os": "RHEL 8.10",
+            "osDetails": {
+              "server": "adminpages-pprd",
+              "os": "Red Hat Enterprise Linux",
+              "version": "8.10",
+              "kernel": "4.18.0-553.36.1.el8",
+              "fullVersion": "8.10 (Ootpa)",
+              "codename": "Ootpa"
+            },
+            "backup": false
+          },
+          {
+            "server": "adminpages8-pprd",
+            "description": "",
+            "os": "RHEL 8.10",
+            "osDetails": {
+              "server": "adminpages8-pprd",
+              "os": "Red Hat Enterprise Linux",
+              "version": "8.10",
+              "kernel": "4.18.0-553.36.1.el8",
+              "fullVersion": "8.10 (Ootpa)",
+              "codename": "Ootpa"
+            },
+            "backup": false
+          }
+        ],
+        "CCCApply": [
+          {
+            "server": "ccc-connector-pprd",
+            "description": "",
+            "os": "Ubuntu 22.04",
+            "backup": false
+          }
+        ],
+        "SuperGlue": [
+          {
+            "server": "ccc-connector-pprd",
+            "description": "",
+            "os": "",
+            "backup": false
+          }
+        ],
+        "Lum": [
+          {
+            "server": "dolmed",
+            "description": "Portal Tier",
+            "os": "RHEL 7.9",
+            "osDetails": {
+              "server": "dolmed",
+              "os": "Red Hat Enterprise Linux Server",
+              "version": "7.9",
+              "kernel": "3.10.0-1160.53.1.el7.x86",
+              "fullVersion": "7.9 (Maipo)",
+              "codename": "Maipo"
+            },
+            "backup": false
+          }
+        ]
+      }
+    },
+    "devl": {
+      "color": "cyan",
+      "applications": {
+        "AdminPages": [
+          {
+            "server": "adminpages8-devl",
+            "description": "",
+            "os": "RHEL 8.10",
+            "osDetails": {
+              "server": "adminpages8-devl",
+              "os": "Red Hat Enterprise Linux",
+              "version": "8.10",
+              "kernel": "4.18.0-553.36.1.el8",
+              "fullVersion": "8.10 (Ootpa)",
+              "codename": "Ootpa"
+            },
+            "backup": false
+          },
+          {
+            "server": "adminpages-devl",
+            "description": "",
+            "os": "RHEL 7.9",
+            "osDetails": {
+              "server": "adminpages-devl",
+              "os": "Red Hat Enterprise Linux Server",
+              "version": "7.9",
+              "kernel": "3.10.0-1160.119.1.el7.x86",
+              "fullVersion": "7.9 (Maipo)",
+              "codename": "Maipo"
+            },
+            "backup": false
+          }
+        ],
+        "AppNav": [
+          {
+            "server": "adminpages8-devl",
+            "description": "",
+            "os": "RHEL 8.10",
+            "osDetails": {
+              "server": "adminpages8-devl",
+              "os": "Red Hat Enterprise Linux",
+              "version": "8.10",
+              "kernel": "4.18.0-553.36.1.el8",
+              "fullVersion": "8.10 (Ootpa)",
+              "codename": "Ootpa"
+            },
+            "backup": false
+          },
+          {
+            "server": "adminpages-devl",
+            "description": "",
+            "os": "RHEL 7.9",
+            "osDetails": {
+              "server": "adminpages-devl",
+              "os": "Red Hat Enterprise Linux Server",
+              "version": "7.9",
+              "kernel": "3.10.0-1160.119.1.el7.x86",
+              "fullVersion": "7.9 (Maipo)",
+              "codename": "Maipo"
+            },
+            "backup": false
+          }
+        ],
+        "SSB": [
+          {
+            "server": "annapurna",
+            "description": "9",
+            "os": "RHEL 8.10",
+            "osDetails": {
+              "server": "annapurna",
+              "os": "Red Hat Enterprise Linux",
+              "version": "8.10",
+              "kernel": "4.18.0-553.22.1.el8",
+              "fullVersion": "8.10 (Ootpa)",
+              "codename": "Ootpa"
+            },
+            "backup": false
+          }
+        ],
+        "BAM": [
+          {
+            "server": "diran",
+            "description": "",
+            "os": "RHEL 8.9",
+            "osDetails": {
+              "server": "diran",
+              "os": "Red Hat Enterprise Linux",
+              "version": "8.9",
+              "kernel": "4.18.0-513.11.1.el8",
+              "fullVersion": "8.9 (Ootpa)",
+              "codename": "Ootpa"
+            },
+            "backup": false
+          }
+        ]
+      }
+    },
+    "test": {
+      "color": "gray",
+      "applications": {
+        "SSB": [
+          {
+            "server": "matterhorn",
+            "description": "",
+            "os": "RHEL 8.9",
+            "osDetails": {
+              "server": "matterhorn",
+              "os": "Red Hat Enterprise Linux",
+              "version": "8.9",
+              "kernel": "4.18.0-513.11.1.el8",
+              "fullVersion": "8.9 (Ootpa)",
+              "codename": "Ootpa"
+            },
+            "backup": false
+          }
+        ],
+        "ODS": [
+          {
+            "server": "diran",
+            "description": "",
+            "os": "RHEL 8.9",
+            "osDetails": {
+              "server": "diran",
+              "os": "Red Hat Enterprise Linux",
+              "version": "8.9",
+              "kernel": "4.18.0-513.11.1.el8",
+              "fullVersion": "8.9 (Ootpa)",
+              "codename": "Ootpa"
+            },
+            "backup": false
+          },
+          {
+            "server": "ff-app-tods-01",
+            "description": "",
+            "os": "RHEL 8.9",
+            "backup": false
+          }
+        ],
+        "SSO": [
+          {
+            "server": "sso-test",
+            "description": "",
+            "backup": false
+          }
+        ],
+        "EEI": [
+          {
+            "server": "alberta",
+            "description": "",
+            "os": "RHEL 7.9",
+            "osDetails": {
+              "server": "alberta",
+              "os": "Red Hat Enterprise Linux Server",
+              "version": "7.9",
+              "kernel": "3.10.0-1160.59.1.el7.x86",
+              "fullVersion": "7.9 (Maipo)",
+              "codename": "Maipo"
+            },
+            "backup": false
+          },
+          {
+            "server": "augusta",
+            "description": "",
+            "os": "RHEL 7.9",
+            "osDetails": {
+              "server": "augusta",
+              "os": "Red Hat Enterprise Linux Server",
+              "version": "7.9",
+              "kernel": "3.10.0-1160.53.1.el7.x86",
+              "fullVersion": "7.9 (Maipo)",
+              "codename": "Maipo"
+            },
+            "backup": false
+          }
+        ],
+        "Parchment": [
+          {
+            "server": "bannertpa",
+            "description": "",
+            "os": "Windows Server 2016",
+            "backup": false
+          }
+        ],
+        "TPA": [
+          {
+            "server": "bannertpa",
+            "description": "",
+            "os": "",
+            "backup": false
+          }
+        ],
+        "Lum": [
+          {
+            "server": "coldfells",
+            "description": "Portal Tier",
+            "os": "RHEL 7.9",
+            "osDetails": {
+              "server": "coldfells",
+              "os": "Red Hat Enterprise Linux Server",
+              "version": "7.9",
+              "kernel": "3.10.0-1160.53.1.el7.x86",
+              "fullVersion": "7.9 (Maipo)",
+              "codename": "Maipo"
+            },
+            "backup": false
+          }
+        ],
+        "DB": [
+          {
+            "server": "diran",
+            "description": "12c",
+            "os": "RHEL 8.9",
+            "osDetails": {
+              "server": "diran",
+              "os": "Red Hat Enterprise Linux",
+              "version": "8.9",
+              "kernel": "4.18.0-513.11.1.el8",
+              "fullVersion": "8.9 (Ootpa)",
+              "codename": "Ootpa"
+            },
+            "backup": false
+          }
+        ]
+      }
+    },
+    "prod": {
+      "color": "blue",
+      "applications": {
+        "JobSub": [
+          {
+            "server": "granite",
+            "description": "",
+            "backup": false
+          },
+          {
+            "server": "harvard",
+            "description": "",
+            "os": "RHEL 8.9",
+            "osDetails": {
+              "server": "harvard",
+              "os": "Red Hat Enterprise Linux",
+              "version": "8.9",
+              "kernel": "4.18.0-513.24.1.el8",
+              "fullVersion": "8.9 (Ootpa)",
+              "codename": "Ootpa"
+            },
+            "backup": false
+          }
+        ],
+        "AdminPages": [
+          {
+            "server": "adminpages-prod1",
+            "description": "",
+            "os": "RHEL 7.9",
+            "osDetails": {
+              "server": "adminpages-prod1",
+              "os": "Red Hat Enterprise Linux Server",
+              "version": "7.9",
+              "kernel": "3.10.0-1160.59.1.el7.x86",
+              "fullVersion": "7.9 (Maipo)",
+              "codename": "Maipo"
+            },
+            "backup": false
+          },
+          {
+            "server": "adminpages-prod2",
+            "description": "",
+            "os": "RHEL 8.10",
+            "osDetails": {
+              "server": "adminpages-prod2",
+              "os": "Red Hat Enterprise Linux",
+              "version": "8.10",
+              "kernel": "4.18.0-553.36.1.el8",
+              "fullVersion": "8.10 (Ootpa)",
+              "codename": "Ootpa"
+            },
+            "backup": false
+          },
+          {
+            "server": "ff-app-sars",
+            "description": "",
+            "os": "Windows Server 2022",
+            "osDetails": {
+              "server": "ff-app-sars",
+              "os": "Microsoft Windows Server 2022 Standard",
+              "version": "10.0.20348",
+              "kernel": "Unknown"
+            },
+            "backup": false
+          },
+          {
+            "server": "ff-db-sars",
+            "description": "",
+            "os": "Windows Server 2022",
+            "osDetails": {
+              "server": "ff-db-sars",
+              "os": "Microsoft Windows Server 2022 Standard",
+              "version": "10.0.20348",
+              "kernel": "Unknown"
+            },
+            "backup": false
+          },
+          {
+            "server": "kea",
+            "description": "",
+            "os": "Windows Server 2022",
+            "osDetails": {
+              "server": "kea",
+              "os": "Microsoft Windows Server 2019 Standard",
+              "version": "10.0.17763",
+              "kernel": "Unknown"
+            },
+            "backup": false
+          },
+          {
+            "server": "loa",
+            "description": "",
+            "os": "Windows Server 2019",
+            "osDetails": {
+              "server": "loa",
+              "os": "Microsoft Windows Server 2019 Standard",
+              "version": "10.0.17763",
+              "kernel": "Unknown"
+            },
+            "backup": false
+          },
+          {
+            "server": "hubbard",
+            "description": "",
+            "os": "RHEL 8.9",
+            "osDetails": {
+              "server": "hubbard",
+              "os": "Red Hat Enterprise Linux",
+              "version": "8.9",
+              "kernel": "4.18.0-513.24.1.el8",
+              "fullVersion": "8.9 (Ootpa)",
+              "codename": "Ootpa"
+            },
+            "backup": false
+          },
+          {
+            "server": "kangto",
+            "description": "",
+            "os": "RHEL 8.9",
+            "osDetails": {
+              "server": "kangto",
+              "os": "Red Hat Enterprise Linux",
+              "version": "8.9",
+              "kernel": "4.18.0-513.24.1.el8",
+              "fullVersion": "8.9 (Ootpa)",
+              "codename": "Ootpa"
+            },
+            "backup": false
+          },
+          {
+            "server": "ettenmoors",
+            "description": "",
+            "os": "RHEL 7.9",
+            "backup": false
+          },
+          {
+            "server": "himalaya",
+            "description": "",
+            "os": "RHEL 7.9",
+            "backup": false
+          },
+          {
+            "server": "mather",
+            "description": "",
+            "os": "Windows Server 2019",
+            "backup": false
+          },
+          {
+            "server": "moffit",
+            "description": "",
+            "os": "Windows Server 2019",
+            "backup": false
+          },
+          {
+            "server": "palermo",
+            "description": "",
+            "os": "RHEL 8.10",
+            "backup": false
+          },
+          {
+            "server": "ssb",
+            "description": "",
+            "os": "RHEL 7.4",
+            "backup": false
+          },
+          {
+            "server": "ssb2",
+            "description": "",
+            "os": "RHEL 7.9",
+            "backup": false
+          },
+          {
+            "server": "tambora",
+            "description": "",
+            "os": "RHEL 8.10",
+            "backup": false
+          },
+          {
+            "server": "toba",
+            "description": "",
+            "os": "RHEL 8.10",
+            "backup": false
+          },
+          {
+            "server": "whitney",
+            "description": "",
+            "os": "RHEL 7.9",
+            "backup": false
+          }
+        ],
+        "DW": [
+          {
+            "server": "marble",
+            "description": "app",
+            "os": "RHEL 7.9",
+            "osDetails": {
+              "server": "marble",
+              "os": "Red Hat Enterprise Linux Server",
+              "version": "7.9",
+              "kernel": "3.10.0-1160.59.1.el7.x86",
+              "fullVersion": "7.9 (Maipo)",
+              "codename": "Maipo"
+            },
+            "backup": false
+          },
+          {
+            "server": "steele",
+            "description": "app classic",
+            "os": "RHEL 7.9",
+            "osDetails": {
+              "server": "steele",
+              "os": "Red Hat Enterprise Linux Server",
+              "version": "7.9",
+              "kernel": "3.10.0-1160.114.2.el7.x86",
+              "fullVersion": "7.9 (Maipo)",
+              "codename": "Maipo"
+            },
+            "backup": false
+          },
+          {
+            "server": "columbia",
+            "description": "DB",
+            "os": "RHEL 7.9",
+            "osDetails": {
+              "server": "columbia",
+              "os": "Red Hat Enterprise Linux Server",
+              "version": "7.9",
+              "kernel": "3.10.0-1160.59.1.el7.x86",
+              "fullVersion": "7.9 (Maipo)",
+              "codename": "Maipo"
+            },
+            "backup": false
+          }
+        ],
+        "EEI": [
+          {
+            "server": "cook",
+            "description": "",
+            "os": "RHEL 7.9",
+            "osDetails": {
+              "server": "cook",
+              "os": "Red Hat Enterprise Linux Server",
+              "version": "7.9",
+              "kernel": "3.10.0-1160.53.1.el7.x86",
+              "fullVersion": "7.9 (Maipo)",
+              "codename": "Maipo"
+            },
+            "backup": false
+          },
+          {
+            "server": "tamalpais",
+            "description": "",
+            "os": "RHEL 8.10",
+            "osDetails": {
+              "server": "tamalpais",
+              "os": "Red Hat Enterprise Linux",
+              "version": "8.10",
+              "kernel": "4.18.0-553.30.1.el8",
+              "fullVersion": "8.10 (Ootpa)",
+              "codename": "Ootpa"
+            },
+            "backup": false
+          },
+          {
+            "server": "craig",
+            "description": "",
+            "os": "RHEL 7.9",
+            "osDetails": {
+              "server": "craig",
+              "os": "Red Hat Enterprise Linux Server",
+              "version": "7.9",
+              "kernel": "3.10.0-1160.53.1.el7.x86",
+              "fullVersion": "7.9 (Maipo)",
+              "codename": "Maipo"
+            },
+            "backup": false
+          },
+          {
+            "server": "blackburn",
+            "description": "",
+            "os": "RHEL 7.9",
+            "osDetails": {
+              "server": "blackburn",
+              "os": "Red Hat Enterprise Linux Server",
+              "version": "7.9",
+              "kernel": "3.10.0-1160.59.1.el7.x86",
+              "fullVersion": "7.9 (Maipo)",
+              "codename": "Maipo"
+            },
+            "backup": false
+          },
+          {
+            "server": "diablo",
+            "description": "App",
+            "os": "RHEL 8.10",
+            "osDetails": {
+              "server": "diablo",
+              "os": "Red Hat Enterprise Linux",
+              "version": "8.10",
+              "kernel": "4.18.0-553.30.1.el8",
+              "fullVersion": "8.10 (Ootpa)",
+              "codename": "Ootpa"
+            },
+            "backup": false
+          }
+        ],
+        "Lum": [
+          {
+            "server": "bighorn",
+            "description": "Admin Tier",
+            "os": "RHEL 7.9",
+            "osDetails": {
+              "server": "bighorn",
+              "os": "Red Hat Enterprise Linux Server",
+              "version": "7.9",
+              "kernel": "3.10.0-1160.59.1.el7.x86",
+              "fullVersion": "7.9 (Maipo)",
+              "codename": "Maipo"
+            },
+            "backup": false
+          },
+          {
+            "server": "boulder",
+            "description": "CAS Tier",
+            "os": "RHEL 7.1",
+            "osDetails": {
+              "server": "boulder",
+              "os": "Red Hat Enterprise Linux Server",
+              "version": "7.1",
+              "kernel": "3.10.0-229.14.1.el7.x86",
+              "fullVersion": "7.1 (Maipo)",
+              "codename": "Maipo"
+            },
+            "backup": false
+          },
+          {
+            "server": "blackburn",
+            "description": "",
+            "os": "RHEL 7.9",
+            "osDetails": {
+              "server": "blackburn",
+              "os": "Red Hat Enterprise Linux Server",
+              "version": "7.9",
+              "kernel": "3.10.0-1160.59.1.el7.x86",
+              "fullVersion": "7.9 (Maipo)",
+              "codename": "Maipo"
+            },
+            "backup": false
+          },
+          {
+            "server": "bridger",
+            "description": "Portal Tier",
+            "os": "RHEL 7.9",
+            "osDetails": {
+              "server": "bridger",
+              "os": "Red Hat Enterprise Linux Server",
+              "version": "7.9",
+              "kernel": "3.10.0-1160.59.1.el7.x86",
+              "fullVersion": "7.9 (Maipo)",
+              "codename": "Maipo"
+            },
+            "backup": false
+          },
+          {
+            "server": "brooks",
+            "description": "Portal Tier",
+            "os": "RHEL 7.9",
+            "osDetails": {
+              "server": "brooks",
+              "os": "Red Hat Enterprise Linux Server",
+              "version": "7.9",
+              "kernel": "3.10.0-1160.59.1.el7.x86",
+              "fullVersion": "7.9 (Maipo)",
+              "codename": "Maipo"
+            },
+            "backup": false
+          }
+        ],
+        "SSB": [
+          {
+            "server": "SSB2",
+            "description": "",
+            "os": "RHEL 7.9",
+            "osDetails": {
+              "server": "ssb2",
+              "os": "Red Hat Enterprise Linux Server",
+              "version": "7.9",
+              "kernel": "3.10.0-1160.105.1.el7.x86",
+              "fullVersion": "7.9 (Maipo)",
+              "codename": "Maipo"
+            },
+            "backup": false
+          },
+          {
+            "server": "SSB",
+            "description": "SSB8",
+            "os": "RHEL 7.4",
+            "osDetails": {
+              "server": "ssb",
+              "os": "Red Hat Enterprise Linux Server",
+              "version": "7.4",
+              "kernel": "3.10.0-693.5.2.el7.x86",
+              "fullVersion": "7.4 (Maipo)",
+              "codename": "Maipo"
+            },
+            "backup": false
+          },
+          {
+            "server": "trisul",
+            "description": "SSB9",
+            "os": "RHEL 8.9",
+            "osDetails": {
+              "server": "trisul",
+              "os": "Red Hat Enterprise Linux",
+              "version": "8.9",
+              "kernel": "4.18.0-513.24.1.el8",
+              "fullVersion": "8.9 (Ootpa)",
+              "codename": "Ootpa"
+            },
+            "backup": false
+          },
+          {
+            "server": "warren",
+            "description": "SSB9 emp",
+            "os": "RHEL 7.9",
+            "osDetails": {
+              "server": "warren",
+              "os": "Red Hat Enterprise Linux Server",
+              "version": "7.9",
+              "kernel": "3.10.0-1160.114.2.el7.x86",
+              "fullVersion": "7.9 (Maipo)",
+              "codename": "Maipo"
+            },
+            "backup": false
+          },
+          {
+            "server": "warlow",
+            "description": "SSB9",
+            "os": "RHEL 8.10",
+            "osDetails": {
+              "server": "warlow",
+              "os": "Red Hat Enterprise Linux",
+              "version": "8.10",
+              "kernel": "4.18.0-553.36.1.el8",
+              "fullVersion": "8.10 (Ootpa)",
+              "codename": "Ootpa"
+            },
+            "backup": false
+          },
+          {
+            "server": "everest",
+            "description": "",
+            "os": "RHEL 7.9",
+            "osDetails": {
+              "server": "everest",
+              "os": "Red Hat Enterprise Linux Server",
+              "version": "7.9",
+              "kernel": "3.10.0-1160.114.2.el7.x86",
+              "fullVersion": "7.9 (Maipo)",
+              "codename": "Maipo"
+            },
+            "backup": false
+          },
+          {
+            "server": "catskill",
+            "description": "",
+            "os": "RHEL 6.9",
+            "osDetails": {
+              "server": "catskill",
+              "os": "Red Hat Enterprise Linux",
+              "version": "6.9",
+              "kernel": "2.6.32-696.13.2.el6.x86",
+              "codename": "Santiago"
+            },
+            "backup": false
+          }
+        ],
+        "Ethos": [
+          {
+            "server": "wallace",
+            "description": "",
+            "os": "RHEL 7.9",
+            "osDetails": {
+              "server": "wallace",
+              "os": "Red Hat Enterprise Linux Server",
+              "version": "7.9",
+              "kernel": "3.10.0-1160.114.2.el7.x86",
+              "fullVersion": "7.9 (Maipo)",
+              "codename": "Maipo"
+            },
+            "backup": false
+          },
+          {
+            "server": "wasser",
+            "description": "api mgmtcenter",
+            "os": "RHEL 8.10",
+            "osDetails": {
+              "server": "wasser",
+              "os": "Red Hat Enterprise Linux",
+              "version": "8.10",
+              "kernel": "4.18.0-553.32.1.el8",
+              "fullVersion": "8.10 (Ootpa)",
+              "codename": "Ootpa"
+            },
+            "backup": false
+          },
+          {
+            "server": "trivor",
+            "description": "bep",
+            "os": "RHEL 7.9",
+            "osDetails": {
+              "server": "trivor",
+              "os": "Red Hat Enterprise Linux Server",
+              "version": "7.9",
+              "kernel": "3.10.0-1160.62.1.el7.x86",
+              "fullVersion": "7.9 (Maipo)",
+              "codename": "Maipo"
+            },
+            "backup": false
+          }
+        ],
+        "BanPortals": [
+          {
+            "server": "catskill",
+            "description": "",
+            "os": "RHEL 6.9",
+            "osDetails": {
+              "server": "catskill",
+              "os": "Red Hat Enterprise Linux",
+              "version": "6.9",
+              "kernel": "2.6.32-696.13.2.el6.x86",
+              "codename": "Santiago"
+            },
+            "backup": false
+          }
+        ],
+        "PayPlan": [
+          {
+            "server": "catskill",
+            "description": "",
+            "os": "RHEL 6.9",
+            "osDetails": {
+              "server": "catskill",
+              "os": "Red Hat Enterprise Linux",
+              "version": "6.9",
+              "kernel": "2.6.32-696.13.2.el6.x86",
+              "codename": "Santiago"
+            },
+            "backup": false
+          }
+        ],
+        "WebLogic": [
+          {
+            "server": "catskill",
+            "description": "",
+            "os": "RHEL 6.9",
+            "osDetails": {
+              "server": "catskill",
+              "os": "Red Hat Enterprise Linux",
+              "version": "6.9",
+              "kernel": "2.6.32-696.13.2.el6.x86",
+              "codename": "Santiago"
+            },
+            "backup": false
+          }
+        ],
+        "PCI": [
+          {
+            "server": "catskill",
+            "description": "",
+            "os": "RHEL 6.9",
+            "osDetails": {
+              "server": "catskill",
+              "os": "Red Hat Enterprise Linux",
+              "version": "6.9",
+              "kernel": "2.6.32-696.13.2.el6.x86",
+              "codename": "Santiago"
+            },
+            "backup": false
+          }
+        ],
+        "IDP": [
+          {
+            "server": "idpprod",
+            "description": "",
+            "os": "RHEL 8.6",
+            "osDetails": {
+              "server": "idpprod",
+              "os": "Red Hat Enterprise Linux",
+              "version": "8.6",
+              "kernel": "4.18.0-372.32.1.el8",
+              "fullVersion": "8.6 (Ootpa)",
+              "codename": "Ootpa"
+            },
+            "backup": false
+          }
+        ],
+        "ESM": [
+          {
+            "server": "pumori",
+            "description": "",
+            "os": "RHEL 8.9",
+            "osDetails": {
+              "server": "pumori",
+              "os": "Red Hat Enterprise Linux",
+              "version": "8.9",
+              "kernel": "4.18.0-513.11.1.el8",
+              "fullVersion": "8.9 (Ootpa)",
+              "codename": "Ootpa"
+            },
+            "backup": false
+          }
+        ],
+        "DB": [
+          {
+            "server": "matterhorn",
+            "description": "",
+            "os": "RHEL 8.9",
+            "osDetails": {
+              "server": "matterhorn",
+              "os": "Red Hat Enterprise Linux",
+              "version": "8.9",
+              "kernel": "4.18.0-513.11.1.el8",
+              "fullVersion": "8.9 (Ootpa)",
+              "codename": "Ootpa"
+            },
+            "backup": false
+          },
+          {
+            "server": "castle",
+            "description": "19c",
+            "os": "RHEL 7.9",
+            "osDetails": {
+              "server": "castle",
+              "os": "Red Hat Enterprise Linux Server",
+              "version": "7.9",
+              "kernel": "3.10.0-1160.59.1.el7.x86",
+              "fullVersion": "7.9 (Maipo)",
+              "codename": "Maipo"
+            },
+            "backup": false
+          },
+          {
+            "server": "blackburn",
+            "description": "12c",
+            "os": "RHEL 7.9",
+            "osDetails": {
+              "server": "blackburn",
+              "os": "Red Hat Enterprise Linux Server",
+              "version": "7.9",
+              "kernel": "3.10.0-1160.59.1.el7.x86",
+              "fullVersion": "7.9 (Maipo)",
+              "codename": "Maipo"
+            },
+            "backup": false
+          },
+          {
+            "server": "catskill",
+            "description": "12c",
+            "os": "RHEL 6.9",
+            "osDetails": {
+              "server": "catskill",
+              "os": "Red Hat Enterprise Linux",
+              "version": "6.9",
+              "kernel": "2.6.32-696.13.2.el6.x86",
+              "codename": "Santiago"
+            },
+            "backup": false
+          },
+          {
+            "server": "columbia",
+            "description": "12c",
+            "os": "RHEL 7.9",
+            "osDetails": {
+              "server": "columbia",
+              "os": "Red Hat Enterprise Linux Server",
+              "version": "7.9",
+              "kernel": "3.10.0-1160.59.1.el7.x86",
+              "fullVersion": "7.9 (Maipo)",
+              "codename": "Maipo"
+            },
+            "backup": false
+          }
+        ],
+        "ODS": [
+          {
+            "server": "moroto",
+            "description": "",
+            "os": "RHEL 7.9",
+            "osDetails": {
+              "server": "moroto",
+              "os": "Red Hat Enterprise Linux Server",
+              "version": "7.9",
+              "kernel": "3.10.0-1160.59.1.el7.x86",
+              "fullVersion": "7.9 (Maipo)",
+              "codename": "Maipo"
+            },
+            "backup": false
+          },
+          {
+            "server": "ff-app-ords-01",
+            "description": "",
+            "os": "RHEL 8.9",
+            "backup": false
+          },
+          {
+            "server": "ff-app-pods-01",
+            "description": "",
+            "os": "RHEL 8.9",
+            "backup": false
+          }
+        ],
+        "Cloud Control": [
+          {
+            "server": "ophir",
+            "description": "",
+            "os": "",
+            "backup": false
+          }
+        ],
+        "BAM": [
+          {
+            "server": "spantik",
+            "description": "",
+            "os": "RHEL 8.9",
+            "osDetails": {
+              "server": "spantik",
+              "os": "Red Hat Enterprise Linux",
+              "version": "8.9",
+              "kernel": "4.18.0-513.24.1.el8",
+              "fullVersion": "8.9 (Ootpa)",
+              "codename": "Ootpa"
+            },
+            "backup": false
+          }
+        ],
+        "SSOManager": [
+          {
+            "server": "ssomanager",
+            "description": "",
+            "os": "RHEL 7.4",
+            "osDetails": {
+              "server": "ssomanager",
+              "os": "Red Hat Enterprise Linux Server",
+              "version": "7.4",
+              "kernel": "3.10.0-693.5.2.el7.x86",
+              "fullVersion": "7.4 (Maipo)",
+              "codename": "Maipo"
+            },
+            "backup": false
+          }
+        ],
+        "AppNav": [
+          {
+            "server": "adminpages-prod1",
+            "description": "",
+            "os": "RHEL 7.9",
+            "osDetails": {
+              "server": "adminpages-prod1",
+              "os": "Red Hat Enterprise Linux Server",
+              "version": "7.9",
+              "kernel": "3.10.0-1160.59.1.el7.x86",
+              "fullVersion": "7.9 (Maipo)",
+              "codename": "Maipo"
+            },
+            "backup": false
+          },
+          {
+            "server": "adminpages-prod2",
+            "description": "",
+            "os": "RHEL 8.10",
+            "osDetails": {
+              "server": "adminpages-prod2",
+              "os": "Red Hat Enterprise Linux",
+              "version": "8.10",
+              "kernel": "4.18.0-553.36.1.el8",
+              "fullVersion": "8.10 (Ootpa)",
+              "codename": "Ootpa"
+            },
+            "backup": false
+          }
+        ],
+        "CCCApply": [
+          {
+            "server": "ccc-connector-prod",
+            "description": "",
+            "os": ""
+          }
+        ],
+        "SuperGlue": [
+          {
+            "server": "ccc-connector-prod",
+            "description": "",
+            "os": "Ubuntu 22.04"
+          }
+        ]
+      }
+    }
+  },
+  "servers": {
+    "olympias": {
+      "environment": "pprd",
+      "role": "JobSub",
+      "description": "",
+      "os": "RHEL 8.9",
+      "osDetails": {
+        "server": "olympias",
+        "os": "Red Hat Enterprise Linux",
+        "version": "8.9",
+        "kernel": "4.18.0-513.24.1.el8",
+        "fullVersion": "8.9 (Ootpa)",
+        "codename": "Ootpa"
+      },
+      "backup": false
+    },
+    "matterhorn": [
+      {
+        "environment": "pprd",
+        "role": "SSB",
+        "description": "",
+        "os": "RHEL 8.9",
+        "osDetails": {
+          "server": "matterhorn",
+          "os": "Red Hat Enterprise Linux",
+          "version": "8.9",
+          "kernel": "4.18.0-513.11.1.el8",
+          "fullVersion": "8.9 (Ootpa)",
+          "codename": "Ootpa"
+        },
+        "backup": false
+      },
+      {
+        "environment": "pprd",
+        "role": "PCI",
+        "description": "",
+        "os": "RHEL 8.9",
+        "osDetails": {
+          "server": "matterhorn",
+          "os": "Red Hat Enterprise Linux",
+          "version": "8.9",
+          "kernel": "4.18.0-513.11.1.el8",
+          "fullVersion": "8.9 (Ootpa)",
+          "codename": "Ootpa"
+        },
+        "backup": false
+      },
+      {
+        "environment": "pprd",
+        "role": "BanPortals",
+        "description": "",
+        "os": "RHEL 8.9",
+        "osDetails": {
+          "server": "matterhorn",
+          "os": "Red Hat Enterprise Linux",
+          "version": "8.9",
+          "kernel": "4.18.0-513.11.1.el8",
+          "fullVersion": "8.9 (Ootpa)",
+          "codename": "Ootpa"
+        },
+        "backup": false
+      },
+      {
+        "environment": "pprd",
+        "role": "PayPlan",
+        "description": "",
+        "os": "RHEL 8.9",
+        "osDetails": {
+          "server": "matterhorn",
+          "os": "Red Hat Enterprise Linux",
+          "version": "8.9",
+          "kernel": "4.18.0-513.11.1.el8",
+          "fullVersion": "8.9 (Ootpa)",
+          "codename": "Ootpa"
+        },
+        "backup": false
+      },
+      {
+        "environment": "pprd",
+        "role": "WebLogic",
+        "description": "",
+        "os": "RHEL 8.9",
+        "osDetails": {
+          "server": "matterhorn",
+          "os": "Red Hat Enterprise Linux",
+          "version": "8.9",
+          "kernel": "4.18.0-513.11.1.el8",
+          "fullVersion": "8.9 (Ootpa)",
+          "codename": "Ootpa"
+        },
+        "backup": false
+      },
+      {
+        "environment": "test",
+        "role": "SSB",
+        "description": "",
+        "os": "RHEL 8.9",
+        "osDetails": {
+          "server": "matterhorn",
+          "os": "Red Hat Enterprise Linux",
+          "version": "8.9",
+          "kernel": "4.18.0-513.11.1.el8",
+          "fullVersion": "8.9 (Ootpa)",
+          "codename": "Ootpa"
+        },
+        "backup": false
+      },
+      {
+        "environment": "prod",
+        "role": "DB",
+        "description": "",
+        "os": "RHEL 8.9",
+        "osDetails": {
+          "server": "matterhorn",
+          "os": "Red Hat Enterprise Linux",
+          "version": "8.9",
+          "kernel": "4.18.0-513.11.1.el8",
+          "fullVersion": "8.9 (Ootpa)",
+          "codename": "Ootpa"
+        },
+        "backup": false
+      }
+    ],
+    "makalu": {
+      "environment": "pprd",
+      "role": "SSB",
+      "description": "",
+      "os": "RHEL 8.10",
+      "osDetails": {
+        "server": "makalu",
+        "os": "Red Hat Enterprise Linux",
+        "version": "8.10",
+        "kernel": "4.18.0-553.36.1.el8",
+        "fullVersion": "8.10 (Ootpa)",
+        "codename": "Ootpa"
+      },
+      "backup": false
+    },
+    "manaslu": {
+      "environment": "pprd",
+      "role": "SSB",
+      "description": "",
+      "os": "RHEL 8.10",
+      "osDetails": {
+        "server": "manaslu",
+        "os": "Red Hat Enterprise Linux",
+        "version": "8.10",
+        "kernel": "4.18.0-553.36.1.el8",
+        "fullVersion": "8.10 (Ootpa)",
+        "codename": "Ootpa"
+      },
+      "backup": false
+    },
+    "adminpages-pprd": [
+      {
+        "environment": "pprd",
+        "role": "AdminPages",
+        "description": "",
+        "os": "RHEL 8.10",
+        "osDetails": {
+          "server": "adminpages-pprd",
+          "os": "Red Hat Enterprise Linux",
+          "version": "8.10",
+          "kernel": "4.18.0-553.36.1.el8",
+          "fullVersion": "8.10 (Ootpa)",
+          "codename": "Ootpa"
+        },
+        "backup": false
+      },
+      {
+        "environment": "pprd",
+        "role": "AppNav",
+        "description": "",
+        "os": "RHEL 8.10",
+        "osDetails": {
+          "server": "adminpages-pprd",
+          "os": "Red Hat Enterprise Linux",
+          "version": "8.10",
+          "kernel": "4.18.0-553.36.1.el8",
+          "fullVersion": "8.10 (Ootpa)",
+          "codename": "Ootpa"
+        },
+        "backup": false
+      }
+    ],
+    "adminpages8-pprd": [
+      {
+        "environment": "pprd",
+        "role": "AdminPages",
+        "description": "",
+        "os": "RHEL 8.10",
+        "osDetails": {
+          "server": "adminpages8-pprd",
+          "os": "Red Hat Enterprise Linux",
+          "version": "8.10",
+          "kernel": "4.18.0-553.36.1.el8",
+          "fullVersion": "8.10 (Ootpa)",
+          "codename": "Ootpa"
+        },
+        "backup": false
+      },
+      {
+        "environment": "pprd",
+        "role": "AppNav",
+        "description": "",
+        "os": "RHEL 8.10",
+        "osDetails": {
+          "server": "adminpages8-pprd",
+          "os": "Red Hat Enterprise Linux",
+          "version": "8.10",
+          "kernel": "4.18.0-553.36.1.el8",
+          "fullVersion": "8.10 (Ootpa)",
+          "codename": "Ootpa"
+        },
+        "backup": false
+      }
+    ],
+    "alberta": {
+      "environment": "test",
+      "role": "EEI",
+      "description": "",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "alberta",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.59.1.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "backup": false
+    },
+    "augusta": {
+      "environment": "test",
+      "role": "EEI",
+      "description": "",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "augusta",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.53.1.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "backup": false
+    },
+    "weathertop": {
+      "environment": "pprd",
+      "role": "LumTest",
+      "description": "admin",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "weathertop",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.59.1.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "backup": false
+    },
+    "dolmed": {
+      "environment": "pprd",
+      "role": "Lum",
+      "description": "Portal Tier",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "dolmed",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.53.1.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "backup": false
+    },
+    "coldfells": {
+      "environment": "test",
+      "role": "Lum",
+      "description": "Portal Tier",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "coldfells",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.53.1.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "backup": false
+    },
+    "ural": {
+      "environment": "pprd",
+      "role": "DB",
+      "description": "",
+      "os": "RHEL 7.9",
+      "backup": false
+    },
+    "trivor": [
+      {
+        "environment": "pprd",
+        "role": "BEP",
+        "description": "",
+        "os": "RHEL 7.9",
+        "osDetails": {
+          "server": "trivor",
+          "os": "Red Hat Enterprise Linux Server",
+          "version": "7.9",
+          "kernel": "3.10.0-1160.62.1.el7.x86",
+          "fullVersion": "7.9 (Maipo)",
+          "codename": "Maipo"
+        },
+        "backup": false
+      },
+      {
+        "environment": "prod",
+        "role": "Ethos",
+        "description": "bep",
+        "os": "RHEL 7.9",
+        "osDetails": {
+          "server": "trivor",
+          "os": "Red Hat Enterprise Linux Server",
+          "version": "7.9",
+          "kernel": "3.10.0-1160.62.1.el7.x86",
+          "fullVersion": "7.9 (Maipo)",
+          "codename": "Maipo"
+        },
+        "backup": false
+      }
+    ],
+    "fairweather": {
+      "environment": "pprd",
+      "role": "DW",
+      "description": "app",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "fairweather",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.119.1.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "backup": false
+    },
+    "pioneer": {
+      "environment": "pprd",
+      "role": "DW",
+      "description": "app",
+      "os": "RHEL 7.9",
+      "backup": false
+    },
+    "cascade": [
+      {
+        "environment": "pprd",
+        "role": "PCI",
+        "description": "",
+        "backup": false
+      },
+      {
+        "environment": "pprd",
+        "role": "BanPortals",
+        "description": "",
+        "backup": false
+      },
+      {
+        "environment": "pprd",
+        "role": "PayPlan",
+        "description": "",
+        "backup": false
+      },
+      {
+        "environment": "pprd",
+        "role": "WebLogic",
+        "description": "",
+        "backup": false
+      }
+    ],
+    "saipal": {
+      "environment": "pprd",
+      "role": "Ethos",
+      "description": "",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "saipal",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.119.1.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "backup": false
+    },
+    "sinai": {
+      "environment": "pprd",
+      "role": "Ethos",
+      "description": "",
+      "os": "RHEL 8.10",
+      "osDetails": {
+        "server": "sinai",
+        "os": "Red Hat Enterprise Linux",
+        "version": "8.10",
+        "kernel": "4.18.0-553.32.1.el8",
+        "fullVersion": "8.10 (Ootpa)",
+        "codename": "Ootpa"
+      },
+      "backup": false
+    },
+    "diran": [
+      {
+        "environment": "pprd",
+        "role": "BAM",
+        "description": "",
+        "os": "RHEL 8.9",
+        "osDetails": {
+          "server": "diran",
+          "os": "Red Hat Enterprise Linux",
+          "version": "8.9",
+          "kernel": "4.18.0-513.11.1.el8",
+          "fullVersion": "8.9 (Ootpa)",
+          "codename": "Ootpa"
+        },
+        "backup": false
+      },
+      {
+        "environment": "test",
+        "role": "ODS",
+        "description": "",
+        "os": "RHEL 8.9",
+        "osDetails": {
+          "server": "diran",
+          "os": "Red Hat Enterprise Linux",
+          "version": "8.9",
+          "kernel": "4.18.0-513.11.1.el8",
+          "fullVersion": "8.9 (Ootpa)",
+          "codename": "Ootpa"
+        },
+        "backup": false
+      },
+      {
+        "environment": "devl",
+        "role": "BAM",
+        "description": "",
+        "os": "RHEL 8.9",
+        "osDetails": {
+          "server": "diran",
+          "os": "Red Hat Enterprise Linux",
+          "version": "8.9",
+          "kernel": "4.18.0-513.11.1.el8",
+          "fullVersion": "8.9 (Ootpa)",
+          "codename": "Ootpa"
+        },
+        "backup": false
+      },
+      {
+        "environment": "test",
+        "role": "DB",
+        "description": "12c",
+        "os": "RHEL 8.9",
+        "osDetails": {
+          "server": "diran",
+          "os": "Red Hat Enterprise Linux",
+          "version": "8.9",
+          "kernel": "4.18.0-513.11.1.el8",
+          "fullVersion": "8.9 (Ootpa)",
+          "codename": "Ootpa"
+        },
+        "backup": false
+      }
+    ],
+    "idptest": {
+      "environment": "pprd",
+      "role": "IDP",
+      "description": "",
+      "os": "RHEL 8.6",
+      "backup": false
+    },
+    "ophir": [
+      {
+        "environment": "pprd",
+        "role": "Cloud Control",
+        "description": "",
+        "os": "RHEL 7.4",
+        "backup": false
+      },
+      {
+        "environment": "prod",
+        "role": "Cloud Control",
+        "description": "",
+        "os": "",
+        "backup": false
+      }
+    ],
+    "ssomanagerpprd": {
+      "environment": "pprd",
+      "role": "SSOManager",
+      "description": "",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "ssomanagerpprd",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.62.1.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "backup": false
+    },
+    "ssomanager2": {
+      "environment": "pprd",
+      "role": "SSOManager",
+      "description": "",
+      "os": "RHEL 7.4",
+      "osDetails": {
+        "server": "ssomanager2",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.4",
+        "kernel": "3.10.0-693.11.6.el7.x86",
+        "fullVersion": "7.4 (Maipo)",
+        "codename": "Maipo"
+      },
+      "backup": false
+    },
+    "adminpages-devl": [
+      {
+        "environment": "devl",
+        "role": "AdminPages",
+        "description": "",
+        "os": "RHEL 7.9",
+        "osDetails": {
+          "server": "adminpages-devl",
+          "os": "Red Hat Enterprise Linux Server",
+          "version": "7.9",
+          "kernel": "3.10.0-1160.119.1.el7.x86",
+          "fullVersion": "7.9 (Maipo)",
+          "codename": "Maipo"
+        },
+        "backup": false
+      },
+      {
+        "environment": "devl",
+        "role": "AppNav",
+        "description": "",
+        "os": "RHEL 7.9",
+        "osDetails": {
+          "server": "adminpages-devl",
+          "os": "Red Hat Enterprise Linux Server",
+          "version": "7.9",
+          "kernel": "3.10.0-1160.119.1.el7.x86",
+          "fullVersion": "7.9 (Maipo)",
+          "codename": "Maipo"
+        },
+        "backup": false
+      }
+    ],
+    "ff-app-tods-01": {
+      "environment": "test",
+      "role": "ODS",
+      "description": "",
+      "os": "RHEL 8.9",
+      "backup": false
+    },
+    "sso-test": {
+      "environment": "test",
+      "role": "SSO",
+      "description": "",
+      "backup": false
+    },
+    "granite": {
+      "environment": "prod",
+      "role": "JobSub",
+      "description": "",
+      "backup": false
+    },
+    "harvard": {
+      "environment": "prod",
+      "role": "JobSub",
+      "description": "",
+      "os": "RHEL 8.9",
+      "osDetails": {
+        "server": "harvard",
+        "os": "Red Hat Enterprise Linux",
+        "version": "8.9",
+        "kernel": "4.18.0-513.24.1.el8",
+        "fullVersion": "8.9 (Ootpa)",
+        "codename": "Ootpa"
+      },
+      "backup": false
+    },
+    "adminpages-prod1": [
+      {
+        "environment": "prod",
+        "role": "AdminPages",
+        "description": "",
+        "os": "RHEL 7.9",
+        "osDetails": {
+          "server": "adminpages-prod1",
+          "os": "Red Hat Enterprise Linux Server",
+          "version": "7.9",
+          "kernel": "3.10.0-1160.59.1.el7.x86",
+          "fullVersion": "7.9 (Maipo)",
+          "codename": "Maipo"
+        },
+        "backup": false
+      },
+      {
+        "environment": "prod",
+        "role": "AppNav",
+        "description": "",
+        "os": "RHEL 7.9",
+        "osDetails": {
+          "server": "adminpages-prod1",
+          "os": "Red Hat Enterprise Linux Server",
+          "version": "7.9",
+          "kernel": "3.10.0-1160.59.1.el7.x86",
+          "fullVersion": "7.9 (Maipo)",
+          "codename": "Maipo"
+        },
+        "backup": false
+      }
+    ],
+    "adminpages-prod2": [
+      {
+        "environment": "prod",
+        "role": "AdminPages",
+        "description": "",
+        "os": "RHEL 8.10",
+        "osDetails": {
+          "server": "adminpages-prod2",
+          "os": "Red Hat Enterprise Linux",
+          "version": "8.10",
+          "kernel": "4.18.0-553.36.1.el8",
+          "fullVersion": "8.10 (Ootpa)",
+          "codename": "Ootpa"
+        },
+        "backup": false
+      },
+      {
+        "environment": "prod",
+        "role": "AppNav",
+        "description": "",
+        "os": "RHEL 8.10",
+        "osDetails": {
+          "server": "adminpages-prod2",
+          "os": "Red Hat Enterprise Linux",
+          "version": "8.10",
+          "kernel": "4.18.0-553.36.1.el8",
+          "fullVersion": "8.10 (Ootpa)",
+          "codename": "Ootpa"
+        },
+        "backup": false
+      }
+    ],
+    "marble": {
+      "environment": "prod",
+      "role": "DW",
+      "description": "app",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "marble",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.59.1.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "backup": false
+    },
+    "steele": {
+      "environment": "prod",
+      "role": "DW",
+      "description": "app classic",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "steele",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.114.2.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "backup": false
+    },
+    "columbia": [
+      {
+        "environment": "prod",
+        "role": "DW",
+        "description": "DB",
+        "os": "RHEL 7.9",
+        "osDetails": {
+          "server": "columbia",
+          "os": "Red Hat Enterprise Linux Server",
+          "version": "7.9",
+          "kernel": "3.10.0-1160.59.1.el7.x86",
+          "fullVersion": "7.9 (Maipo)",
+          "codename": "Maipo"
+        },
+        "backup": false
+      },
+      {
+        "environment": "prod",
+        "role": "DB",
+        "description": "12c",
+        "os": "RHEL 7.9",
+        "osDetails": {
+          "server": "columbia",
+          "os": "Red Hat Enterprise Linux Server",
+          "version": "7.9",
+          "kernel": "3.10.0-1160.59.1.el7.x86",
+          "fullVersion": "7.9 (Maipo)",
+          "codename": "Maipo"
+        },
+        "backup": false
+      }
+    ],
+    "cook": {
+      "environment": "prod",
+      "role": "EEI",
+      "description": "",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "cook",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.53.1.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "backup": false
+    },
+    "diablo": {
+      "environment": "prod",
+      "role": "EEI",
+      "description": "App",
+      "os": "RHEL 8.10",
+      "osDetails": {
+        "server": "diablo",
+        "os": "Red Hat Enterprise Linux",
+        "version": "8.10",
+        "kernel": "4.18.0-553.30.1.el8",
+        "fullVersion": "8.10 (Ootpa)",
+        "codename": "Ootpa"
+      },
+      "backup": false
+    },
+    "tamalpais": {
+      "environment": "prod",
+      "role": "EEI",
+      "description": "",
+      "os": "RHEL 8.10",
+      "osDetails": {
+        "server": "tamalpais",
+        "os": "Red Hat Enterprise Linux",
+        "version": "8.10",
+        "kernel": "4.18.0-553.30.1.el8",
+        "fullVersion": "8.10 (Ootpa)",
+        "codename": "Ootpa"
+      },
+      "backup": false
+    },
+    "craig": {
+      "environment": "prod",
+      "role": "EEI",
+      "description": "",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "craig",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.53.1.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "backup": false
+    },
+    "bighorn": {
+      "environment": "prod",
+      "role": "Lum",
+      "description": "Admin Tier",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "bighorn",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.59.1.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "backup": false
+    },
+    "bridger": {
+      "environment": "prod",
+      "role": "Lum",
+      "description": "Portal Tier",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "bridger",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.59.1.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "backup": false
+    },
+    "brooks": {
+      "environment": "prod",
+      "role": "Lum",
+      "description": "Portal Tier",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "brooks",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.59.1.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "backup": false
+    },
+    "boulder": {
+      "environment": "prod",
+      "role": "Lum",
+      "description": "CAS Tier",
+      "os": "RHEL 7.1",
+      "osDetails": {
+        "server": "boulder",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.1",
+        "kernel": "3.10.0-229.14.1.el7.x86",
+        "fullVersion": "7.1 (Maipo)",
+        "codename": "Maipo"
+      },
+      "backup": false
+    },
+    "SSB2": {
+      "environment": "prod",
+      "role": "SSB",
+      "description": "",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "ssb2",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.105.1.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "backup": false
+    },
+    "SSB": {
+      "environment": "prod",
+      "role": "SSB",
+      "description": "SSB8",
+      "os": "RHEL 7.4",
+      "osDetails": {
+        "server": "ssb",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.4",
+        "kernel": "3.10.0-693.5.2.el7.x86",
+        "fullVersion": "7.4 (Maipo)",
+        "codename": "Maipo"
+      },
+      "backup": false
+    },
+    "trisul": {
+      "environment": "prod",
+      "role": "SSB",
+      "description": "SSB9",
+      "os": "RHEL 8.9",
+      "osDetails": {
+        "server": "trisul",
+        "os": "Red Hat Enterprise Linux",
+        "version": "8.9",
+        "kernel": "4.18.0-513.24.1.el8",
+        "fullVersion": "8.9 (Ootpa)",
+        "codename": "Ootpa"
+      },
+      "backup": false
+    },
+    "warren": {
+      "environment": "prod",
+      "role": "SSB",
+      "description": "SSB9 emp",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "warren",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.114.2.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "backup": false
+    },
+    "warlow": {
+      "environment": "prod",
+      "role": "SSB",
+      "description": "SSB9",
+      "os": "RHEL 8.10",
+      "osDetails": {
+        "server": "warlow",
+        "os": "Red Hat Enterprise Linux",
+        "version": "8.10",
+        "kernel": "4.18.0-553.36.1.el8",
+        "fullVersion": "8.10 (Ootpa)",
+        "codename": "Ootpa"
+      },
+      "backup": false
+    },
+    "everest": {
+      "environment": "prod",
+      "role": "SSB",
+      "description": "",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "everest",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.114.2.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "backup": false
+    },
+    "wallace": {
+      "environment": "prod",
+      "role": "Ethos",
+      "description": "",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "wallace",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.114.2.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "backup": false
+    },
+    "wasser": {
+      "environment": "prod",
+      "role": "Ethos",
+      "description": "api mgmtcenter",
+      "os": "RHEL 8.10",
+      "osDetails": {
+        "server": "wasser",
+        "os": "Red Hat Enterprise Linux",
+        "version": "8.10",
+        "kernel": "4.18.0-553.32.1.el8",
+        "fullVersion": "8.10 (Ootpa)",
+        "codename": "Ootpa"
+      },
+      "backup": false
+    },
+    "catskill": [
+      {
+        "environment": "prod",
+        "role": "BanPortals",
+        "description": "",
+        "os": "RHEL 6.9",
+        "osDetails": {
+          "server": "catskill",
+          "os": "Red Hat Enterprise Linux",
+          "version": "6.9",
+          "kernel": "2.6.32-696.13.2.el6.x86",
+          "codename": "Santiago"
+        },
+        "backup": false
+      },
+      {
+        "environment": "prod",
+        "role": "PayPlan",
+        "description": "",
+        "os": "RHEL 6.9",
+        "osDetails": {
+          "server": "catskill",
+          "os": "Red Hat Enterprise Linux",
+          "version": "6.9",
+          "kernel": "2.6.32-696.13.2.el6.x86",
+          "codename": "Santiago"
+        },
+        "backup": false
+      },
+      {
+        "environment": "prod",
+        "role": "WebLogic",
+        "description": "",
+        "os": "RHEL 6.9",
+        "osDetails": {
+          "server": "catskill",
+          "os": "Red Hat Enterprise Linux",
+          "version": "6.9",
+          "kernel": "2.6.32-696.13.2.el6.x86",
+          "codename": "Santiago"
+        },
+        "backup": false
+      },
+      {
+        "environment": "prod",
+        "role": "PCI",
+        "description": "",
+        "os": "RHEL 6.9",
+        "osDetails": {
+          "server": "catskill",
+          "os": "Red Hat Enterprise Linux",
+          "version": "6.9",
+          "kernel": "2.6.32-696.13.2.el6.x86",
+          "codename": "Santiago"
+        },
+        "backup": false
+      },
+      {
+        "environment": "prod",
+        "role": "DB",
+        "description": "12c",
+        "os": "RHEL 6.9",
+        "osDetails": {
+          "server": "catskill",
+          "os": "Red Hat Enterprise Linux",
+          "version": "6.9",
+          "kernel": "2.6.32-696.13.2.el6.x86",
+          "codename": "Santiago"
+        },
+        "backup": false
+      },
+      {
+        "environment": "prod",
+        "role": "SSB",
+        "description": "",
+        "os": "RHEL 6.9",
+        "osDetails": {
+          "server": "catskill",
+          "os": "Red Hat Enterprise Linux",
+          "version": "6.9",
+          "kernel": "2.6.32-696.13.2.el6.x86",
+          "codename": "Santiago"
+        },
+        "backup": false
+      }
+    ],
+    "idpprod": {
+      "environment": "prod",
+      "role": "IDP",
+      "description": "",
+      "os": "RHEL 8.6",
+      "osDetails": {
+        "server": "idpprod",
+        "os": "Red Hat Enterprise Linux",
+        "version": "8.6",
+        "kernel": "4.18.0-372.32.1.el8",
+        "fullVersion": "8.6 (Ootpa)",
+        "codename": "Ootpa"
+      },
+      "backup": false
+    },
+    "pumori": {
+      "environment": "prod",
+      "role": "ESM",
+      "description": "",
+      "os": "RHEL 8.9",
+      "osDetails": {
+        "server": "pumori",
+        "os": "Red Hat Enterprise Linux",
+        "version": "8.9",
+        "kernel": "4.18.0-513.11.1.el8",
+        "fullVersion": "8.9 (Ootpa)",
+        "codename": "Ootpa"
+      },
+      "backup": false
+    },
+    "castle": {
+      "environment": "prod",
+      "role": "DB",
+      "description": "19c",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "castle",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.59.1.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "backup": false
+    },
+    "moroto": {
+      "environment": "prod",
+      "role": "ODS",
+      "description": "",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "moroto",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.59.1.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "backup": false
+    },
+    "ff-app-ords-01": {
+      "environment": "prod",
+      "role": "ODS",
+      "description": "",
+      "os": "RHEL 8.9",
+      "backup": false
+    },
+    "ff-app-pods-01": {
+      "environment": "prod",
+      "role": "ODS",
+      "description": "",
+      "os": "RHEL 8.9",
+      "backup": false
+    },
+    "spantik": {
+      "environment": "prod",
+      "role": "BAM",
+      "description": "",
+      "os": "RHEL 8.9",
+      "osDetails": {
+        "server": "spantik",
+        "os": "Red Hat Enterprise Linux",
+        "version": "8.9",
+        "kernel": "4.18.0-513.24.1.el8",
+        "fullVersion": "8.9 (Ootpa)",
+        "codename": "Ootpa"
+      },
+      "backup": false
+    },
+    "bannertpa": [
+      {
+        "environment": "test",
+        "role": "Parchment",
+        "description": "",
+        "os": "Windows Server 2016",
+        "backup": false
+      },
+      {
+        "environment": "test",
+        "role": "TPA",
+        "description": "",
+        "os": "",
+        "backup": false
+      }
+    ],
+    "ssomanager": {
+      "environment": "prod",
+      "role": "SSOManager",
+      "description": "",
+      "os": "RHEL 7.4",
+      "osDetails": {
+        "server": "ssomanager",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.4",
+        "kernel": "3.10.0-693.5.2.el7.x86",
+        "fullVersion": "7.4 (Maipo)",
+        "codename": "Maipo"
+      },
+      "backup": false
+    },
+    "adminpages8-devl": [
+      {
+        "environment": "devl",
+        "role": "AdminPages",
+        "description": "",
+        "os": "RHEL 8.10",
+        "osDetails": {
+          "server": "adminpages8-devl",
+          "os": "Red Hat Enterprise Linux",
+          "version": "8.10",
+          "kernel": "4.18.0-553.36.1.el8",
+          "fullVersion": "8.10 (Ootpa)",
+          "codename": "Ootpa"
+        },
+        "backup": false
+      },
+      {
+        "environment": "devl",
+        "role": "AppNav",
+        "description": "",
+        "os": "RHEL 8.10",
+        "osDetails": {
+          "server": "adminpages8-devl",
+          "os": "Red Hat Enterprise Linux",
+          "version": "8.10",
+          "kernel": "4.18.0-553.36.1.el8",
+          "fullVersion": "8.10 (Ootpa)",
+          "codename": "Ootpa"
+        },
+        "backup": false
+      }
+    ],
+    "annapurna": {
+      "environment": "devl",
+      "role": "SSB",
+      "description": "9",
+      "os": "RHEL 8.10",
+      "osDetails": {
+        "server": "annapurna",
+        "os": "Red Hat Enterprise Linux",
+        "version": "8.10",
+        "kernel": "4.18.0-553.22.1.el8",
+        "fullVersion": "8.10 (Ootpa)",
+        "codename": "Ootpa"
+      },
+      "backup": false
+    },
+    "blackburn": [
+      {
+        "environment": "prod",
+        "role": "DB",
+        "description": "12c",
+        "os": "RHEL 7.9",
+        "osDetails": {
+          "server": "blackburn",
+          "os": "Red Hat Enterprise Linux Server",
+          "version": "7.9",
+          "kernel": "3.10.0-1160.59.1.el7.x86",
+          "fullVersion": "7.9 (Maipo)",
+          "codename": "Maipo"
+        },
+        "backup": false
+      },
+      {
+        "environment": "prod",
+        "role": "Lum",
+        "description": "",
+        "os": "RHEL 7.9",
+        "osDetails": {
+          "server": "blackburn",
+          "os": "Red Hat Enterprise Linux Server",
+          "version": "7.9",
+          "kernel": "3.10.0-1160.59.1.el7.x86",
+          "fullVersion": "7.9 (Maipo)",
+          "codename": "Maipo"
+        },
+        "backup": false
+      },
+      {
+        "environment": "prod",
+        "role": "EEI",
+        "description": "",
+        "os": "RHEL 7.9",
+        "osDetails": {
+          "server": "blackburn",
+          "os": "Red Hat Enterprise Linux Server",
+          "version": "7.9",
+          "kernel": "3.10.0-1160.59.1.el7.x86",
+          "fullVersion": "7.9 (Maipo)",
+          "codename": "Maipo"
+        },
+        "backup": false
+      }
+    ],
+    "ccc-connector-pprd": [
+      {
+        "environment": "pprd",
+        "role": "CCCApply",
+        "description": "",
+        "os": "Ubuntu 22.04",
+        "backup": false
+      },
+      {
+        "environment": "pprd",
+        "role": "SuperGlue",
+        "description": "",
+        "os": "",
+        "backup": false
+      }
+    ],
+    "ccc-connector-prod": [
+      {
+        "environment": "prod",
+        "role": "CCCApply",
+        "description": "",
+        "os": "",
+        "backup": false
+      },
+      {
+        "environment": "prod",
+        "role": "SuperGlue",
+        "description": "",
+        "os": "Ubuntu 22.04",
+        "backup": false
+      }
+    ],
+    "ff-app-sars": {
+      "environment": "prod",
+      "role": "AdminPages",
+      "description": "",
+      "os": "Windows Server 2022",
+      "osDetails": {
+        "server": "ff-app-sars",
+        "os": "Microsoft Windows Server 2022 Standard",
+        "version": "10.0.20348",
+        "kernel": "Unknown"
+      },
+      "backup": false
+    },
+    "ff-db-sars": {
+      "environment": "prod",
+      "role": "AdminPages",
+      "description": "",
+      "os": "Windows Server 2022",
+      "osDetails": {
+        "server": "ff-db-sars",
+        "os": "Microsoft Windows Server 2022 Standard",
+        "version": "10.0.20348",
+        "kernel": "Unknown"
+      },
+      "backup": false
+    },
+    "kea": {
+      "environment": "prod",
+      "role": "AdminPages",
+      "description": "",
+      "os": "Windows Server 2022",
+      "osDetails": {
+        "server": "kea",
+        "os": "Microsoft Windows Server 2019 Standard",
+        "version": "10.0.17763",
+        "kernel": "Unknown"
+      },
+      "backup": false
+    },
+    "loa": {
+      "environment": "prod",
+      "role": "AdminPages",
+      "description": "",
+      "os": "Windows Server 2019",
+      "osDetails": {
+        "server": "loa",
+        "os": "Microsoft Windows Server 2019 Standard",
+        "version": "10.0.17763",
+        "kernel": "Unknown"
+      },
+      "backup": false
+    },
+    "hubbard": {
+      "environment": "prod",
+      "role": "AdminPages",
+      "description": "",
+      "os": "RHEL 8.9",
+      "osDetails": {
+        "server": "hubbard",
+        "os": "Red Hat Enterprise Linux",
+        "version": "8.9",
+        "kernel": "4.18.0-513.24.1.el8",
+        "fullVersion": "8.9 (Ootpa)",
+        "codename": "Ootpa"
+      },
+      "backup": false
+    },
+    "kangto": {
+      "environment": "prod",
+      "role": "AdminPages",
+      "description": "",
+      "os": "RHEL 8.9",
+      "osDetails": {
+        "server": "kangto",
+        "os": "Red Hat Enterprise Linux",
+        "version": "8.9",
+        "kernel": "4.18.0-513.24.1.el8",
+        "fullVersion": "8.9 (Ootpa)",
+        "codename": "Ootpa"
+      },
+      "backup": false
+    },
+    "ettenmoors": {
+      "environment": "prod",
+      "role": "AdminPages",
+      "description": "",
+      "os": "RHEL 7.9",
+      "backup": false
+    },
+    "himalaya": {
+      "environment": "prod",
+      "role": "AdminPages",
+      "description": "",
+      "os": "RHEL 7.9",
+      "backup": false
+    },
+    "mather": {
+      "environment": "prod",
+      "role": "AdminPages",
+      "description": "",
+      "os": "Windows Server 2019",
+      "backup": false
+    },
+    "moffit": {
+      "environment": "prod",
+      "role": "AdminPages",
+      "description": "",
+      "os": "Windows Server 2019",
+      "backup": false
+    },
+    "palermo": {
+      "environment": "prod",
+      "role": "AdminPages",
+      "description": "",
+      "os": "RHEL 8.10",
+      "backup": false
+    },
+    "ssb": {
+      "environment": "prod",
+      "role": "AdminPages",
+      "description": "",
+      "os": "RHEL 7.4",
+      "backup": false
+    },
+    "ssb2": {
+      "environment": "prod",
+      "role": "AdminPages",
+      "description": "",
+      "os": "RHEL 7.9",
+      "backup": false
+    },
+    "tambora": {
+      "environment": "prod",
+      "role": "AdminPages",
+      "description": "",
+      "os": "RHEL 8.10",
+      "backup": false
+    },
+    "toba": {
+      "environment": "prod",
+      "role": "AdminPages",
+      "description": "",
+      "os": "RHEL 8.10",
+      "backup": false
+    },
+    "whitney": {
+      "environment": "prod",
+      "role": "AdminPages",
+      "description": "",
+      "os": "RHEL 7.9",
+      "backup": false
+    }
+  }
+}
