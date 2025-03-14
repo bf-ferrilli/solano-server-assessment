@@ -4,14 +4,11 @@
   <meta charset="UTF-8">
   <title>Solano Community College - Server Assessment</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <!-- Preconnect for Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <!-- Red Hat Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700&family=Red+Hat+Mono&family=Red+Hat+Text:wght@300;400;500;700&display=swap" rel="stylesheet">
-
   <style>
     :root {
       --rh-color-primary: #005eb0;
@@ -21,6 +18,11 @@
       --rh-font-body: "Red Hat Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
       --rh-font-display: "Red Hat Display", sans-serif;
       --rh-font-mono: "Red Hat Mono", monospace;
+      /* Adding the status colors for OS lifecycle tags */
+      --rh-color-status-success: #3e8635;
+      --rh-color-status-warning: #f0ab00;
+      --rh-color-status-danger: #c9190b;
+      --rh-color-neutral-500: #6a6e73;
     }
     body {
       font-family: var(--rh-font-body);
@@ -106,83 +108,8 @@
     .env-tag-pprd { background-color: #ee7700; }
     .env-tag-test { background-color: #4d5258; }
     .env-tag-devl { background-color: #009596; }
-  </style>
-</head>
-<body>
-  <header>
-    <img src="Solano-Logo-2017_color_Solano-Logo-Color-white.png" alt="Solano Community College Logo" class="header-logo">
-    <h1>Server Assessment</h1>
-  </header>
-  <main>
-    <table id="serverTable">
-      <thead>
-        <tr>
-          <th>Hostname</th>
-          <th>Environment</th>
-          <th>Role</th>
-          <th>OS</th>
-          <th>CPU</th>
-          <th>Memory (GB)</th>
-          <th>Backup</th>
-          <th>Firewall</th>
-          <th>Internal IP</th>
-          <th>External IP</th>
-        </tr>
-      </thead>
-      <tbody id="serverList"></tbody>
-    </table>
-  </main>
-
-<script>
-fetch('servers.json').then(res => res.json()).then(data => {
-  const tbody = document.getElementById('serverList');
-  
-  // Define lifecycle status for versions (as of 2025)
-  const osLifecycleStatus = {
-    // RHEL version status
-    // Status: 0 = Full/Maintenance Support, 1 = Extended Lifecycle Support (ELS), 2 = End of Life
-    'RHEL 9.0': 0, 'RHEL 9.1': 0, 'RHEL 9.2': 0, 'RHEL 9.3': 0,
     
-    'RHEL 8.0': 2, 'RHEL 8.1': 2, 'RHEL 8.2': 2, 'RHEL 8.3': 2, 'RHEL 8.4': 2,
-    'RHEL 8.5': 1, 'RHEL 8.6': 1, 'RHEL 8.7': 1, 'RHEL 8.8': 0, 'RHEL 8.9': 0, 'RHEL 8.10': 0,
-    
-    'RHEL 7.0': 2, 'RHEL 7.1': 2, 'RHEL 7.2': 2, 'RHEL 7.3': 2, 'RHEL 7.4': 2,
-    'RHEL 7.5': 2, 'RHEL 7.6': 2, 'RHEL 7.7': 2, 'RHEL 7.8': 2, 'RHEL 7.9': 1,
-    
-    'RHEL 6.0': 2, 'RHEL 6.1': 2, 'RHEL 6.2': 2, 'RHEL 6.3': 2, 'RHEL 6.4': 2,
-    'RHEL 6.5': 2, 'RHEL 6.6': 2, 'RHEL 6.7': 2, 'RHEL 6.8': 2, 'RHEL 6.9': 2, 'RHEL 6.10': 2,
-    
-    'Ubuntu 18.04': 1, 'Ubuntu 20.04': 1, 'Ubuntu 22.04': 0, 'Ubuntu 24.04': 0, 'Ubuntu 24.10': 0,
-    
-    'Oracle Linux 7.9': 0,
-    'Oracle Linux 8.0': 2, 'Oracle Linux 8.1': 2, 'Oracle Linux 8.2': 2, 'Oracle Linux 8.3': 2, 
-    'Oracle Linux 8.4': 2, 'Oracle Linux 8.5': 2, 'Oracle Linux 8.6': 1, 'Oracle Linux 8.7': 0, 
-    'Oracle Linux 8.8': 0, 'Oracle Linux 8.9': 0,
-    'Oracle Linux 9.0': 0, 'Oracle Linux 9.1': 0, 'Oracle Linux 9.2': 0, 'Oracle Linux 9.3': 0,
-    
-    'Windows Server 2012 R2': 2, 'Windows Server 2016': 0, 'Windows Server 2019': 0, 'Windows Server 2022': 0,
-  };
-  
-  // Function to get lifecycle status for an OS version
-  function getLifecycleStatus(os) {
-    if (osLifecycleStatus.hasOwnProperty(os)) {
-      return osLifecycleStatus[os];
-    }
-    
-    // Try to determine status for unknown version
-    if (os.startsWith('RHEL') || os.startsWith('Oracle Linux') || 
-        os.startsWith('Windows') || os.startsWith('Ubuntu')) {
-      // If it's a known OS but we don't have specific version info, assume it's EOL
-      return 2;
-    }
-    
-    // Unknown OS, return unknown status
-    return -1;
-  }
-
-  // Add CSS styles for OS tags using RHDS status variables
-  const style = document.createElement('style');
-  style.textContent = `
+    /* OS Lifecycle Status Tags */
     .os-tag {
       display: inline-block;
       padding: 0.35em 0.65em;
@@ -212,118 +139,56 @@ fetch('servers.json').then(res => res.json()).then(data => {
       margin-left: 3px;
       vertical-align: super;
     }
-  `;
-  document.head.appendChild(style);
 
-  // Sort servers by hostname case-insensitive
-  data.servers.sort((a, b) => {
-    const hostnameA = (a.hostname || '').toLowerCase();
-    const hostnameB = (b.hostname || '').toLowerCase();
-    return hostnameA.localeCompare(hostnameB);
-  });
-
-  data.servers.forEach(server => {
-    const row = document.createElement('tr');
-    
-    // Process ALL environments for the environment column
-    let envsHtml = '';
-    
-    // Process all roles from all environments
-    let rolesHtml = '';
-    
-    if (server.environments && server.environments.length > 0) {
-      // Create tags for all environments
-      server.environments.forEach(env => {
-        envsHtml += `<span class="env-tag env-tag-${env.name}">${env.name}</span> `;
-        
-        // Create role tags for each environment
-        if (env.roles && env.roles.length > 0) {
-          env.roles.forEach(role => {
-            rolesHtml += `<span class="env-tag env-tag-${env.name}">${role}</span> `;
-          });
-        }
-      });
+    /* Backup and Firewall Status Tags */
+    .status-tag {
+      display: inline-block;
+      padding: 0.35em 0.65em;
+      font-size: 0.75em;
+      font-weight: 700;
+      line-height: 1;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: baseline;
+      border-radius: 0.25rem;
+      color: white;
+      min-width: 1.5em;
     }
-    
-    // Get OS and create OS tag with lifecycle status
-    const os = server.os || '';
-    let osHtml = '';
-    
-    if (os) {
-      const status = getLifecycleStatus(os);
-      let statusClass = 'os-tag-unknown';
-      let statusIndicator = '';
-      
-      switch (status) {
-        case 0:
-          statusClass = 'os-tag-supported';
-          break;
-        case 1:
-          statusClass = 'os-tag-els';
-          statusIndicator = '<span class="els-indicator">ELS</span>';
-          break;
-        case 2:
-          statusClass = 'os-tag-eol';
-          statusIndicator = '<span class="eol-indicator">EOL</span>';
-          break;
-      }
-      
-      osHtml = `<span class="os-tag ${statusClass}" title="${getStatusTitle(status)}">${os}${statusIndicator}</span>`;
+    .status-yes {
+      background-color: var(--rh-color-status-success, #3e8635);
     }
-    
-    row.innerHTML = `
-      <td class="clickable">${server.hostname || ''}</td>
-      <td>${envsHtml}</td>
-      <td>${rolesHtml}</td>
-      <td>${osHtml}</td>
-      <td>${server.cpu || ''}</td>
-      <td>${server.memoryGB || ''}</td>
-      <td>${server.backup === false ? 'No' : server.backup || ''}</td>
-      <td>${server.firewall === false ? 'No' : server.firewall || ''}</td>
-      <td>${server.internalIp || ''}</td>
-      <td>${server.externalIp || '-'}</td>
-    `;
-
-    const detailRow = document.createElement('tr');
-    detailRow.classList.add('hidden');
-    
-    // Safety check for listening ports
-    let portsHTML = '';
-    if (server.listeningPorts) {
-      portsHTML = Object.values(server.listeningPorts)
-        .map(p => `<tr>
-          <td>${p.Process || ''}</td>
-          <td>${p.Port || ''}</td>
-          <td>${p.Protocol || ''}</td>
-          <td>${p.Address || ''}</td>
-        </tr>`)
-        .join('');
+    .status-no {
+      background-color: var(--rh-color-status-danger, #c9190b);
     }
-    
-    detailRow.innerHTML = `<td colspan="10">
-      <div class="groupHeader">Listening Ports</div>
-      <table class="processTable">
-        <thead><tr><th>Process</th><th>Port</th><th>Protocol</th><th>Address</th></tr>
-        ${portsHTML}
-      </table>
-    </td>`;
-
-    tbody.appendChild(row);
-    tbody.appendChild(detailRow);
-
-    row.addEventListener('click', () => detailRow.classList.toggle('hidden'));
-  });
-  
-  // Helper function to get status title
-  function getStatusTitle(status) {
-    switch (status) {
-      case 0: return "Supported";
-      case 1: return "Extended Lifecycle Support";
-      case 2: return "End of Life";
-      default: return "Unknown Status";
+    .status-unknown {
+      background-color: var(--rh-color-neutral-500, #6a6e73);
     }
-  }
-});
-</script>
+  </style>
+</head>
+<body>
+  <header>
+    <img src="Solano-Logo-2017_color_Solano-Logo-Color-white.png" alt="Solano Community College Logo" class="header-logo">
+    <h1>Server Assessment</h1>
+  </header>
+  <main>
+    <table id="serverTable">
+      <thead>
+        <tr>
+          <th>Hostname</th>
+          <th>Environment</th>
+          <th>Role</th>
+          <th>OS</th>
+          <th>CPU</th>
+          <th>Memory (GB)</th>
+          <th>Backup</th>
+          <th>Firewall</th>
+          <th>Internal IP</th>
+          <th>External IP</th>
+        </tr>
+      </thead>
+      <tbody id="serverList"></tbody>
+    </table>
+  </main>
+<script src="lifecycle.js"></script>
 </body>
 </html>

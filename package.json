@@ -12,7 +12,8 @@
     "@rhds/tokens": "^2.2.4",
     "body-parser": "^1.20.3",
     "cjs": "^0.0.11",
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "node-fetch": "^3.3.2"
   },
   "devDependencies": {
     "@rollup/plugin-alias": "^5.1.1",
