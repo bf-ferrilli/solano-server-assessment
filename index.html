@@ -136,29 +136,175 @@
 <script>
 fetch('servers.json').then(res => res.json()).then(data => {
   const tbody = document.getElementById('serverList');
+  
+  // Define lifecycle status for versions (as of 2025)
+  const osLifecycleStatus = {
+    // RHEL version status
+    // Status: 0 = Full/Maintenance Support, 1 = Extended Lifecycle Support (ELS), 2 = End of Life
+    'RHEL 9.0': 0, 'RHEL 9.1': 0, 'RHEL 9.2': 0, 'RHEL 9.3': 0,
+    
+    'RHEL 8.0': 2, 'RHEL 8.1': 2, 'RHEL 8.2': 2, 'RHEL 8.3': 2, 'RHEL 8.4': 2,
+    'RHEL 8.5': 1, 'RHEL 8.6': 1, 'RHEL 8.7': 1, 'RHEL 8.8': 0, 'RHEL 8.9': 0, 'RHEL 8.10': 0,
+    
+    'RHEL 7.0': 2, 'RHEL 7.1': 2, 'RHEL 7.2': 2, 'RHEL 7.3': 2, 'RHEL 7.4': 2,
+    'RHEL 7.5': 2, 'RHEL 7.6': 2, 'RHEL 7.7': 2, 'RHEL 7.8': 2, 'RHEL 7.9': 1,
+    
+    'RHEL 6.0': 2, 'RHEL 6.1': 2, 'RHEL 6.2': 2, 'RHEL 6.3': 2, 'RHEL 6.4': 2,
+    'RHEL 6.5': 2, 'RHEL 6.6': 2, 'RHEL 6.7': 2, 'RHEL 6.8': 2, 'RHEL 6.9': 2, 'RHEL 6.10': 2,
+    
+    'Ubuntu 18.04': 1, 'Ubuntu 20.04': 1, 'Ubuntu 22.04': 0, 'Ubuntu 24.04': 0, 'Ubuntu 24.10': 0,
+    
+    'Oracle Linux 7.9': 0,
+    'Oracle Linux 8.0': 2, 'Oracle Linux 8.1': 2, 'Oracle Linux 8.2': 2, 'Oracle Linux 8.3': 2, 
+    'Oracle Linux 8.4': 2, 'Oracle Linux 8.5': 2, 'Oracle Linux 8.6': 1, 'Oracle Linux 8.7': 0, 
+    'Oracle Linux 8.8': 0, 'Oracle Linux 8.9': 0,
+    'Oracle Linux 9.0': 0, 'Oracle Linux 9.1': 0, 'Oracle Linux 9.2': 0, 'Oracle Linux 9.3': 0,
+    
+    'Windows Server 2012 R2': 2, 'Windows Server 2016': 0, 'Windows Server 2019': 0, 'Windows Server 2022': 0,
+  };
+  
+  // Function to get lifecycle status for an OS version
+  function getLifecycleStatus(os) {
+    if (osLifecycleStatus.hasOwnProperty(os)) {
+      return osLifecycleStatus[os];
+    }
+    
+    // Try to determine status for unknown version
+    if (os.startsWith('RHEL') || os.startsWith('Oracle Linux') || 
+        os.startsWith('Windows') || os.startsWith('Ubuntu')) {
+      // If it's a known OS but we don't have specific version info, assume it's EOL
+      return 2;
+    }
+    
+    // Unknown OS, return unknown status
+    return -1;
+  }
+
+  // Add CSS styles for OS tags using RHDS status variables
+  const style = document.createElement('style');
+  style.textContent = `
+    .os-tag {
+      display: inline-block;
+      padding: 0.35em 0.65em;
+      font-size: 0.75em;
+      font-weight: 700;
+      line-height: 1;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: baseline;
+      border-radius: 0.25rem;
+      color: white;
+    }
+    .os-tag-supported {
+      background-color: var(--rh-color-status-success, #3e8635);
+    }
+    .os-tag-els {
+      background-color: var(--rh-color-status-warning, #f0ab00);
+    }
+    .os-tag-eol {
+      background-color: var(--rh-color-status-danger, #c9190b);
+    }
+    .os-tag-unknown {
+      background-color: var(--rh-color-neutral-500, #6a6e73);
+    }
+    .eol-indicator, .els-indicator {
+      font-size: 0.7em;
+      margin-left: 3px;
+      vertical-align: super;
+    }
+  `;
+  document.head.appendChild(style);
+
+  // Sort servers by hostname case-insensitive
+  data.servers.sort((a, b) => {
+    const hostnameA = (a.hostname || '').toLowerCase();
+    const hostnameB = (b.hostname || '').toLowerCase();
+    return hostnameA.localeCompare(hostnameB);
+  });
 
   data.servers.forEach(server => {
     const row = document.createElement('tr');
-    rowHTML = `
-      <td class="clickable">${server.hostname}</td>
-      <td><span class="env-tag env-tag-${server.environments[0].name}">${server.environments[0].name}</span></td>
-      <td>${server.environments[0].roles.join(', ')}</td>
-      <td>${server.osDetails.fullVersion}</td>
-      <td>${server.cpu}</td>
-      <td>${server.memoryGB}</td>
-      <td>${server.backup}</td>
-      <td>${server.firewall}</td>
-      <td>${server.internalIp}</td>
+    
+    // Process ALL environments for the environment column
+    let envsHtml = '';
+    
+    // Process all roles from all environments
+    let rolesHtml = '';
+    
+    if (server.environments && server.environments.length > 0) {
+      // Create tags for all environments
+      server.environments.forEach(env => {
+        envsHtml += `<span class="env-tag env-tag-${env.name}">${env.name}</span> `;
+        
+        // Create role tags for each environment
+        if (env.roles && env.roles.length > 0) {
+          env.roles.forEach(role => {
+            rolesHtml += `<span class="env-tag env-tag-${env.name}">${role}</span> `;
+          });
+        }
+      });
+    }
+    
+    // Get OS and create OS tag with lifecycle status
+    const os = server.os || '';
+    let osHtml = '';
+    
+    if (os) {
+      const status = getLifecycleStatus(os);
+      let statusClass = 'os-tag-unknown';
+      let statusIndicator = '';
+      
+      switch (status) {
+        case 0:
+          statusClass = 'os-tag-supported';
+          break;
+        case 1:
+          statusClass = 'os-tag-els';
+          statusIndicator = '<span class="els-indicator">ELS</span>';
+          break;
+        case 2:
+          statusClass = 'os-tag-eol';
+          statusIndicator = '<span class="eol-indicator">EOL</span>';
+          break;
+      }
+      
+      osHtml = `<span class="os-tag ${statusClass}" title="${getStatusTitle(status)}">${os}${statusIndicator}</span>`;
+    }
+    
+    row.innerHTML = `
+      <td class="clickable">${server.hostname || ''}</td>
+      <td>${envsHtml}</td>
+      <td>${rolesHtml}</td>
+      <td>${osHtml}</td>
+      <td>${server.cpu || ''}</td>
+      <td>${server.memoryGB || ''}</td>
+      <td>${server.backup === false ? 'No' : server.backup || ''}</td>
+      <td>${server.firewall === false ? 'No' : server.firewall || ''}</td>
+      <td>${server.internalIp || ''}</td>
       <td>${server.externalIp || '-'}</td>
     `;
 
     const detailRow = document.createElement('tr');
     detailRow.classList.add('hidden');
+    
+    // Safety check for listening ports
+    let portsHTML = '';
+    if (server.listeningPorts) {
+      portsHTML = Object.values(server.listeningPorts)
+        .map(p => `<tr>
+          <td>${p.Process || ''}</td>
+          <td>${p.Port || ''}</td>
+          <td>${p.Protocol || ''}</td>
+          <td>${p.Address || ''}</td>
+        </tr>`)
+        .join('');
+    }
+    
     detailRow.innerHTML = `<td colspan="10">
       <div class="groupHeader">Listening Ports</div>
       <table class="processTable">
         <thead><tr><th>Process</th><th>Port</th><th>Protocol</th><th>Address</th></tr>
-        ${Object.values(server.listeningPorts).map(p => `<tr><td>${p.Process}</td><td>${p.Port}</td><td>${p.Protocol}</td><td>${p.Address}</td></tr>`).join('')}
+        ${portsHTML}
       </table>
     </td>`;
 
@@ -167,6 +313,16 @@ fetch('servers.json').then(res => res.json()).then(data => {
 
     row.addEventListener('click', () => detailRow.classList.toggle('hidden'));
   });
+  
+  // Helper function to get status title
+  function getStatusTitle(status) {
+    switch (status) {
+      case 0: return "Supported";
+      case 1: return "Extended Lifecycle Support";
+      case 2: return "End of Life";
+      default: return "Unknown Status";
+    }
+  }
 });
 </script>
 </body>
