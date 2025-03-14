@@ -1,15 +1,51 @@
-// server-manager.js - With detailed OS lifecycle information support, row deletion/addition, and backup status
+// Update Backup cell
+function updateBackupCell(backupCell, hasBackup, serverName) {
+  if (!backupCell) return;
+  
+  backupCell.innerHTML = '';
+  
+  // Create toggle button with correct styling
+  const backupTag = document.createElement('span');
+  backupTag.className = hasBackup ? 'tag tag-success' : 'tag tag-danger';
+  backupTag.textContent = hasBackup ? 'Y' : 'N';
+  backupTag.dataset.value = hasBackup.toString();
+  backupTag.style.cursor = 'pointer';
+  backupTag.dataset.serverName = serverName;
+  
+  // Add click event to toggle backup status
+  backupTag.addEventListener('click', function(e) {
+    e.stopPropagation(); // Prevent row toggle
+    toggleBackupStatus(e, serverName);
+  });
+  
+  backupCell.appendChild(backupTag);
+}// server-manager.js - With detailed OS lifecycle information support
 
 // Global variables 
 let serverMappings = null;
 let isEditing = false;
 let currentEditingRow = null; // Track which row is being edited
-let isAddingNewServer = false; // Flag to track whether we're adding a new server
+let currentEditingServerName = null; // Track the server name being edited
 
-// Set default backup status to false for backward compatibility
+// Define column indices to ensure consistency
+const COLUMN = {
+  HOSTNAME: 0,
+  ENVIRONMENT: 1,
+  ROLE: 2,
+  OS: 3,
+  CPU: 4,
+  MEMORY: 5,
+  BACKUP: 6,
+  FIREWALL: 7,
+  INTERNAL_IP: 8,
+  EXTERNAL_IP: 9,
+  ACTIONS: 10
+};
+
+// Default backup status if not defined
 const DEFAULT_BACKUP_STATUS = false;
 
-// Define lifecycle status for versions (as of 2025)
+  // Define lifecycle status for versions (as of 2025)
 const osLifecycleStatus = {
   // RHEL version status
   // Status: 0 = Full/Maintenance Support, 1 = Extended Lifecycle Support (ELS), 2 = End of Life
@@ -56,7 +92,7 @@ const osLifecycleStatus = {
   // Updated Ubuntu versions
   'Ubuntu 18.04': 1, // ESM until April 2028 (was marked EOL)
   'Ubuntu 20.04': 1, // ESM until May 2025 (was marked supported)
-  'Ubuntu 22.04': 1, // ESM until April 2027 (was marked supported)
+  'Ubuntu 22.04': 0, // Full Support, corrected from ESM 
   'Ubuntu 24.04': 0, // Full Support until April 2029
   'Ubuntu 24.10': 0, // Full Support until July 2025
   
@@ -77,20 +113,21 @@ const osLifecycleStatus = {
   'Oracle Linux 9.3': 0, // Currently supported
   
   'Windows Server 2012 R2': 2, // EOL as of October 2023
-  'Windows Server 2016': 1, // Extended support until January 2027
+  'Windows Server 2016': 0, // Corrected to show as supported 
   'Windows Server 2019': 0, // Mainstream support until January 2024
   'Windows Server 2022': 0, // Mainstream support until October 2026
 };
 
 // Main initialization when the page loads
 document.addEventListener('DOMContentLoaded', function() {
+  console.log('DOM loaded, initializing server manager');
   initializeServerManager();
-  // Add control buttons at the top of the page
-  addControlButtons();
+  // Add reset button to the top of the page
+  addResetEditButton();
 });
 
-// Add control buttons at the top of the page
-function addControlButtons() {
+// Add a reset edit button at the top of the page
+function addResetEditButton() {
   const controlBar = document.createElement('div');
   controlBar.className = 'server-control-bar';
   
@@ -116,22 +153,6 @@ function addControlButtons() {
   
   controlBar.appendChild(legendContainer);
   
-  // Create buttons container for the right side of the control bar
-  const buttonsContainer = document.createElement('div');
-  buttonsContainer.className = 'control-buttons-container';
-  
-  // Add server button
-  const addServerButton = document.createElement('button');
-  addServerButton.textContent = 'Add New Server';
-  addServerButton.className = 'add-server-button';
-  
-  addServerButton.addEventListener('click', function() {
-    addNewServer();
-  });
-  
-  buttonsContainer.appendChild(addServerButton);
-  
-  // Reset button
   const resetButton = document.createElement('button');
   resetButton.textContent = 'Reset All Edits';
   resetButton.className = 'reset-edits-button';
@@ -141,9 +162,7 @@ function addControlButtons() {
     resetAllEditing();
   });
   
-  buttonsContainer.appendChild(resetButton);
-  
-  controlBar.appendChild(buttonsContainer);
+  controlBar.appendChild(resetButton);
   
   // Insert at the top of the table
   const table = document.getElementById('serverTable');
@@ -154,57 +173,29 @@ function addControlButtons() {
 
 // Reset all editing operations
 function resetAllEditing() {
-  if (isAddingNewServer) {
-    // Remove the new server row if we were adding one
-    const newServerRow = document.querySelector('tr.new-server-row');
-    if (newServerRow) {
-      newServerRow.remove();
-    }
-    isAddingNewServer = false;
-  }
-  
   if (currentEditingRow) {
     // Restore original content if available
     if (currentEditingRow.dataset.originalEnv) {
-      const envCell = currentEditingRow.cells[1];
+      const envCell = currentEditingRow.cells[COLUMN.ENVIRONMENT];
       envCell.innerHTML = currentEditingRow.dataset.originalEnv;
     }
     
     if (currentEditingRow.dataset.originalRole) {
-      const roleCell = currentEditingRow.cells[2];
+      const roleCell = currentEditingRow.cells[COLUMN.ROLE];
       roleCell.innerHTML = currentEditingRow.dataset.originalRole;
     }
     
     // Restore original OS if available
     if (currentEditingRow.dataset.originalOs) {
-      const osCell = currentEditingRow.cells[3]; // Assuming OS is in column 4
+      const osCell = currentEditingRow.cells[COLUMN.OS];
       osCell.innerHTML = currentEditingRow.dataset.originalOs;
     }
     
-    // Restore original backup if available
-    if (currentEditingRow.dataset.originalBackup) {
-      const backupCell = currentEditingRow.cells[9]; // Backup column
-      backupCell.innerHTML = currentEditingRow.dataset.originalBackup;
-    }
-    
     // Restore edit button
-    const editCell = currentEditingRow.cells[10]; // Actions cell (moved from 9 to 10)
+    const editCell = currentEditingRow.cells[COLUMN.ACTIONS];
     if (editCell) {
       editCell.innerHTML = '';
       
-      // Add delete button
-      const deleteButton = document.createElement('button');
-      deleteButton.textContent = 'Delete';
-      deleteButton.classList.add('delete-button');
-      
-      deleteButton.addEventListener('click', function(e) {
-        e.stopPropagation(); // Prevent row toggle
-        confirmDeleteServer(currentEditingRow);
-      });
-      
-      editCell.appendChild(deleteButton);
-      
-      // Add edit button
       const editButton = document.createElement('button');
       editButton.textContent = 'Edit';
       editButton.classList.add('edit-button');
@@ -221,7 +212,6 @@ function resetAllEditing() {
     delete currentEditingRow.dataset.originalEnv;
     delete currentEditingRow.dataset.originalRole;
     delete currentEditingRow.dataset.originalOs;
-    delete currentEditingRow.dataset.originalBackup;
   }
   
   // Reset global state
@@ -246,8 +236,14 @@ function initializeServerManager() {
         serverMappings = mappings;
         console.log('Server mappings loaded successfully');
         
+        // Ensure table structure is correct
+        ensureTableStructure();
+        
         // Update the existing tags 
         updateExistingTags(serverMappings);
+        
+        // Setup backup columns
+        setupBackupColumns();
         
         // Setup editing functionality
         setupEditButtons();
@@ -259,6 +255,85 @@ function initializeServerManager() {
     .catch(error => {
       console.error('Error initializing server manager:', error.message);
     });
+}
+
+// Ensure table has correct structure
+function ensureTableStructure() {
+  console.log("Ensuring table has correct structure");
+  
+  // Ensure header has all required columns
+  const headerRow = document.querySelector('#serverTable thead tr');
+  if (headerRow) {
+    console.log(`Header row has ${headerRow.cells.length} columns before adjustment`);
+    
+    // Make sure we have 10 columns (before adding Actions)
+    if (headerRow.cells.length < 10) {
+      console.warn(`Header row has only ${headerRow.cells.length} columns, expected 10`);
+      
+      // Add missing columns to header
+      for (let i = headerRow.cells.length; i < 10; i++) {
+        const th = document.createElement('th');
+        th.textContent = getColumnName(i);
+        headerRow.appendChild(th);
+      }
+    }
+    
+    // Add Actions column if it doesn't exist
+    if (headerRow.cells.length === 10) {
+      console.log("Adding Actions column to header");
+      const actionsHeader = document.createElement('th');
+      actionsHeader.textContent = 'Actions';
+      headerRow.appendChild(actionsHeader);
+    }
+    
+    console.log(`Header row now has ${headerRow.cells.length} columns after adjustment`);
+  }
+  
+  // Ensure all data rows have correct number of cells
+  const rows = document.querySelectorAll('#serverTable tbody tr.clickable');
+  console.log(`Found ${rows.length} data rows to process`);
+  
+  rows.forEach((row, index) => {
+    console.log(`Row ${index + 1} has ${row.cells.length} cells before adjustment`);
+    
+    // Make sure each row has 10 columns (before adding Actions)
+    if (row.cells.length < 10) {
+      console.warn(`Row for ${row.cells[0]?.textContent || 'unknown'} has only ${row.cells.length} columns, expected 10`);
+      
+      // Add missing cells
+      for (let i = row.cells.length; i < 10; i++) {
+        const td = document.createElement('td');
+        row.appendChild(td);
+      }
+    }
+    
+    // Add Actions column if it doesn't exist
+    if (row.cells.length === 10) {
+      console.log(`Adding Actions cell to row ${index + 1}`);
+      const actionsCell = document.createElement('td');
+      row.appendChild(actionsCell);
+    }
+    
+    console.log(`Row ${index + 1} now has ${row.cells.length} cells after adjustment`);
+  });
+}
+
+// Helper to get column name
+function getColumnName(index) {
+  switch(index) {
+    case COLUMN.HOSTNAME: return 'Hostname';
+    case COLUMN.ENVIRONMENT: return 'Environment';
+    case COLUMN.ROLE: return 'Role';
+    case COLUMN.OS: return 'OS';
+    case COLUMN.CPU: return 'CPU';
+    case COLUMN.MEMORY: return 'Memory (GB)';
+    case COLUMN.BACKUP: return 'Backup';
+    case COLUMN.FIREWALL: return 'Firewall';
+    case COLUMN.INTERNAL_IP: return 'Internal IP';
+    case COLUMN.EXTERNAL_IP: return 'External IP';
+    case COLUMN.ACTIONS: return 'Actions';
+    default: return `Column ${index}`;
+  }
 }
 
 // Load server mappings from JSON
@@ -288,7 +363,7 @@ function updateExistingTags(mappings) {
     rows.forEach(row => {
       try {
         // Get the server name from the first cell
-        const serverCell = row.cells[0];
+        const serverCell = row.cells[COLUMN.HOSTNAME];
         if (!serverCell) return;
         
         const serverName = serverCell.textContent.trim().toLowerCase();
@@ -301,9 +376,9 @@ function updateExistingTags(mappings) {
           const serverRoles = Array.isArray(serverInfo) ? serverInfo : [serverInfo];
           
           // Get the environment, role, and OS cells
-          const envCell = row.cells[1];
-          const roleCell = row.cells[2];
-          const osCell = row.cells[3]; // Assuming OS is in column 4
+          const envCell = row.cells[COLUMN.ENVIRONMENT];
+          const roleCell = row.cells[COLUMN.ROLE];
+          const osCell = row.cells[COLUMN.OS];
           
           if (!envCell || !roleCell) {
             return;
@@ -413,37 +488,6 @@ function updateExistingTags(mappings) {
             }
           }
           
-          // Add backup cell if it doesn't exist
-          if (row.cells.length === 9) { // If there are exactly 9 columns (without backup & actions)
-            // Create backup cell
-            const backupCell = document.createElement('td');
-            backupCell.style.textAlign = 'center';
-            
-            // Check if any role has backup=true
-            const hasBackup = serverRoles.some(role => role.backup === true);
-            
-            // Create backup indicator
-            const backupIndicator = document.createElement('span');
-            backupIndicator.className = hasBackup ? 'backup-indicator backup-yes' : 'backup-indicator backup-no';
-            backupIndicator.textContent = hasBackup ? 'Y' : 'N';
-            backupCell.appendChild(backupIndicator);
-            
-            row.appendChild(backupCell);
-          } else if (row.cells.length >= 10) { // Already has backup cell
-            // Update existing backup cell
-            const backupCell = row.cells[6]; // Backup is at index 9
-            backupCell.innerHTML = '';
-            
-            // Check if any role has backup=true
-            const hasBackup = serverRoles.some(role => role.backup === true);
-            
-            // Create backup indicator
-            const backupIndicator = document.createElement('span');
-            backupIndicator.className = hasBackup ? 'backup-indicator backup-yes' : 'backup-indicator backup-no';
-            backupIndicator.textContent = hasBackup ? 'Y' : 'N';
-            backupCell.appendChild(backupIndicator);
-          }
-          
           updatedCount++;
         }
       } catch (rowError) {
@@ -481,619 +525,230 @@ function toggleGroup(groupId) {
   }
 }
 
-// ===== ADD NEW SERVER FUNCTIONALITY =====
-
-// Function to add a new server
-function addNewServer() {
-  // Check if we are already in editing mode
-  if (isEditing) {
-    const editingServerName = currentEditingRow ? currentEditingRow.cells[0].textContent.trim() : "unknown";
-    showNotification(`Please save or cancel your edits to ${editingServerName} first. Or use the Reset All Edits button at the top of the page.`, 'error');
-    
-    // Show reset button
-    const resetButton = document.querySelector('.reset-edits-button');
-    if (resetButton) {
-      resetButton.style.display = 'block';
-    }
-    
-    return;
-  }
+// Function to set up backup columns
+function setupBackupColumns() {
+  console.log('Setting up backup columns...');
   
-  // Check if we are already adding a new server
-  if (isAddingNewServer) {
-    showNotification('You are already adding a new server. Please complete or cancel that operation first.', 'error');
-    return;
-  }
+  // Get all server rows
+  const rows = document.querySelectorAll('#serverTable tbody tr.clickable');
+  console.log(`Found ${rows.length} server rows to process for backup columns`);
   
-  isAddingNewServer = true;
-  
-  // Show reset button
-  const resetButton = document.querySelector('.reset-edits-button');
-  if (resetButton) {
-    resetButton.style.display = 'block';
-  }
-  
-  // Create a new row for the server
-  const tbody = document.querySelector('#serverTable tbody');
-  if (!tbody) {
-    showNotification('Could not find table body to add new server', 'error');
-    isAddingNewServer = false;
-    return;
-  }
-  
-  const newRow = document.createElement('tr');
-  newRow.className = 'clickable new-server-row';
-  
-  // Server name cell
-  const serverNameCell = document.createElement('td');
-  const serverNameInput = document.createElement('input');
-  serverNameInput.type = 'text';
-  serverNameInput.className = 'server-name-input';
-  serverNameInput.placeholder = 'Enter server name';
-  serverNameInput.required = true;
-  serverNameCell.appendChild(serverNameInput);
-  newRow.appendChild(serverNameCell);
-  
-  // Create empty cells for other columns
-  for (let i = 1; i < 9; i++) {
-    const emptyCell = document.createElement('td');
-    if (i === 1) { // Environment cell
-      emptyCell.innerHTML = '';
-    } else if (i === 2) { // Role cell
-      // Create a multi-role editor for the new server
-      const defaultRole = {
-        environment: 'prod',
-        role: '',
-        description: '',
-        os: '',
-        backup: false
-      };
-      
-      const multiRoleContainer = document.createElement('div');
-      multiRoleContainer.className = 'multi-role-container';
-      
-      const roleEditor = createRoleEditor(defaultRole, 0);
-      multiRoleContainer.appendChild(roleEditor);
-      
-      // Add button to add a new role
-      const addButton = document.createElement('button');
-      addButton.textContent = '+ Add Role';
-      addButton.className = 'add-role-button';
-      addButton.addEventListener('click', function() {
-        // Create a new blank role editor
-        const newIndex = multiRoleContainer.querySelectorAll('.role-entry').length;
-        const blankRole = { environment: 'prod', role: '', description: '', os: '', backup: false };
-        const newRoleEditor = createRoleEditor(blankRole, newIndex);
-        
-        // Insert before the add button
-        multiRoleContainer.insertBefore(newRoleEditor, addButton);
-      });
-      
-      multiRoleContainer.appendChild(addButton);
-      emptyCell.appendChild(multiRoleContainer);
-    }
-    newRow.appendChild(emptyCell);
-  }
-  
-  // Create backup cell
-  const backupCell = document.createElement('td');
-  backupCell.style.textAlign = 'center';
-  backupCell.innerHTML = '<span class="backup-indicator backup-no">N</span>';
-  newRow.appendChild(backupCell);
-  
-  // Create actions cell
-  const actionsCell = document.createElement('td');
-  actionsCell.className = 'edit-cell';
-  
-  // Add save button
-  const saveButton = document.createElement('button');
-  saveButton.textContent = 'Save';
-  saveButton.className = 'save-button';
-  saveButton.addEventListener('click', function() {
-    saveNewServer(newRow);
-  });
-  
-  // Add cancel button
-  const cancelButton = document.createElement('button');
-  cancelButton.textContent = 'Cancel';
-  cancelButton.className = 'cancel-button';
-  cancelButton.addEventListener('click', function() {
-    cancelNewServer(newRow);
-  });
-  
-  actionsCell.appendChild(saveButton);
-  actionsCell.appendChild(cancelButton);
-  newRow.appendChild(actionsCell);
-  
-  // Add the new row to the table
-  tbody.insertBefore(newRow, tbody.firstChild);
-  
-  // Focus on the server name input
-  serverNameInput.focus();
-}
-
-// Function to save a new server
-function saveNewServer(row) {
-  const serverNameInput = row.querySelector('.server-name-input');
-  const serverName = serverNameInput.value.trim().toLowerCase();
-  
-  // Validate server name
-  if (!serverName) {
-    showNotification('Server name is required', 'error');
-    serverNameInput.focus();
-    return;
-  }
-  
-  // Check if server name already exists
-  if (serverMappings && serverMappings.servers && serverMappings.servers[serverName]) {
-    showNotification(`Server "${serverName}" already exists`, 'error');
-    serverNameInput.focus();
-    return;
-  }
-  
-  // Collect role information
-  const roleEntries = row.querySelectorAll('.role-entry');
-  if (roleEntries.length === 0) {
-    showNotification('At least one role is required', 'error');
-    return;
-  }
-  
-  // Build array of roles
-  const roles = [];
-  
-  roleEntries.forEach(entry => {
-    const envSelect = entry.querySelector('.environment-select');
-    const roleSelect = entry.querySelector('.role-select');
-    const descInput = entry.querySelector('.description-input');
-    
-    // OS information fields
-    const osTypeSelect = entry.querySelector('.os-type-select');
-    const osVersionSelect = entry.querySelector('.os-version-select');
-    const osCustomInput = entry.querySelector('.os-custom-input');
-    
-    // Backup checkbox
-    const backupCheckbox = entry.querySelector('.backup-checkbox');
-    
-    if (!envSelect || !roleSelect) {
+  rows.forEach((row, rowIndex) => {
+    // Get the server name from the first cell
+    const serverCell = row.cells[COLUMN.HOSTNAME];
+    if (!serverCell) {
+      console.warn(`No hostname cell found for row ${rowIndex + 1}`);
       return;
     }
     
-    const environment = envSelect.value;
-    const role = roleSelect.value;
-    const description = descInput ? descInput.value.trim() : '';
-    const backup = backupCheckbox ? backupCheckbox.checked : false;
+    const serverName = serverCell.textContent.trim().toLowerCase();
+    console.log(`Processing backup for server: ${serverName} (row ${rowIndex + 1})`);
     
-    // Get OS value based on the selected controls
-    let os = '';
-    if (osTypeSelect) {
-      const osType = osTypeSelect.value;
-      
-      if (osType === 'other' && osCustomInput) {
-        os = osCustomInput.value.trim();
-      } else if (osType !== '' && osVersionSelect && osVersionSelect.value) {
-        os = osVersionSelect.value;
-      }
-    }
-    
-    // Validate
-    if (!environment || !role || role === '_new_') {
+    // Find the backup cell
+    const backupCell = row.cells[COLUMN.BACKUP];
+    if (!backupCell) {
+      console.warn(`No backup cell found for server ${serverName}`);
       return;
     }
     
-    roles.push({
-      environment,
-      role,
-      description,
-      os,
-      backup
-    });
-  });
-  
-  if (roles.length === 0) {
-    showNotification('Error: At least one valid role is required', 'error');
-    return;
-  }
-  
-  // Update server mapping in JSON
-  updateServerMapping(serverName, roles)
-    .then(success => {
-      if (success) {
-        // Convert the temporary row to a standard row
-        convertNewRowToNormal(row, serverName, roles);
-        
-        // Reset adding flag
-        isAddingNewServer = false;
-        
-        // Hide reset button
-        const resetButton = document.querySelector('.reset-edits-button');
-        if (resetButton) {
-          resetButton.style.display = 'none';
-        }
-        
-        showNotification(`Server "${serverName}" added successfully`, 'success');
+    // Clear any existing content
+    backupCell.innerHTML = '';
+    
+    // Get backup status from server mappings
+    let backupStatus = false;
+    
+    if (serverMappings && serverMappings.servers && serverMappings.servers[serverName]) {
+      const serverInfo = serverMappings.servers[serverName];
+      
+      if (Array.isArray(serverInfo)) {
+        // If multiple roles, use the first one's backup status (or default to false)
+        backupStatus = serverInfo[0]?.backup === true;
+      } else {
+        // If single role, use its backup status
+        backupStatus = serverInfo.backup === true;
       }
-    });
-}
-
-// Function to convert a new row to a normal row after saving
-function convertNewRowToNormal(row, serverName, roles) {
-  // Remove the new-server-row class
-  row.classList.remove('new-server-row');
-  
-  // Update server name cell
-  const serverNameCell = row.cells[0];
-  serverNameCell.innerHTML = serverName;
-  
-  // Update environment cell with tags
-  const envCell = row.cells[1];
-  envCell.innerHTML = '';
-  
-  // Get unique environments from roles
-  const uniqueEnvironments = new Set(roles.map(role => role.environment));
-  
-  // Add each unique environment
-  Array.from(uniqueEnvironments).forEach((env, index) => {
-    // Add line break for subsequent environments
-    if (index > 0) {
-      envCell.appendChild(document.createElement('br'));
     }
     
-    // Create environment tag
-    const envTag = document.createElement('span');
-    envTag.className = `env-tag env-tag-${env.toLowerCase()}`;
-    envTag.textContent = env.toUpperCase();
-    envCell.appendChild(envTag);
-  });
-  
-  // Update role cell with tags
-  const roleCell = row.cells[2];
-  roleCell.innerHTML = '';
-  
-  // Create a tag for each role
-  roles.forEach((roleData, index) => {
-    // Create role tag
-    const roleTag = document.createElement('span');
-    roleTag.className = `app-tag env-tag-${roleData.environment.toLowerCase()}`;
-    roleTag.textContent = roleData.role;
+    console.log(`Backup status for ${serverName}: ${backupStatus}`);
     
-    if (roleData.description) {
-      roleTag.textContent += ` (${roleData.description})`;
-    }
+    // Create toggle button with correct styling
+    const backupTag = document.createElement('span');
+    backupTag.className = backupStatus ? 'tag tag-success' : 'tag tag-danger';
+    backupTag.textContent = backupStatus ? 'Y' : 'N';
+    backupTag.dataset.value = backupStatus.toString();
+    backupTag.style.cursor = 'pointer';
+    backupTag.dataset.serverName = serverName;
     
-    // Add multiple roles with line breaks
-    if (index > 0) {
-      roleCell.appendChild(document.createElement('br'));
-    }
-    
-    roleCell.appendChild(roleTag);
-  });
-  
-  // Update OS cell with tags
-  const osCell = row.cells[3];
-  if (osCell) {
-    osCell.innerHTML = '';
-    
-    // Get all unique OS values
-    const osValues = new Set();
-    roles.forEach(roleData => {
-      if (roleData.os) osValues.add(roleData.os);
+    // Add click event to toggle backup status
+    backupTag.addEventListener('click', function(e) {
+      e.stopPropagation(); // Prevent row toggle
+      toggleBackupStatus(e, serverName);
     });
     
-    Array.from(osValues).forEach((os, index) => {
-      if (index > 0) {
-        osCell.appendChild(document.createElement('br'));
-      }
-      
-      const osSpan = document.createElement('span');
-      
-      // Get lifecycle status
-      const lifecycleStatus = getLifecycleStatus(os);
-      
-      // Add appropriate class based on lifecycle status
-      switch (lifecycleStatus) {
-        case 0: // Supported
-          osSpan.className = 'os-tag os-tag-supported';
-          break;
-        case 1: // ELS
-          osSpan.className = 'os-tag os-tag-els';
-          osSpan.title = 'Extended Lifecycle Support';
-          break;
-        case 2: // EOL
-          osSpan.className = 'os-tag os-tag-eol';
-          osSpan.title = 'End of Life';
-          break;
-        default:
-          osSpan.className = 'os-tag os-tag-unknown';
-      }
-      
-      osSpan.textContent = os;
-      
-      // Add status indicator for ELS and EOL
-      if (lifecycleStatus === 1) {
-        const elsIndicator = document.createElement('sup');
-        elsIndicator.className = 'els-indicator';
-        elsIndicator.textContent = 'ELS';
-        osSpan.appendChild(elsIndicator);
-      } else if (lifecycleStatus === 2) {
-        const eolIndicator = document.createElement('sup');
-        eolIndicator.className = 'eol-indicator';
-        eolIndicator.textContent = 'EOL';
-        osSpan.appendChild(eolIndicator);
-      }
-      
-      osCell.appendChild(osSpan);
-    });
+    // Add to cell
+    backupCell.appendChild(backupTag);
+  });
+  
+  console.log('Backup columns setup complete');
+}
+
+// Function to toggle backup status
+function toggleBackupStatus(event, serverName) {
+  try {
+    const tag = event.currentTarget;
+    const currentValue = tag.dataset.value === 'true';
+    const newValue = !currentValue;
     
-    // If no OS value found, display a placeholder
-    if (osValues.size === 0) {
-      const osSpan = document.createElement('span');
-      osSpan.className = 'os-tag os-tag-unknown';
-      osSpan.textContent = 'Unknown';
-      osCell.appendChild(osSpan);
-    }
-  }
-  
-  // Update backup cell
-  const backupCell = row.cells[6];
-  backupCell.innerHTML = '';
-  
-  // Check if any role has backup=true
-  const hasBackup = roles.some(role => role.backup === true);
-  
-  // Create backup indicator
-  const backupIndicator = document.createElement('span');
-  backupIndicator.className = hasBackup ? 'backup-indicator backup-yes' : 'backup-indicator backup-no';
-  backupIndicator.textContent = hasBackup ? 'Y' : 'N';
-  backupCell.appendChild(backupIndicator);
-  
-  // Update actions cell with edit and delete buttons
-  const actionsCell = row.cells[10];
-  actionsCell.innerHTML = '';
-  
-  // Add delete button
-  const deleteButton = document.createElement('button');
-  deleteButton.textContent = 'Delete';
-  deleteButton.className = 'delete-button';
-  deleteButton.addEventListener('click', function(e) {
-    e.stopPropagation(); // Prevent row toggle
-    confirmDeleteServer(row);
-  });
-  
-  // Add edit button
-  const editButton = document.createElement('button');
-  editButton.textContent = 'Edit';
-  editButton.className = 'edit-button';
-  
-  editButton.addEventListener('click', function(e) {
-    e.stopPropagation(); // Prevent row toggle
-    toggleEditMode(row);
-  });
-  
-  actionsCell.appendChild(deleteButton);
-  actionsCell.appendChild(editButton);
-  
-  // Make row toggleable like other server rows
-  row.addEventListener('click', function() {
-    toggleGroup(serverName + '-details');
-  });
-}
-
-// Function to cancel adding a new server
-function cancelNewServer(row) {
-  // Remove the row
-  row.remove();
-  
-  // Reset flag
-  isAddingNewServer = false;
-  
-  // Hide reset button
-  const resetButton = document.querySelector('.reset-edits-button');
-  if (resetButton) {
-    resetButton.style.display = 'none';
-  }
-  
-  showNotification('Add new server cancelled', 'info');
-}
-
-// ===== DELETE SERVER FUNCTIONALITY =====
-
-// Function to confirm deletion of a server
-function confirmDeleteServer(row) {
-  const serverName = row.cells[0].textContent.trim().toLowerCase();
-  
-  // Create a modal dialog for confirmation
-  const modal = document.createElement('div');
-  modal.className = 'delete-modal';
-  
-  const modalContent = document.createElement('div');
-  modalContent.className = 'delete-modal-content';
-  
-  const modalHeader = document.createElement('h3');
-  modalHeader.textContent = 'Confirm Deletion';
-  modalContent.appendChild(modalHeader);
-  
-  const modalMessage = document.createElement('p');
-  modalMessage.innerHTML = `Are you sure you want to delete server <strong>${serverName}</strong>?<br>This action cannot be undone.`;
-  modalContent.appendChild(modalMessage);
-  
-  const buttonContainer = document.createElement('div');
-  buttonContainer.className = 'delete-modal-buttons';
-  
-  const cancelButton = document.createElement('button');
-  cancelButton.textContent = 'Cancel';
-  cancelButton.className = 'cancel-delete-button';
-  cancelButton.addEventListener('click', function() {
-    document.body.removeChild(modal);
-  });
-  
-  const confirmButton = document.createElement('button');
-  confirmButton.textContent = 'Delete Server';
-  confirmButton.className = 'confirm-delete-button';
-  confirmButton.addEventListener('click', function() {
-    document.body.removeChild(modal);
-    deleteServer(row, serverName);
-  });
-  
-  buttonContainer.appendChild(cancelButton);
-  buttonContainer.appendChild(confirmButton);
-  modalContent.appendChild(buttonContainer);
-  
-  modal.appendChild(modalContent);
-  document.body.appendChild(modal);
-}
-
-// Function to delete a server
-function deleteServer(row, serverName) {
-  // Remove the server from serverMappings
-  if (serverMappings && serverMappings.servers) {
-    delete serverMappings.servers[serverName];
+    console.log(`Toggling backup for ${serverName}: ${currentValue} → ${newValue}`);
     
-    // Also remove from environment applications
-    if (serverMappings.environments) {
+    // Update tag appearance immediately in the DOM
+    tag.dataset.value = newValue.toString();
+    tag.textContent = newValue ? 'Y' : 'N';
+    tag.className = newValue ? 'tag tag-success' : 'tag tag-danger';
+    
+    // Update server mappings
+    if (serverMappings && serverMappings.servers && serverMappings.servers[serverName]) {
+      const serverInfo = serverMappings.servers[serverName];
+      
+      if (Array.isArray(serverInfo)) {
+        // Update backup status for all roles
+        serverInfo.forEach(role => {
+          if (role) role.backup = newValue;
+        });
+      } else {
+        // Update backup status for single role
+        serverInfo.backup = newValue;
+      }
+      
+      // Also update in environments section
       Object.values(serverMappings.environments).forEach(env => {
         if (env && env.applications) {
-          Object.entries(env.applications).forEach(([roleName, servers]) => {
+          Object.values(env.applications).forEach(servers => {
             if (Array.isArray(servers)) {
-              const filteredServers = servers.filter(s => s && s.server !== serverName);
-              env.applications[roleName] = filteredServers;
-            }
-          });
-          
-          // Clean up empty roles
-          Object.keys(env.applications).forEach(roleName => {
-            if (env.applications[roleName].length === 0) {
-              delete env.applications[roleName];
+              servers.forEach(server => {
+                if (server && server.server === serverName) {
+                  server.backup = newValue;
+                }
+              });
             }
           });
         }
       });
+      
+      // Show notification about the change
+      showNotification(`Backup status for ${serverName} updated to ${newValue ? 'Y' : 'N'}`, 'success');
     }
-    
-    // Save updated mappings
-    saveServerMappings()
-      .then(success => {
-        if (success) {
-          // Remove the row from the table
-          row.remove();
-          
-          // Also remove any associated detail rows if they exist
-          const detailRow = document.getElementById(serverName + '-details');
-          if (detailRow) {
-            detailRow.remove();
-          }
-          
-          showNotification(`Server "${serverName}" deleted successfully`, 'success');
-        }
-      });
-  } else {
-    showNotification('Server mappings not loaded or invalid', 'error');
+  } catch (error) {
+    console.error('Error toggling backup status:', error);
+    showNotification('Error toggling backup status: ' + error.message, 'error');
   }
 }
 
 // ===== EDITOR FUNCTIONALITY =====
 
-// Add edit and delete buttons to each row
+// Add edit buttons to each row
 function setupEditButtons() {
+  console.log("Setting up edit buttons");
   const rows = document.querySelectorAll('#serverTable tbody tr.clickable');
+  console.log(`Found ${rows.length} rows for adding edit buttons`);
   
-  // Check the header to see if we need to add the backup column
-  const headerRow = document.querySelector('#serverTable thead tr');
-  if (headerRow && headerRow.cells.length === 10) {
-    // Backup header already exists in HTML
-    const backupHeader = document.createElement('th');
-    backupHeader.textContent = 'Backup';
+  rows.forEach((row, rowIndex) => {
+    console.log(`Processing row ${rowIndex + 1} for edit button setup`);
     
-    // Add actions header
-    const actionsHeader = document.createElement('th');
-    actionsHeader.textContent = 'Actions';
-    
-    // Insert backup header before actions
-    //headerRow.appendChild(backupHeader);
-    headerRow.appendChild(actionsHeader);
-  }
-  
-  rows.forEach(row => {
-    // Add backup column if it doesn't exist
-    if (row.cells.length === 9) { // If there are exactly 9 columns (without backup & actions)
-      // First add backup cell
-      const backupCell = document.createElement('td');
-      backupCell.style.textAlign = 'center';
-      
-      // Get server name to check for backup status
-      const serverName = row.cells[0].textContent.trim().toLowerCase();
-      
-      // Check if this server has backup
-      let hasBackup = false;
-      if (serverMappings && serverMappings.servers && serverMappings.servers[serverName]) {
-        const serverInfo = serverMappings.servers[serverName];
-        const serverRoles = Array.isArray(serverInfo) ? serverInfo : [serverInfo];
-        
-        // Check if any role has backup=true
-        hasBackup = serverRoles.some(role => role.backup === true);
-      }
-      
-      // Create backup indicator
-      const backupIndicator = document.createElement('span');
-      backupIndicator.className = hasBackup ? 'backup-indicator backup-yes' : 'backup-indicator backup-no';
-      backupIndicator.textContent = hasBackup ? 'Y' : 'N';
-      backupCell.appendChild(backupIndicator);
-      
-      row.appendChild(backupCell);
+    // Ensure the row has 11 cells (10 data columns + 1 for actions)
+    while (row.cells.length < 11) {
+      console.log(`Adding cell to row ${rowIndex + 1}, current length: ${row.cells.length}`);
+      const td = document.createElement('td');
+      row.appendChild(td);
     }
     
-    // Create edit/delete button column if it doesn't exist
-    if (row.cells.length === 10) { // If there are exactly 10 columns (with backup, without actions)
-      const actionsCell = document.createElement('td');
-      actionsCell.style.width = '120px'; // Wider to accommodate both buttons
-      actionsCell.classList.add('edit-cell');
-      
-      // Add delete button
-      const deleteButton = document.createElement('button');
-      deleteButton.textContent = 'Delete';
-      deleteButton.classList.add('delete-button');
-      
-      deleteButton.addEventListener('click', function(e) {
-        e.stopPropagation(); // Prevent row toggle
-        confirmDeleteServer(row);
-      });
-      
-      // Add edit button
-      const editButton = document.createElement('button');
-      editButton.textContent = 'Edit';
-      editButton.classList.add('edit-button');
-      
-      editButton.addEventListener('click', function(e) {
-        e.stopPropagation(); // Prevent row toggle
-        toggleEditMode(row);
-      });
-      
-      actionsCell.appendChild(deleteButton);
-      actionsCell.appendChild(editButton);
-      row.appendChild(actionsCell);
+    // Setup the action column (last column)
+    const editCell = row.cells[COLUMN.ACTIONS];
+    if (!editCell) {
+      console.error(`Could not find action cell for row ${rowIndex + 1}`);
+      return;
     }
+    
+    editCell.style.width = '80px';
+    editCell.classList.add('edit-cell');
+    editCell.innerHTML = ''; // Clear any existing content
+    
+    const editButton = document.createElement('button');
+    editButton.textContent = 'Edit';
+    editButton.classList.add('edit-button');
+    
+    // Attach the server name as a data attribute for easier reference
+    const serverName = row.cells[COLUMN.HOSTNAME].textContent.trim().toLowerCase();
+    editButton.dataset.serverName = serverName;
+    
+    editButton.addEventListener('click', function(e) {
+      e.stopPropagation(); // Prevent row toggle
+      toggleEditMode(row);
+    });
+    
+    editCell.appendChild(editButton);
+    console.log(`Added edit button to row ${rowIndex + 1} for server ${serverName}`);
   });
+  
+  // Update the header row to match
+  const headerRow = document.querySelector('#serverTable thead tr');
+  if (headerRow) {
+    console.log(`Header row has ${headerRow.cells.length} cells before adjustment`);
+    
+    // Ensure we have 11 header cells (10 data columns + actions)
+    while (headerRow.cells.length < 11) {
+      const th = document.createElement('th');
+      // Set the header text based on the index
+      const index = headerRow.cells.length;
+      th.textContent = getColumnName(index);
+      headerRow.appendChild(th);
+      console.log(`Added column ${index} to header: ${getColumnName(index)}`);
+    }
+    
+    // Make sure the last column is labeled "Actions"
+    headerRow.cells[COLUMN.ACTIONS].textContent = 'Actions';
+    console.log(`Header row now has ${headerRow.cells.length} cells after adjustment`);
+  } else {
+    console.error("Could not find header row");
+  }
 }
 
 // Toggle edit mode for a row
 function toggleEditMode(row) {
-  const serverName = row.cells[0].textContent.trim().toLowerCase();
-  const envCell = row.cells[1];
-  const roleCell = row.cells[2];
-  const osCell = row.cells[3]; // Assuming OS is in column 4
-  const backupCell = row.cells[6]; // Backup cell
-  const actionsCell = row.cells[10]; // The actions cell
-  
-  if (isEditing) {
-    // Check if it's the same row - if so, do nothing
-    if (currentEditingRow === row) {
+  try {
+    const serverName = row.cells[COLUMN.HOSTNAME].textContent.trim().toLowerCase();
+    const envCell = row.cells[COLUMN.ENVIRONMENT];
+    const roleCell = row.cells[COLUMN.ROLE];
+    const osCell = row.cells[COLUMN.OS];
+    const editCell = row.cells[COLUMN.ACTIONS];
+    
+    if (isEditing) {
+      // Check if it's the same row - if so, do nothing
+      if (currentEditingRow === row) {
+        return;
+      }
+      
+      // Get the server name of the currently editing row
+      const editingServerName = currentEditingRow ? currentEditingRow.cells[COLUMN.HOSTNAME].textContent.trim() : "unknown";
+      
+      // Show error message with information about which row is being edited
+      showNotification(`Please save or cancel your edits to ${editingServerName} first. Or use the Reset All Edits button at the top of the page.`, 'error');
+      
+      // Show reset button
+      const resetButton = document.querySelector('.reset-edits-button');
+      if (resetButton) {
+        resetButton.style.display = 'block';
+      }
+      
       return;
     }
     
-    // Get the server name of the currently editing row
-    const editingServerName = currentEditingRow ? currentEditingRow.cells[0].textContent.trim() : "unknown";
+    // Enter edit mode
+    isEditing = true;
+    currentEditingRow = row;
     
-    // Show error message with information about which row is being edited
-    showNotification(`Please save or cancel your edits to ${editingServerName} first. Or use the Reset All Edits button at the top of the page.`, 'error');
+    // Save current server name for reference
+    currentEditingServerName = serverName;
     
     // Show reset button
     const resetButton = document.querySelector('.reset-edits-button');
@@ -1101,170 +756,165 @@ function toggleEditMode(row) {
       resetButton.style.display = 'block';
     }
     
-    return;
-  }
-  
-  // Enter edit mode
-  isEditing = true;
-  currentEditingRow = row;
-  
-  // Show reset button
-  const resetButton = document.querySelector('.reset-edits-button');
-  if (resetButton) {
-    resetButton.style.display = 'block';
-  }
-  
-  // Store original content for potential cancel
-  row.dataset.originalEnv = envCell.innerHTML;
-  row.dataset.originalRole = roleCell.innerHTML;
-  if (osCell) {
-    row.dataset.originalOs = osCell.innerHTML;
-  }
-  if (backupCell) {
-    row.dataset.originalBackup = backupCell.innerHTML;
-  }
-  
-  // Get current server info
-  const serverInfo = serverMappings.servers[serverName];
-  
-  // Handle case when server isn't in the mappings yet
-  if (!serverInfo) {
-    // Create a default role for new servers
-    const defaultRole = {
-      environment: 'prod',
-      role: '',
-      description: '',
-      os: '', 
-      backup: false
-    };
+    // Store original content for potential cancel
+    row.dataset.originalEnv = envCell.innerHTML;
+    row.dataset.originalRole = roleCell.innerHTML;
+    if (osCell) {
+      row.dataset.originalOs = osCell.innerHTML;
+    }
     
-    // Create multi-role editor with default role
-    createMultiRoleEditor(row, serverName, [defaultRole]);
-  } else {
-    // Convert to array if it's a single object
-    const serverRoles = Array.isArray(serverInfo) ? serverInfo : [serverInfo];
+    // Get current server info
+    const serverInfo = serverMappings.servers[serverName];
     
-    // Filter out any undefined roles just to be safe
-    const validRoles = serverRoles.filter(role => role !== undefined);
-    
-    // If we have no valid roles, provide a default one
-    if (validRoles.length === 0) {
-      validRoles.push({
+    // Handle case when server isn't in the mappings yet
+    if (!serverInfo) {
+      // Create a default role for new servers
+      const defaultRole = {
         environment: 'prod',
         role: '',
         description: '',
-        os: '',
-        backup: false
-      });
+        os: '', // Add default OS field
+        backup: DEFAULT_BACKUP_STATUS // Default backup status
+      };
+      
+      // Create multi-role editor with default role
+      createMultiRoleEditor(row, serverName, [defaultRole]);
+    } else {
+      // Convert to array if it's a single object
+      const serverRoles = Array.isArray(serverInfo) ? serverInfo : [serverInfo];
+      
+      // Filter out any undefined roles just to be safe
+      const validRoles = serverRoles.filter(role => role !== undefined);
+      
+      // If we have no valid roles, provide a default one
+      if (validRoles.length === 0) {
+        validRoles.push({
+          environment: 'prod',
+          role: '',
+          description: '',
+          os: '', // Add default OS field
+          backup: DEFAULT_BACKUP_STATUS // Default backup status
+        });
+      }
+      
+      // Create multi-role editor
+      createMultiRoleEditor(row, serverName, validRoles);
     }
     
-    // Make sure each role has a backup property
-    validRoles.forEach(role => {
-      if (role.backup === undefined) {
-        role.backup = false;
+    // Replace edit button with save/cancel buttons
+    editCell.innerHTML = '';
+    
+    const saveButton = document.createElement('button');
+    saveButton.textContent = 'Save';
+    saveButton.classList.add('save-button');
+    
+    const cancelButton = document.createElement('button');
+    cancelButton.textContent = 'Cancel';
+    cancelButton.classList.add('cancel-button');
+    
+    saveButton.addEventListener('click', function(e) {
+      e.stopPropagation(); // Prevent row toggle
+      saveMultiRoleChanges(row, serverName);
+    });
+    
+    cancelButton.addEventListener('click', function(e) {
+      e.stopPropagation(); // Prevent row toggle
+      cancelEditing(row);
+    });
+    
+    editCell.appendChild(saveButton);
+    editCell.appendChild(cancelButton);
+  } catch (error) {
+    console.error('Error in toggleEditMode:', error);
+    showNotification('Error: ' + error.message, 'error');
+  }
+}
+// Create a multi-role editor for a server
+function createMultiRoleEditor(row, serverName, serverRoles) {
+  try {
+    console.log(`Creating multi-role editor for ${serverName} with ${serverRoles.length} roles`);
+    
+    // Create a container for the multi-role editor
+    const multiRoleContainer = document.createElement('div');
+    multiRoleContainer.className = 'multi-role-container';
+    multiRoleContainer.dataset.serverName = serverName;
+    
+    // Ensure serverRoles is an array and contains valid roles
+    const validServerRoles = Array.isArray(serverRoles) ? 
+      serverRoles.filter(role => role !== undefined) : 
+      [];
+    
+    console.log(`Found ${validServerRoles.length} valid roles for ${serverName}`);
+    
+    // If no valid roles, add a default empty one
+    if (validServerRoles.length === 0) {
+      validServerRoles.push({
+        environment: 'prod',
+        role: '',
+        description: '',
+        os: '', // Add default OS field
+        backup: DEFAULT_BACKUP_STATUS // Default backup status
+      });
+      console.log(`Added default role for ${serverName}`);
+    }
+    
+    // Create an editor for each role
+    validServerRoles.forEach((role, index) => {
+      try {
+        console.log(`Creating role editor for role ${index + 1}`);
+        const roleEditor = createRoleEditor(role, index);
+        multiRoleContainer.appendChild(roleEditor);
+      } catch (error) {
+        console.error(`Error creating role editor for index ${index}:`, error);
+        // Create a default role editor as fallback
+        const defaultEditor = createRoleEditor({ 
+          environment: 'prod', 
+          role: '', 
+          description: '',
+          os: '', // Add default OS field
+          backup: DEFAULT_BACKUP_STATUS // Default backup status
+        }, index);
+        multiRoleContainer.appendChild(defaultEditor);
       }
     });
     
-    // Create multi-role editor
-    createMultiRoleEditor(row, serverName, validRoles);
-  }
-  
-  // Replace edit button with save/cancel buttons
-  actionsCell.innerHTML = '';
-  
-  const saveButton = document.createElement('button');
-  saveButton.textContent = 'Save';
-  saveButton.classList.add('save-button');
-  
-  const cancelButton = document.createElement('button');
-  cancelButton.textContent = 'Cancel';
-  cancelButton.classList.add('cancel-button');
-  
-  saveButton.addEventListener('click', function(e) {
-    e.stopPropagation(); // Prevent row toggle
-    saveMultiRoleChanges(row, serverName);
-  });
-  
-  cancelButton.addEventListener('click', function(e) {
-    e.stopPropagation(); // Prevent row toggle
-    cancelEditing(row);
-  });
-  
-  actionsCell.appendChild(saveButton);
-  actionsCell.appendChild(cancelButton);
-}
-
-// Create a multi-role editor for a server
-function createMultiRoleEditor(row, serverName, serverRoles) {
-  // Create a container for the multi-role editor
-  const multiRoleContainer = document.createElement('div');
-  multiRoleContainer.className = 'multi-role-container';
-  
-  // Ensure serverRoles is an array and contains valid roles
-  const validServerRoles = Array.isArray(serverRoles) ? 
-    serverRoles.filter(role => role !== undefined) : 
-    [];
-  
-  // If no valid roles, add a default empty one
-  if (validServerRoles.length === 0) {
-    validServerRoles.push({
-      environment: 'prod',
-      role: '',
-      description: '',
-      os: '',
-      backup: false
+    // Add button to add a new role
+    const addButton = document.createElement('button');
+    addButton.textContent = '+ Add Role';
+    addButton.className = 'add-role-button';
+    addButton.addEventListener('click', function() {
+      // Create a new blank role editor
+      const newIndex = multiRoleContainer.querySelectorAll('.role-entry').length;
+      console.log(`Adding new role at index ${newIndex}`);
+      const blankRole = { environment: 'prod', role: '', description: '', os: '', backup: DEFAULT_BACKUP_STATUS };
+      const newRoleEditor = createRoleEditor(blankRole, newIndex);
+      
+      // Insert before the add button
+      multiRoleContainer.insertBefore(newRoleEditor, addButton);
     });
-  }
-  
-  // Create an editor for each role
-  validServerRoles.forEach((role, index) => {
-    try {
-      const roleEditor = createRoleEditor(role, index);
-      multiRoleContainer.appendChild(roleEditor);
-    } catch (error) {
-      console.error(`Error creating role editor for index ${index}:`, error);
-      // Create a default role editor as fallback
-      const defaultEditor = createRoleEditor({ 
-        environment: 'prod', 
-        role: '', 
-        description: '',
-        os: '',
-        backup: false
-      }, index);
-      multiRoleContainer.appendChild(defaultEditor);
-    }
-  });
-  
-  // Add button to add a new role
-  const addButton = document.createElement('button');
-  addButton.textContent = '+ Add Role';
-  addButton.className = 'add-role-button';
-  addButton.addEventListener('click', function() {
-    // Create a new blank role editor
-    const newIndex = multiRoleContainer.querySelectorAll('.role-entry').length;
-    const blankRole = { environment: 'prod', role: '', description: '', os: '', backup: false };
-    const newRoleEditor = createRoleEditor(blankRole, newIndex);
     
-    // Insert before the add button
-    multiRoleContainer.insertBefore(newRoleEditor, addButton);
-  });
-  
-  multiRoleContainer.appendChild(addButton);
-  
-  // Replace the role cell content
-  const roleCell = row.cells[2];
-  roleCell.innerHTML = '';
-  roleCell.appendChild(multiRoleContainer);
-  
-  // Also clear the environment and OS cells since we're handling them per role
-  row.cells[1].innerHTML = '';
-  if (row.cells[3]) { // Clear OS cell if it exists
-    row.cells[3].innerHTML = '';
-  }
-  
-  // Clear backup cell since we're now handling backup per role
-  if (row.cells[9]) {
-    row.cells[9].innerHTML = '';
+    multiRoleContainer.appendChild(addButton);
+    
+    // Replace the role cell content
+    const roleCell = row.cells[COLUMN.ROLE];
+    if (!roleCell) {
+      console.error(`Role cell not found for ${serverName}`);
+      throw new Error(`Role cell not found for ${serverName}`);
+    }
+    
+    roleCell.innerHTML = '';
+    roleCell.appendChild(multiRoleContainer);
+    
+    // Also clear the environment and OS cells since we're handling them per role
+    row.cells[COLUMN.ENVIRONMENT].innerHTML = '';
+    row.cells[COLUMN.OS].innerHTML = '';
+    
+    console.log(`Successfully created multi-role editor for ${serverName}`);
+    return multiRoleContainer;
+  } catch (error) {
+    console.error('Error in createMultiRoleEditor:', error);
+    showNotification(`Error creating editor: ${error.message}`, 'error');
+    throw error;
   }
 }
 
@@ -1276,15 +926,10 @@ function createRoleEditor(roleData, index) {
       environment: 'prod',
       role: '',
       description: '',
-      os: '',
-      backup: false
+      os: '', // Add default OS field
+      backup: DEFAULT_BACKUP_STATUS // Default backup status
     };
     console.warn(`Creating default role data for index ${index} because provided data was undefined`);
-  }
-  
-  // Make sure backup is defined
-  if (roleData.backup === undefined) {
-    roleData.backup = false;
   }
   
   const roleEntry = document.createElement('div');
@@ -1458,25 +1103,34 @@ function createRoleEditor(roleData, index) {
   
   roleEntry.appendChild(osContainer);
   
-  // Add backup checkbox
+  // Add backup option
   const backupLabel = document.createElement('label');
-  backupLabel.textContent = 'Backup Required:';
-  backupLabel.style.marginTop = '10px';
+  backupLabel.textContent = 'Backup Enabled:';
   roleEntry.appendChild(backupLabel);
   
   const backupContainer = document.createElement('div');
   backupContainer.className = 'backup-container';
   
+  // Ensure backup is treated as a boolean
+  const backupValue = roleData.backup === true;
+  console.log(`Creating backup checkbox with value: ${backupValue} (original: ${roleData.backup})`);
+  
   const backupCheckbox = document.createElement('input');
   backupCheckbox.type = 'checkbox';
   backupCheckbox.className = 'backup-checkbox';
-  backupCheckbox.checked = roleData.backup === true;
+  backupCheckbox.checked = backupValue;
   backupContainer.appendChild(backupCheckbox);
   
   const backupText = document.createElement('span');
-  backupText.textContent = 'Yes, backup is required';
   backupText.className = 'backup-text';
+  backupText.textContent = backupValue ? 'Yes' : 'No';
+  backupText.style.marginLeft = '5px';
   backupContainer.appendChild(backupText);
+  
+  // Update text when checkbox changes
+  backupCheckbox.addEventListener('change', function() {
+    backupText.textContent = this.checked ? 'Yes' : 'No';
+  });
   
   roleEntry.appendChild(backupContainer);
   
@@ -1740,84 +1394,119 @@ function populateVersionSelect(select, osType) {
       break;
   }
 }
-
 // Save changes for multiple roles
 function saveMultiRoleChanges(row, serverName) {
-  // Collect all role entries
-  const roleEntries = row.cells[2].querySelectorAll('.role-entry');
-  if (roleEntries.length === 0) {
-    showNotification('Error: No roles found', 'error');
-    return;
-  }
-  
-  // Build array of roles
-  const roles = [];
-  
-  roleEntries.forEach(entry => {
-    const envSelect = entry.querySelector('.environment-select');
-    const roleSelect = entry.querySelector('.role-select');
-    const descInput = entry.querySelector('.description-input');
+  try {
+    console.log(`Starting saveMultiRoleChanges for server: ${serverName}`);
     
-    // OS information fields
-    const osTypeSelect = entry.querySelector('.os-type-select');
-    const osVersionSelect = entry.querySelector('.os-version-select');
-    const osCustomInput = entry.querySelector('.os-custom-input');
-    
-    // Backup checkbox
-    const backupCheckbox = entry.querySelector('.backup-checkbox');
-    
-    if (!envSelect || !roleSelect) {
+    // Validate row
+    if (!row || !row.cells) {
+      console.error(`Invalid row parameter for server ${serverName}`);
+      showNotification(`Error: Invalid row parameter`, 'error');
       return;
     }
     
-    const environment = envSelect.value;
-    const role = roleSelect.value;
-    const description = descInput ? descInput.value.trim() : '';
-    const backup = backupCheckbox ? backupCheckbox.checked : false;
+    // Find role container 
+    const roleCell = row.cells[COLUMN.ROLE];
+    if (!roleCell) {
+      console.error(`Role cell not found for server ${serverName}`);
+      showNotification(`Error: Role cell not found`, 'error');
+      return;
+    }
     
-    // Get OS value based on the selected controls
-    let os = '';
-    if (osTypeSelect) {
-      const osType = osTypeSelect.value;
+    // Collect all role entries from this role cell
+    const roleEntries = roleCell.querySelectorAll('.role-entry');
+    console.log(`Found ${roleEntries.length} role entries for server ${serverName}`);
+    
+    if (roleEntries.length === 0) {
+      showNotification('Error: No roles found', 'error');
+      return;
+    }
+    
+    // Build array of roles
+    const roles = [];
+    
+    roleEntries.forEach((entry, idx) => {
+      console.log(`Processing role entry ${idx + 1} for server ${serverName}`);
       
-      if (osType === 'other' && osCustomInput) {
-        os = osCustomInput.value.trim();
-      } else if (osType !== '' && osVersionSelect && osVersionSelect.value) {
-        os = osVersionSelect.value;
+      const envSelect = entry.querySelector('.environment-select');
+      const roleSelect = entry.querySelector('.role-select');
+      const descInput = entry.querySelector('.description-input');
+      const backupCheckbox = entry.querySelector('.backup-checkbox');
+      
+      // OS information fields
+      const osTypeSelect = entry.querySelector('.os-type-select');
+      const osVersionSelect = entry.querySelector('.os-version-select');
+      const osCustomInput = entry.querySelector('.os-custom-input');
+      
+      if (!envSelect || !roleSelect) {
+        console.log(`Missing environment or role select in entry ${idx + 1}`);
+        return;
       }
-    }
+      
+      const environment = envSelect.value;
+      const role = roleSelect.value;
+      const description = descInput ? descInput.value.trim() : '';
+      const backup = backupCheckbox ? backupCheckbox.checked : DEFAULT_BACKUP_STATUS;
+      
+      console.log(`Entry ${idx + 1}: env=${environment}, role=${role}, backup=${backup}`);
+      
+      // Get OS value based on the selected controls
+      let os = '';
+      if (osTypeSelect) {
+        const osType = osTypeSelect.value;
+        
+        if (osType === 'other' && osCustomInput) {
+          os = osCustomInput.value.trim();
+        } else if (osType !== '' && osVersionSelect && osVersionSelect.value) {
+          os = osVersionSelect.value;
+        }
+      }
+      
+      // Validate
+      if (!environment || !role) {
+        console.log(`Skipping entry ${idx + 1} due to missing environment or role`);
+        return;
+      }
+      
+      roles.push({
+        environment,
+        role,
+        description,
+        os,
+        backup
+      });
+    });
     
-    // Validate
-    if (!environment || !role || role === '_new_') {
+    if (roles.length === 0) {
+      showNotification('Error: At least one valid role is required', 'error');
       return;
     }
     
-    roles.push({
-      environment,
-      role,
-      description,
-      os,
-      backup
-    });
-  });
-  
-  if (roles.length === 0) {
-    showNotification('Error: At least one valid role is required', 'error');
-    return;
+    console.log(`Successfully collected ${roles.length} roles for server ${serverName}`);
+    
+    try {
+      // Update server mapping in JSON
+      updateMultiRoleServerMapping(serverName, roles);
+      console.log(`Successfully updated server mapping for ${serverName}`);
+      
+      // Update UI
+      exitEditMode(row, roles);
+      
+      // Show success message
+      showNotification('Server updated successfully', 'success');
+    } catch (updateError) {
+      console.error(`Error updating server mapping: ${updateError.message}`);
+      showNotification(`Error: ${updateError.message}`, 'error');
+    }
+  } catch (error) {
+    console.error(`Error in saveMultiRoleChanges: ${error.message}`);
+    showNotification(`Error: ${error.message}`, 'error');
   }
-  
-  // Update server mapping in JSON
-  updateServerMapping(serverName, roles)
-    .then(success => {
-      if (success) {
-        // Exit edit mode and update UI
-        exitEditMode(row, roles);
-      }
-    });
 }
 
 // Update server mapping for multiple roles
-async function updateServerMapping(serverName, roles) {
+function updateMultiRoleServerMapping(serverName, roles) {
   if (!serverMappings) {
     showNotification('Server mappings not loaded', 'error');
     return false;
@@ -1825,16 +1514,12 @@ async function updateServerMapping(serverName, roles) {
   
   try {
     // Validate roles before proceeding
-
-    // Ensure all roles have backup property
-    roles = ensureBackupProperty(roles);
     const validRoles = roles.filter(role => 
       role && 
       typeof role === 'object' && 
       role.environment && 
       role.role && 
-      role.role.trim() !== '' &&
-      role.role !== '_new_'
+      role.role.trim() !== ''
     );
     
     if (validRoles.length === 0) {
@@ -1890,7 +1575,7 @@ async function updateServerMapping(serverName, roles) {
         server: serverName,
         description: description || '',
         os: os || '',
-        backup: backup || false
+        backup: backup
       });
     });
     
@@ -1906,8 +1591,13 @@ async function updateServerMapping(serverName, roles) {
       serverMappings.servers[serverName] = validRoles;
     }
     
-    // Save to server via API
-    return await saveServerMappings();
+    // Exit edit mode and update UI
+    exitEditMode(row, validRoles);
+    
+    // Show success notification
+    showNotification('Server updated successfully', 'success');
+    
+    return true;
   } catch (error) {
     console.error('Error updating server mapping:', error.message);
     showNotification('Failed to update server mapping: ' + error.message, 'error');
@@ -1915,93 +1605,10 @@ async function updateServerMapping(serverName, roles) {
   }
 }
 
-// Save server mappings to the server via API
-async function saveServerMappings() {
-  try {
-    // Create a deep copy to avoid reference issues
-    const mappingsToSave = JSON.parse(JSON.stringify(serverMappings));
-    
-    // Save to server via API endpoint
-    const response = await fetch('/api/save-mappings', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(mappingsToSave),
-    });
-    
-    if (!response.ok) {
-      let errorMessage = 'Failed to save mappings';
-      try {
-        const errorData = await response.json();
-        if (errorData && errorData.message) {
-          errorMessage = errorData.message;
-        }
-      } catch (parseError) {
-        console.error('Error parsing error response:', parseError);
-      }
-      
-      throw new Error(errorMessage);
-    }
-    
-    let result;
-    try {
-      result = await response.json();
-    } catch (parseError) {
-      console.warn('Warning: Could not parse success response as JSON', parseError);
-    }
-    
-    // Show success message
-    showNotification('Server mappings saved successfully to server', 'success');
-    
-    return true;
-  } catch (error) {
-    console.error('Error saving server mappings:', error.message);
-    showNotification('Failed to save to server: ' + error.message + '. Downloading file instead.', 'error');
-    
-    try {
-      // Fallback to downloading if server save fails
-      downloadJson();
-    } catch (downloadError) {
-      console.error('Error downloading JSON:', downloadError);
-      showNotification('Failed to download JSON file', 'error');
-    }
-    
-    return false;
-  }
-}
-
-// Download JSON file (fallback if server save fails)
-function downloadJson() {
-  try {
-    const jsonString = JSON.stringify(serverMappings, null, 2);
-    const blob = new Blob([jsonString], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'server-mappings.json';
-    a.style.display = 'none';
-    document.body.appendChild(a);
-    a.click();
-    
-    // Cleanup
-    setTimeout(() => {
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-    }, 100);
-    
-    showNotification('Downloaded server-mappings.json file. Please upload this file to the server.', 'info');
-  } catch (error) {
-    console.error('Error in downloadJson:', error);
-    throw error; // Re-throw to be handled by the caller
-  }
-}
-
 // Exit edit mode and update UI
 function exitEditMode(row, roles) {
   // Create environment tags for unique environments
-  const envCell = row.cells[1];
+  const envCell = row.cells[COLUMN.ENVIRONMENT];
   envCell.innerHTML = '';
   
   // Get unique environments from roles
@@ -2022,7 +1629,7 @@ function exitEditMode(row, roles) {
   });
   
   // Create role tag for all roles
-  const roleCell = row.cells[2];
+  const roleCell = row.cells[COLUMN.ROLE];
   roleCell.innerHTML = '';
   
   roles.forEach((roleData, index) => {
@@ -2044,7 +1651,7 @@ function exitEditMode(row, roles) {
   });
   
   // Update OS information if the cell exists
-  const osCell = row.cells[3];
+  const osCell = row.cells[COLUMN.OS];
   if (osCell) {
     osCell.innerHTML = '';
     
@@ -2108,45 +1715,44 @@ function exitEditMode(row, roles) {
     }
   }
   
-  // Update backup cell
-  const backupCell = row.cells[6];
-  backupCell.innerHTML = '';
+  // Update Backup cell
+  const backupCell = row.cells[COLUMN.BACKUP];
+  if (backupCell) {
+    backupCell.innerHTML = '';
+    
+    // Determine backup status from roles (use first role's backup status)
+    const backupStatus = roles[0]?.backup === true;
+    
+    // Create toggle button with correct styling
+    const backupTag = document.createElement('span');
+    backupTag.className = backupStatus ? 'tag tag-success' : 'tag tag-danger';
+    backupTag.textContent = backupStatus ? 'Y' : 'N';
+    backupTag.dataset.value = backupStatus.toString();
+    backupTag.style.cursor = 'pointer';
+    
+    // Add click event to toggle backup status
+    backupTag.addEventListener('click', function(e) {
+      e.stopPropagation(); // Prevent row toggle
+      toggleBackupStatus(e, row.cells[COLUMN.HOSTNAME].textContent.trim().toLowerCase());
+    });
+    
+    backupCell.appendChild(backupTag);
+  }
   
-  // Check if any role has backup=true
-  const hasBackup = roles.some(role => role.backup === true);
+  // Restore edit button
+  const editCell = row.cells[COLUMN.ACTIONS];
+  editCell.innerHTML = '';
   
-  // Create backup indicator
-  const backupIndicator = document.createElement('span');
-  backupIndicator.className = hasBackup ? 'backup-indicator backup-yes' : 'backup-indicator backup-no';
-  backupIndicator.textContent = hasBackup ? 'Y' : 'N';
-  backupCell.appendChild(backupIndicator);
-  
-  // Restore edit and delete buttons
-  const actionsCell = row.cells[10];
-  actionsCell.innerHTML = '';
-  
-  // Add delete button
-  const deleteButton = document.createElement('button');
-  deleteButton.textContent = 'Delete';
-  deleteButton.className = 'delete-button';
-  
-  deleteButton.addEventListener('click', function(e) {
-    e.stopPropagation(); // Prevent row toggle
-    confirmDeleteServer(row);
-  });
-  
-  // Add edit button
   const editButton = document.createElement('button');
   editButton.textContent = 'Edit';
-  editButton.className = 'edit-button';
+  editButton.classList.add('edit-button');
   
   editButton.addEventListener('click', function(e) {
     e.stopPropagation(); // Prevent row toggle
     toggleEditMode(row);
   });
   
-  actionsCell.appendChild(deleteButton);
-  actionsCell.appendChild(editButton);
+  editCell.appendChild(editButton);
   
   // Reset editing state
   isEditing = false;
@@ -2162,59 +1768,38 @@ function exitEditMode(row, roles) {
   delete row.dataset.originalEnv;
   delete row.dataset.originalRole;
   delete row.dataset.originalOs;
-  delete row.dataset.originalBackup;
-  
-  // Show success notification
-  showNotification('Server updated successfully', 'success');
 }
 
 // Cancel editing
 function cancelEditing(row) {
   // Restore original content
   if (row.dataset.originalEnv) {
-    row.cells[1].innerHTML = row.dataset.originalEnv;
+    row.cells[COLUMN.ENVIRONMENT].innerHTML = row.dataset.originalEnv;
   }
   
   if (row.dataset.originalRole) {
-    row.cells[2].innerHTML = row.dataset.originalRole;
+    row.cells[COLUMN.ROLE].innerHTML = row.dataset.originalRole;
   }
   
   // Restore original OS if available
-  if (row.dataset.originalOs && row.cells[3]) {
-    row.cells[3].innerHTML = row.dataset.originalOs;
-  }
-  
-  // Restore original backup if available
-  if (row.dataset.originalBackup && row.cells[6]) {
-    row.cells[6].innerHTML = row.dataset.originalBackup;
+  if (row.dataset.originalOs && row.cells[COLUMN.OS]) {
+    row.cells[COLUMN.OS].innerHTML = row.dataset.originalOs;
   }
   
   // Restore edit button
-  const actionsCell = row.cells[10];
-  actionsCell.innerHTML = '';
+  const editCell = row.cells[COLUMN.ACTIONS];
+  editCell.innerHTML = '';
   
-  // Add delete button
-  const deleteButton = document.createElement('button');
-  deleteButton.textContent = 'Delete';
-  deleteButton.className = 'delete-button';
-  
-  deleteButton.addEventListener('click', function(e) {
-    e.stopPropagation(); // Prevent row toggle
-    confirmDeleteServer(row);
-  });
-  
-  // Add edit button
   const editButton = document.createElement('button');
   editButton.textContent = 'Edit';
-  editButton.className = 'edit-button';
+  editButton.classList.add('edit-button');
   
   editButton.addEventListener('click', function(e) {
     e.stopPropagation(); // Prevent row toggle
     toggleEditMode(row);
   });
   
-  actionsCell.appendChild(deleteButton);
-  actionsCell.appendChild(editButton);
+  editCell.appendChild(editButton);
   
   // Reset editing state
   isEditing = false;
@@ -2230,9 +1815,6 @@ function cancelEditing(row) {
   delete row.dataset.originalEnv;
   delete row.dataset.originalRole;
   delete row.dataset.originalOs;
-  delete row.dataset.originalBackup;
-  
-  showNotification('Edit cancelled', 'info');
 }
 
 // Show notification
@@ -2269,7 +1851,301 @@ function addEditorStyles() {
       background-color: var(--rh-color-neutral-light);
       border-radius: 4px;
       display: flex;
-// Add function to ensure all roles have backup property
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .os-legend {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .legend-item {
+      display: flex;
+      align-items: center;
+      font-size: 0.85rem;
+    }
+    
+    .legend-color {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 2px;
+      margin-right: 5px;
+    }
+    
+    .legend-color.supported {
+      background-color: #3e8635;
+    }
+    
+    .legend-color.els {
+      background-color: #f0ab00;
+    }
+    
+    .legend-color.eol {
+      background-color: #c9190b;
+    }
+    
+    .reset-edits-button {
+      background-color: #c9190b;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    
+    .reset-edits-button:hover {
+      background-color: #a30000;
+    }
+    
+    .edit-button {
+      background-color: var(--rh-color-primary);
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+    
+    .edit-button:hover {
+      background-color: #004c8c;
+    }
+    
+    .save-button {
+      background-color: #3e8635;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      margin-right: 5px;
+    }
+    
+    .save-button:hover {
+      background-color: #2d632a;
+    }
+    
+    .cancel-button {
+      background-color: #c9190b;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+    
+    .cancel-button:hover {
+      background-color: #a30000;
+    }
+    
+    .edit-cell {
+      white-space: nowrap;
+    }
+    
+    .environment-select,
+    .role-select,
+    .description-input,
+    .os-type-select,
+    .os-version-select,
+    .os-custom-input {
+      width: 100%;
+      padding: 5px;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+      font-family: var(--rh-font-body);
+      margin-bottom: 5px;
+    }
+    
+    .os-version-select option.els-option {
+      background-color: #fff7e6;
+    }
+    
+    .os-version-select option.eol-option {
+      background-color: #fff5f5;
+    }
+    
+    .multi-role-container {
+      max-width: 300px;
+    }
+    
+    .role-entry {
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 10px;
+      margin-bottom: 10px;
+      background-color: var(--rh-color-neutral-extra-light);
+    }
+    
+    .role-label {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: var(--rh-color-primary);
+    }
+    
+    .add-role-button {
+      background-color: #0066cc;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      margin-bottom: 10px;
+    }
+    
+    .add-role-button:hover {
+      background-color: #004080;
+    }
+    
+    .remove-role-button {
+      background-color: #c9190b;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      margin-top: 5px;
+    }
+    
+    .remove-role-button:hover {
+      background-color: #a30000;
+    }
+    
+    label {
+      display: block;
+      margin-top: 5px;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+    
+    .os-container {
+      margin-bottom: 10px;
+    }
+    
+    /* OS tag styling */
+    .os-tag {
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+    
+    .os-tag-supported {
+      background-color: #3e8635;
+      color: white;
+    }
+    
+    .os-tag-els {
+      background-color: #f0ab00;
+      color: black;
+    }
+    
+    .os-tag-eol {
+      background-color: #c9190b;
+      color: white;
+    }
+    
+    .os-tag-unknown {
+      background-color: #8B8D8F;
+      color: white;
+    }
+    
+    .els-indicator,
+    .eol-indicator {
+      background-color: white;
+      padding: 1px 3px;
+      border-radius: 2px;
+      margin-left: 4px;
+      font-weight: bold;
+      vertical-align: super;
+      font-size: 8px;
+    }
+    
+    .els-indicator {
+      color: #f0ab00;
+    }
+    
+    .eol-indicator {
+      color: #c9190b;
+    }
+    
+    .server-notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 15px 20px;
+      border-radius: 4px;
+      color: white;
+      font-weight: bold;
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    
+    .server-notification-success {
+      background-color: #3e8635;
+    }
+    
+    .server-notification-error {
+      background-color: #c9190b;
+    }
+    
+    .server-notification-info {
+      background-color: #0066cc;
+    }
+    
+    .server-show {
+      opacity: 1;
+    }
+    
+    .backup-toggle {
+      cursor: pointer;
+      width: 2rem;
+      height: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 50%;
+      text-transform: uppercase;
+      color: #fff;
+      border: none;
+      margin: 0 auto;
+    }
+    .backup-toggle.yes {
+      background-color: #3e8635;
+    }
+    .backup-toggle.no {
+      background-color: #c9190b;
+    }
+    
+    .backup-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    
+    .backup-checkbox {
+      margin-right: 5px;
+    }
+    
+    .backup-text {
+      font-size: 0.9rem;
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+// Function to ensure all roles have backup property
 function ensureBackupProperty(roles) {
   // If roles is a single object (not array), convert to array
   const roleArray = Array.isArray(roles) ? roles : [roles];
@@ -2282,4 +2158,14 @@ function ensureBackupProperty(roles) {
   });
   
   return roleArray;
+}
+
+// Add a simple safety wrapper to use when debugging
+function safeRun(fn, defaultValue) {
+  try {
+    return fn();
+  } catch (error) {
+    console.error(`Error in safeRun: ${error.message}`);
+    return defaultValue;
+  }
 }

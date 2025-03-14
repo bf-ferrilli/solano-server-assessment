@@ -1,0 +1,6362 @@
+{
+  "environments": {
+    "pprd": {
+      "color": "orange"
+    },
+    "devl": {
+      "color": "cyan"
+    },
+    "test": {
+      "color": "gray"
+    },
+    "prod": {
+      "color": "blue"
+    }
+  },
+  "servers": [
+    {
+      "hostname": "olympias",
+      "os": "RHEL 8.9",
+      "osDetails": {
+        "server": "olympias",
+        "os": "Red Hat Enterprise Linux",
+        "version": "8.9",
+        "kernel": "4.18.0-513.24.1.el8",
+        "fullVersion": "8.9 (Ootpa)",
+        "codename": "Ootpa"
+      },
+      "description": "",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 4,
+      "memoryGB": 16,
+      "internalIp": "172.17.2.9",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "pprd",
+          "roles": [
+            "JobSub"
+          ]
+        }
+      ],
+      "availableMemoryGB": 7.8,
+      "diskTotalGB": "/ = 32, /u00 = 148, /u01 = 177",
+      "diskFreeGB": "/ = 14, /u00 = 19, /u01 = 47",
+      "java": "openjdk 1.8.0_412",
+      "installedPackages": 1818,
+      "listeningPorts": {
+        "1210": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1219": {
+          "Process": "beam.smp",
+          "Port": "25672",
+          "Protocol": "tcp",
+          "Address": "0.0.0.0"
+        },
+        "1957": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "2370": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "2625": {
+          "Process": "epmd",
+          "Port": "4369",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "829267": {
+          "Process": "clnaddrws",
+          "Port": "8097",
+          "Protocol": "tcp",
+          "Address": "127.0.0.1"
+        },
+        "982634": {
+          "Process": "cupsd",
+          "Port": "631",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "1232625": {
+          "Process": "httpd",
+          "Port": "80",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "1957547": {
+          "Process": "code-cd4ee3b1c3",
+          "Port": "32897",
+          "Protocol": "tcp",
+          "Address": "127.0.0.1"
+        },
+        "1967063": {
+          "Process": "sshd",
+          "Port": "6010",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "2138608": {
+          "Process": "rpcbind",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "3920421": {
+          "Process": "rpc.statd",
+          "Port": "59211",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "3920432": {
+          "Process": "rpc.mountd",
+          "Port": "20048",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        }
+      }
+    },
+    {
+      "hostname": "matterhorn",
+      "os": "RHEL 8.9",
+      "osDetails": {
+        "server": "matterhorn",
+        "os": "Red Hat Enterprise Linux",
+        "version": "8.9",
+        "kernel": "4.18.0-513.11.1.el8",
+        "fullVersion": "8.9 (Ootpa)",
+        "codename": "Ootpa"
+      },
+      "description": "",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 2,
+      "memoryGB": 16,
+      "internalIp": "172.17.2.28",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "pprd",
+          "roles": [
+            "SSB",
+            "PCI",
+            "BanPortals",
+            "PayPlan",
+            "WebLogic"
+          ]
+        },
+        {
+          "name": "test",
+          "roles": [
+            "SSB"
+          ]
+        },
+        {
+          "name": "prod",
+          "roles": [
+            "DB"
+          ]
+        }
+      ],
+      "availableMemoryGB": 8.1,
+      "diskTotalGB": "/ = 32, /u00 = 30",
+      "diskFreeGB": "/ = 16, /u00 = 17",
+      "java": "openjdk 1.8.0_412",
+      "installedPackages": 1814,
+      "listeningPorts": {
+        "1166": {
+          "Process": "cupsd",
+          "Port": "631",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "1970": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "2010": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "374830": {
+          "Process": "java",
+          "Port": "8447",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "374884": {
+          "Process": "java",
+          "Port": "8444",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "374929": {
+          "Process": "java",
+          "Port": "8445",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "1074385": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1666908": {
+          "Process": "java",
+          "Port": "8446",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "2669778": {
+          "Process": "rpcbind",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "2797334": {
+          "Process": "httpd",
+          "Port": "80",
+          "Protocol": "tcp",
+          "Address": "*"
+        }
+      }
+    },
+    {
+      "hostname": "makalu",
+      "os": "RHEL 8.10",
+      "osDetails": {
+        "server": "makalu",
+        "os": "Red Hat Enterprise Linux",
+        "version": "8.10",
+        "kernel": "4.18.0-553.36.1.el8",
+        "fullVersion": "8.10 (Ootpa)",
+        "codename": "Ootpa"
+      },
+      "description": "",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 4,
+      "memoryGB": 16,
+      "internalIp": "172.17.2.118",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "pprd",
+          "roles": [
+            "SSB"
+          ]
+        }
+      ],
+      "availableMemoryGB": 3.6,
+      "diskTotalGB": "/ = 41, /u01 = 100",
+      "diskFreeGB": "/ = 29, /u01 = 83",
+      "java": "openjdk 17.0.14",
+      "installedPackages": 1699,
+      "listeningPorts": {
+        "1": {
+          "Process": "systemd",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1221": {
+          "Process": "cupsd",
+          "Port": "631",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "1222": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1597": {
+          "Process": "backup_agent_ma",
+          "Port": "12801",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "1677": {
+          "Process": "bootstrap_agent",
+          "Port": "12800",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "1787": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "2024": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "234603": {
+          "Process": "java",
+          "Port": "8443",
+          "Protocol": "tcp",
+          "Address": "*"
+        }
+      }
+    },
+    {
+      "hostname": "manaslu",
+      "os": "RHEL 8.10",
+      "osDetails": {
+        "server": "manaslu",
+        "os": "Red Hat Enterprise Linux",
+        "version": "8.10",
+        "kernel": "4.18.0-553.36.1.el8",
+        "fullVersion": "8.10 (Ootpa)",
+        "codename": "Ootpa"
+      },
+      "description": "",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 4,
+      "memoryGB": 16,
+      "internalIp": "172.17.2.119",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "pprd",
+          "roles": [
+            "SSB"
+          ]
+        }
+      ],
+      "availableMemoryGB": 3.2,
+      "diskTotalGB": "/ = 41, /u01 = 100",
+      "diskFreeGB": "/ = 32, /u01 = 68",
+      "java": "openjdk 17.0.14",
+      "installedPackages": 1699,
+      "listeningPorts": {
+        "1": {
+          "Process": "systemd",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1219": {
+          "Process": "cupsd",
+          "Port": "631",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "1221": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1574": {
+          "Process": "backup_agent_ma",
+          "Port": "12801",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "1641": {
+          "Process": "bootstrap_agent",
+          "Port": "12800",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "1741": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "2022": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "186433": {
+          "Process": "java",
+          "Port": "8443",
+          "Protocol": "tcp",
+          "Address": "*"
+        }
+      }
+    },
+    {
+      "hostname": "adminpages-pprd",
+      "os": "RHEL 8.10",
+      "osDetails": {
+        "server": "adminpages-pprd",
+        "os": "Red Hat Enterprise Linux",
+        "version": "8.10",
+        "kernel": "4.18.0-553.36.1.el8",
+        "fullVersion": "8.10 (Ootpa)",
+        "codename": "Ootpa"
+      },
+      "description": "",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 4,
+      "memoryGB": 16,
+      "internalIp": "172.17.2.233",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "pprd",
+          "roles": [
+            "AdminPages",
+            "AppNav"
+          ]
+        }
+      ],
+      "availableMemoryGB": 4.3,
+      "diskTotalGB": "/ = 32, /u01 = 50",
+      "diskFreeGB": "/ = 20, /u01 = 29",
+      "java": "openjdk 17.0.14",
+      "installedPackages": 1774,
+      "listeningPorts": {
+        "1": {
+          "Process": "systemd",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1206": {
+          "Process": "cupsd",
+          "Port": "631",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "1209": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1613": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "1912": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "94455": {
+          "Process": "java",
+          "Port": "8443",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "138073": {
+          "Process": "sshd",
+          "Port": "6010",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        }
+      }
+    },
+    {
+      "hostname": "adminpages8-pprd",
+      "os": "RHEL 8.10",
+      "osDetails": {
+        "server": "adminpages8-pprd",
+        "os": "Red Hat Enterprise Linux",
+        "version": "8.10",
+        "kernel": "4.18.0-553.36.1.el8",
+        "fullVersion": "8.10 (Ootpa)",
+        "codename": "Ootpa"
+      },
+      "description": "",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 4,
+      "memoryGB": 16,
+      "internalIp": "172.17.2.107",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "pprd",
+          "roles": [
+            "AdminPages",
+            "AppNav"
+          ]
+        }
+      ],
+      "availableMemoryGB": 7.3,
+      "diskTotalGB": "/ = 33, /home = 16, /u01 = 50",
+      "diskFreeGB": "/ = 25, /home = 16, /u01 = 49",
+      "java": "openjdk 21.0.6",
+      "installedPackages": 1432,
+      "listeningPorts": {
+        "1": {
+          "Process": "systemd",
+          "Port": "9090",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "960": {
+          "Process": "rpcbind",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1068": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1069": {
+          "Process": "cupsd",
+          "Port": "631",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "2084": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "213430": {
+          "Process": "java",
+          "Port": "8443",
+          "Protocol": "tcp",
+          "Address": "*"
+        }
+      }
+    },
+    {
+      "hostname": "weathertop",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "weathertop",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.59.1.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "description": "admin",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 4,
+      "memoryGB": 16,
+      "internalIp": "172.17.2.138",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "pprd",
+          "roles": [
+            "LumTest"
+          ]
+        }
+      ],
+      "availableMemoryGB": 9.2,
+      "diskTotalGB": "/ = 12, /opt = 99, /u00 = 3.9",
+      "diskFreeGB": "/ = 4, /opt = 89, /u00 = 3.7",
+      "java": "java 1.8.0_144",
+      "installedPackages": 1488,
+      "listeningPorts": {
+        "1121": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1139": {
+          "Process": "rpc.statd",
+          "Port": "56845",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "1151": {
+          "Process": "rpcbind",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1196": {
+          "Process": "rpc.mountd",
+          "Port": "20048",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1549": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "23677": {
+          "Process": "java",
+          "Port": "44811",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "30275": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "32159": {
+          "Process": "java",
+          "Port": "4444",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "32458": {
+          "Process": "jsvc",
+          "Port": "46316",
+          "Protocol": "tcp",
+          "Address": "*"
+        }
+      }
+    },
+    {
+      "hostname": "ural",
+      "os": "RHEL 7.9",
+      "osDetails": {},
+      "description": "",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 4,
+      "memoryGB": 32,
+      "internalIp": "172.17.2.250",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "pprd",
+          "roles": [
+            "DB"
+          ]
+        }
+      ],
+      "availableMemoryGB": 11.0,
+      "diskTotalGB": "/ = 9.8, /u00 = 99, /u01 = 1,228.8, /u02 = 261, /u03 = 493",
+      "diskFreeGB": "/ = 2.4, /u00 = 46, /u01 = 133, /u02 = 200, /u03 = 107",
+      "java": "openjdk 1.8.0_412",
+      "installedPackages": 1478,
+      "listeningPorts": {
+        "1133": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1228": {
+          "Process": "rpc.statd",
+          "Port": "25362",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1237": {
+          "Process": "rpcbind",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1292": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "1948": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "6098": {
+          "Process": "java",
+          "Port": "47632",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "9117": {
+          "Process": "rpc.mountd",
+          "Port": "20048",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "12848": {
+          "Process": "ora_d000_atst",
+          "Port": "33548",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "13812": {
+          "Process": "ora_d000_ltdb",
+          "Port": "30051",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "16815": {
+          "Process": "ora_d000_dgwt",
+          "Port": "25797",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "21795": {
+          "Process": "tnslsnr",
+          "Port": "5500",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "24411": {
+          "Process": "ora_d000_pprd",
+          "Port": "23328",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "28539": {
+          "Process": "cupsd",
+          "Port": "631",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        }
+      }
+    },
+    {
+      "hostname": "trivor",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "trivor",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.62.1.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "description": "bep",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 4,
+      "memoryGB": 16,
+      "internalIp": "172.17.2.79",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "pprd",
+          "roles": [
+            "BEP"
+          ]
+        },
+        {
+          "name": "prod",
+          "roles": [
+            "Ethos"
+          ]
+        }
+      ],
+      "availableMemoryGB": 5.2,
+      "diskTotalGB": "/ = 12, /u01 = 99",
+      "diskFreeGB": "/ = 4, /u01 = 86",
+      "java": "openjdk 1.8.0_372",
+      "installedPackages": 1487,
+      "listeningPorts": {
+        "1096": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1351": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "1460": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "10625": {
+          "Process": "java",
+          "Port": "9443",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "25881": {
+          "Process": "java",
+          "Port": "9445",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "26790": {
+          "Process": "rpc.statd",
+          "Port": "40545",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "26792": {
+          "Process": "rpcbind",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        }
+      }
+    },
+    {
+      "hostname": "fairweather",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "fairweather",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.119.1.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "description": "app",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 4,
+      "memoryGB": 16,
+      "internalIp": "172.17.2.183",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "pprd",
+          "roles": [
+            "DW"
+          ]
+        }
+      ],
+      "availableMemoryGB": 5.9,
+      "diskTotalGB": "/ = 12, /u01 = 50",
+      "diskFreeGB": "/ = 2.6, /u01 = 34",
+      "java": "openjdk 1.8.0_412",
+      "installedPackages": 1495,
+      "listeningPorts": {
+        "1056": {
+          "Process": "java",
+          "Port": "8449",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1067": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1092": {
+          "Process": "java",
+          "Port": "8450",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1130": {
+          "Process": "java",
+          "Port": "8446",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1169": {
+          "Process": "java",
+          "Port": "8444",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1200": {
+          "Process": "java",
+          "Port": "8447",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1243": {
+          "Process": "java",
+          "Port": "8443",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1397": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "1580": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "2066": {
+          "Process": "java",
+          "Port": "8445",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "2124": {
+          "Process": "java",
+          "Port": "8451",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        }
+      }
+    },
+    {
+      "hostname": "pioneer",
+      "os": "RHEL 7.9",
+      "osDetails": {},
+      "description": "app",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 4,
+      "memoryGB": 16,
+      "internalIp": "172.17.2.84",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "pprd",
+          "roles": [
+            "DW"
+          ]
+        }
+      ],
+      "availableMemoryGB": 12.0,
+      "diskTotalGB": "/ = 17, /u00 = 59, /u01 = 394",
+      "diskFreeGB": "/ = 9.8, /u00 = 12, /u01 = 115",
+      "java": "openjdk 1.8.0_412",
+      "installedPackages": 594,
+      "listeningPorts": {
+        "758": {
+          "Process": "rpcbind",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1016": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1021": {
+          "Process": "beam.smp",
+          "Port": "25672",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "1465": {
+          "Process": "epmd",
+          "Port": "4369",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1658": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "4519": {
+          "Process": "dap08x",
+          "Port": "7701",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "7494": {
+          "Process": "java",
+          "Port": "8451",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        }
+      }
+    },
+    {
+      "hostname": "cascade",
+      "os": "",
+      "osDetails": {},
+      "description": "",
+      "backup": false,
+      "firewall": false,
+      "cpu": 0,
+      "memoryGB": 0,
+      "internalIp": "",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "pprd",
+          "roles": [
+            "PCI",
+            "BanPortals",
+            "PayPlan",
+            "WebLogic"
+          ]
+        }
+      ]
+    },
+    {
+      "hostname": "saipal",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "saipal",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.119.1.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "description": "",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 4,
+      "memoryGB": 16,
+      "internalIp": "172.17.2.80",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "pprd",
+          "roles": [
+            "Ethos"
+          ]
+        }
+      ],
+      "availableMemoryGB": 6.9,
+      "diskTotalGB": "/ = 41, /u01 = 100",
+      "diskFreeGB": "/ = 35, /u01 = 93",
+      "java": "openjdk 1.8.0_412",
+      "installedPackages": 1432,
+      "listeningPorts": {
+        "1070": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1093": {
+          "Process": "zabbix_agentd",
+          "Port": "10050",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1328": {
+          "Process": "backup_agent_ma",
+          "Port": "12801",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1445": {
+          "Process": "bootstrap_agent",
+          "Port": "12800",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1525": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "1699": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "2061": {
+          "Process": "sshd",
+          "Port": "6010",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "28160": {
+          "Process": "java",
+          "Port": "9443",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        }
+      }
+    },
+    {
+      "hostname": "sinai",
+      "os": "RHEL 8.10",
+      "osDetails": {
+        "server": "sinai",
+        "os": "Red Hat Enterprise Linux",
+        "version": "8.10",
+        "kernel": "4.18.0-553.32.1.el8",
+        "fullVersion": "8.10 (Ootpa)",
+        "codename": "Ootpa"
+      },
+      "description": "",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 4,
+      "memoryGB": 16,
+      "internalIp": "172.17.2.6",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "pprd",
+          "roles": [
+            "Ethos"
+          ]
+        }
+      ],
+      "availableMemoryGB": 14.0,
+      "diskTotalGB": "/ = 33, /home = 16, /u01 = 50",
+      "diskFreeGB": "/ = 25, /home = 16, /u01 = 49",
+      "java": "openjdk 17.0.14",
+      "installedPackages": 1423,
+      "listeningPorts": {
+        "937": {
+          "Process": "rpcbind",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1137": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1138": {
+          "Process": "cupsd",
+          "Port": "631",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "2004": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "763332": {
+          "Process": "sshd",
+          "Port": "6010",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        }
+      }
+    },
+    {
+      "hostname": "diran",
+      "os": "RHEL 8.9",
+      "osDetails": {
+        "server": "diran",
+        "os": "Red Hat Enterprise Linux",
+        "version": "8.9",
+        "kernel": "4.18.0-513.11.1.el8",
+        "fullVersion": "8.9 (Ootpa)",
+        "codename": "Ootpa"
+      },
+      "description": "12c",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 2,
+      "memoryGB": 16,
+      "internalIp": "172.17.2.237",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "pprd",
+          "roles": [
+            "BAM"
+          ]
+        },
+        {
+          "name": "devl",
+          "roles": [
+            "BAM"
+          ]
+        },
+        {
+          "name": "test",
+          "roles": [
+            "ODS",
+            "DB"
+          ]
+        }
+      ],
+      "availableMemoryGB": 10.0,
+      "diskTotalGB": "/ = 41, /u00 = 100",
+      "diskFreeGB": "/ = 32, /u00 = 100",
+      "java": "openjdk 1.8.0_412",
+      "installedPackages": 1717,
+      "listeningPorts": {
+        "1231": {
+          "Process": "cupsd",
+          "Port": "631",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "1535": {
+          "Process": "backup_agent_ma",
+          "Port": "12801",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "1776": {
+          "Process": "bootstrap_agent",
+          "Port": "12800",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "2016": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "2285": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "1602508": {
+          "Process": "rpcbind",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "2378931": {
+          "Process": "java",
+          "Port": "8445",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "2662623": {
+          "Process": "httpd",
+          "Port": "80",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "2783328": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "2849642": {
+          "Process": "java",
+          "Port": "8444",
+          "Protocol": "tcp",
+          "Address": "*"
+        }
+      }
+    },
+    {
+      "hostname": "idptest",
+      "os": "RHEL 8.6",
+      "osDetails": {},
+      "description": "",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 2,
+      "memoryGB": 8,
+      "internalIp": "172.17.2.82",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "pprd",
+          "roles": [
+            "IDP"
+          ]
+        }
+      ],
+      "availableMemoryGB": 6.0,
+      "diskTotalGB": "/ = 26",
+      "diskFreeGB": "/ = 20",
+      "java": "",
+      "installedPackages": 1411,
+      "listeningPorts": {
+        "997": {
+          "Process": "rpcbind",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1106": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1207": {
+          "Process": "cupsd",
+          "Port": "631",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "1819": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "2340": {
+          "Process": "java",
+          "Port": "8443",
+          "Protocol": "tcp",
+          "Address": "*"
+        }
+      }
+    },
+    {
+      "hostname": "ophir",
+      "os": "RHEL 7.4",
+      "osDetails": {},
+      "description": "",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 4,
+      "memoryGB": 16,
+      "internalIp": "172.17.2.29",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "pprd",
+          "roles": [
+            "Cloud Control"
+          ]
+        },
+        {
+          "name": "prod",
+          "roles": [
+            "Cloud Control"
+          ]
+        }
+      ],
+      "availableMemoryGB": 2.2,
+      "diskTotalGB": "/ = 12, /u00 = 100, /u01 = 99, /u04, = 394",
+      "diskFreeGB": "/ = 4.9, /u00 = 40, /u01 = 38, /u04 = 337",
+      "java": "openjdk 1.8.0_151",
+      "installedPackages": 1429,
+      "listeningPorts": {
+        "1102": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "::"
+        },
+        "1146": {
+          "Process": "zabbix_agentd",
+          "Port": "10050",
+          "Protocol": "tcp",
+          "Address": "::"
+        },
+        "1885": {
+          "Process": "cupsd",
+          "Port": "631",
+          "Protocol": "tcp",
+          "Address": "::1"
+        },
+        "2800": {
+          "Process": "rpcbind",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "::"
+        },
+        "3498": {
+          "Process": "nmz",
+          "Port": "56904",
+          "Protocol": "tcp",
+          "Address": "127.0.0.1"
+        },
+        "8552": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "::1"
+        },
+        "12382": {
+          "Process": "java",
+          "Port": "7403",
+          "Protocol": "tcp",
+          "Address": "::ffff:172.17.2.29"
+        },
+        "13237": {
+          "Process": "java",
+          "Port": "7301",
+          "Protocol": "tcp",
+          "Address": "::ffff:172.17.2.29"
+        },
+        "13632": {
+          "Process": "tnslsnr",
+          "Port": "1521",
+          "Protocol": "tcp",
+          "Address": "::"
+        },
+        "13716": {
+          "Process": "ora_d000_emrep",
+          "Port": "22666",
+          "Protocol": "tcp",
+          "Address": "::"
+        },
+        "14430": {
+          "Process": "httpd.worker",
+          "Port": "10006",
+          "Protocol": "tcp",
+          "Address": "127.0.0.1"
+        },
+        "14596": {
+          "Process": "java",
+          "Port": "7102",
+          "Protocol": "tcp",
+          "Address": "::ffff:172.17.2.29"
+        },
+        "25260": {
+          "Process": "sshd",
+          "Port": "6010",
+          "Protocol": "tcp",
+          "Address": "::1"
+        },
+        "27485": {
+          "Process": "java",
+          "Port": "9803",
+          "Protocol": "tcp",
+          "Address": "::ffff:172.17.2.29"
+        },
+        "28677": {
+          "Process": "java",
+          "Port": "3872",
+          "Protocol": "tcp",
+          "Address": "::"
+        }
+      }
+    },
+    {
+      "hostname": "ssomanagerpprd",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "ssomanagerpprd",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.62.1.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "description": "",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 2,
+      "memoryGB": 8,
+      "internalIp": "",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "pprd",
+          "roles": [
+            "SSOManager"
+          ]
+        }
+      ],
+      "availableMemoryGB": 6.2,
+      "diskTotalGB": "/ = 12, /u01 = 16",
+      "diskFreeGB": "/ = 3.9, /u01 = 15",
+      "java": "openjdk 1.8.0_412",
+      "installedPackages": 1503,
+      "listeningPorts": {
+        "1372": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "1395": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "8983": {
+          "Process": "zabbix_agentd",
+          "Port": "10050",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "10825": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "28346": {
+          "Process": "sshd",
+          "Port": "6010",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        }
+      }
+    },
+    {
+      "hostname": "ssomanager2",
+      "os": "RHEL 7.4",
+      "osDetails": {
+        "server": "ssomanager2",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.4",
+        "kernel": "3.10.0-693.11.6.el7.x86",
+        "fullVersion": "7.4 (Maipo)",
+        "codename": "Maipo"
+      },
+      "description": "",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 2,
+      "memoryGB": 8,
+      "internalIp": "172.17.2.214",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "pprd",
+          "roles": [
+            "SSOManager"
+          ]
+        }
+      ],
+      "availableMemoryGB": 6.5,
+      "diskTotalGB": "/ = 12, /u01 = 16",
+      "diskFreeGB": "/ = 6.7, /u01 = 15",
+      "java": "openjdk 1.8.0_161",
+      "installedPackages": 1408,
+      "listeningPorts": {
+        "1022": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "::"
+        },
+        "1313": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "::1"
+        },
+        "21611": {
+          "Process": "zabbix_agentd",
+          "Port": "10050",
+          "Protocol": "tcp",
+          "Address": "::"
+        },
+        "29563": {
+          "Process": "sshd",
+          "Port": "6010",
+          "Protocol": "tcp",
+          "Address": "::1"
+        },
+        "32112": {
+          "Process": "rpcbind",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "::"
+        }
+      }
+    },
+    {
+      "hostname": "ccc-connector-pprd",
+      "os": "Ubuntu 22.04.5 LTS (Jammy Jellyfish)",
+      "osDetails": {},
+      "description": "",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 2,
+      "memoryGB": 4,
+      "internalIp": "172.17.2.87",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "pprd",
+          "roles": [
+            "CCCApply",
+            "SuperGlue"
+          ]
+        }
+      ],
+      "availableMemoryGB": 1.6,
+      "diskTotalGB": "/ = 39",
+      "diskFreeGB": "/ = 18",
+      "java": "",
+      "installedPackages": 747,
+      "listeningPorts": {
+        "786": {
+          "Process": "systemd-resolve",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "127.0.0.53%lo"
+        },
+        "883": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "4053855": {
+          "Process": "k3s-agent",
+          "Port": "10256",
+          "Protocol": "tcp",
+          "Address": "127.0.0.1"
+        },
+        "4053880": {
+          "Process": "containerd",
+          "Port": "10010",
+          "Protocol": "tcp",
+          "Address": "127.0.0.1"
+        }
+      }
+    },
+    {
+      "hostname": "dolmed",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "dolmed",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.53.1.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "description": "Portal Tier",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 4,
+      "memoryGB": 16,
+      "internalIp": "172.17.7.11",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "pprd",
+          "roles": [
+            "Lum"
+          ]
+        }
+      ],
+      "availableMemoryGB": 13.0,
+      "diskTotalGB": "/ = 12, /opt = 16",
+      "diskFreeGB": "/ = 4.1, /opt = 7.6",
+      "java": "java 1.8.0_144",
+      "installedPackages": 1484,
+      "listeningPorts": {
+        "1097": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1517": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "32690": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        }
+      }
+    },
+    {
+      "hostname": "adminpages8-devl",
+      "os": "RHEL 8.10",
+      "osDetails": {
+        "server": "adminpages8-devl",
+        "os": "Red Hat Enterprise Linux",
+        "version": "8.10",
+        "kernel": "4.18.0-553.36.1.el8",
+        "fullVersion": "8.10 (Ootpa)",
+        "codename": "Ootpa"
+      },
+      "description": "",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 4,
+      "memoryGB": 16,
+      "internalIp": "172.17.2.106",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "devl",
+          "roles": [
+            "AdminPages",
+            "AppNav"
+          ]
+        }
+      ],
+      "availableMemoryGB": 14.0,
+      "diskTotalGB": "/ = 33, /home = 16, /u01 = 50",
+      "diskFreeGB": "/ = 26, /home = 16, /u01 = 50",
+      "java": "openjdk 17.0.14",
+      "installedPackages": 1428,
+      "listeningPorts": {
+        "1": {
+          "Process": "systemd",
+          "Port": "9090",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "961": {
+          "Process": "rpcbind",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1060": {
+          "Process": "cupsd",
+          "Port": "631",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "1062": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "2050": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        }
+      }
+    },
+    {
+      "hostname": "adminpages-devl",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "adminpages-devl",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.119.1.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "description": "",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 4,
+      "memoryGB": 16,
+      "internalIp": "172.17.2.234",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "devl",
+          "roles": [
+            "AdminPages",
+            "AppNav"
+          ]
+        }
+      ],
+      "availableMemoryGB": 5.9,
+      "diskTotalGB": "/ = 32, /u01 = 50",
+      "diskFreeGB": "/ = 23, /u01 = 41",
+      "java": "java 17.0.13",
+      "installedPackages": 1519,
+      "listeningPorts": {
+        "1063": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1400": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "1639": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "3070": {
+          "Process": "java",
+          "Port": "40081",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "8630": {
+          "Process": "sshd",
+          "Port": "6010",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        }
+      }
+    },
+    {
+      "hostname": "annapurna",
+      "os": "RHEL 8.10",
+      "osDetails": {
+        "server": "annapurna",
+        "os": "Red Hat Enterprise Linux",
+        "version": "8.10",
+        "kernel": "4.18.0-553.22.1.el8",
+        "fullVersion": "8.10 (Ootpa)",
+        "codename": "Ootpa"
+      },
+      "description": "9",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 4,
+      "memoryGB": 16,
+      "internalIp": "172.17.2.169",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "devl",
+          "roles": [
+            "SSB"
+          ]
+        }
+      ],
+      "availableMemoryGB": 4.3,
+      "diskTotalGB": "/ = 32, /u01 = 99",
+      "diskFreeGB": "/ = 23, /u01 = 90",
+      "java": "openjdk 1.8.0_432",
+      "installedPackages": 1789,
+      "listeningPorts": {
+        "1217": {
+          "Process": "cupsd",
+          "Port": "631",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "1223": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1980": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "1994": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "907431": {
+          "Process": "java",
+          "Port": "8443",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "2613480": {
+          "Process": "rpcbind",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "2850134": {
+          "Process": "httpd",
+          "Port": "80",
+          "Protocol": "tcp",
+          "Address": "*"
+        }
+      }
+    },
+    {
+      "hostname": "ff-app-tods-01",
+      "os": "RHEL 8.9",
+      "osDetails": {},
+      "description": "",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 4,
+      "memoryGB": 24,
+      "internalIp": "10.1.2.2",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "test",
+          "roles": [
+            "ODS"
+          ]
+        }
+      ],
+      "availableMemoryGB": 14.0,
+      "diskTotalGB": "/ = 60, /u00 = 98, /u01 = 787, /u02 = 49, /u03 = 49, /u04 = 492",
+      "diskFreeGB": "/ = 47, /u00 = 65, /u01 = 523, /u02 = 49, /u03 = 49, /u04 = 492",
+      "java": "openjdk 1.8.0_402",
+      "installedPackages": 1409,
+      "listeningPorts": {
+        "1030": {
+          "Process": "rpcbind",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1112": {
+          "Process": "cupsd",
+          "Port": "631",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "1114": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "2173": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "219493": {
+          "Process": "java",
+          "Port": "21910",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "2050005": {
+          "Process": "ora_d000_odst",
+          "Port": "33259",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "2585269": {
+          "Process": "tnslsnr",
+          "Port": "1521",
+          "Protocol": "tcp",
+          "Address": "*"
+        }
+      }
+    },
+    {
+      "hostname": "sso-test",
+      "os": "",
+      "osDetails": {},
+      "description": "",
+      "backup": false,
+      "firewall": false,
+      "cpu": 0,
+      "memoryGB": 0,
+      "internalIp": "",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "test",
+          "roles": [
+            "SSO"
+          ]
+        }
+      ]
+    },
+    {
+      "hostname": "alberta",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "alberta",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.59.1.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "description": "",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 4,
+      "memoryGB": 8,
+      "internalIp": "172.17.7.25",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "test",
+          "roles": [
+            "EEI"
+          ]
+        }
+      ],
+      "availableMemoryGB": 3.9,
+      "diskTotalGB": "/ = 12, /u01 = 16",
+      "diskFreeGB": "/ = 4.2, /u01 = 3.2",
+      "java": "openjdk 1.8.0_322",
+      "installedPackages": 1485,
+      "listeningPorts": {
+        "1097": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1299": {
+          "Process": "sshd",
+          "Port": "6010",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "1465": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "2038": {
+          "Process": "java",
+          "Port": "3872",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "6029": {
+          "Process": "java",
+          "Port": "43139",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "26630": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        }
+      }
+    },
+    {
+      "hostname": "augusta",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "augusta",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.53.1.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "description": "",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 4,
+      "memoryGB": 8,
+      "internalIp": "172.17.7.26",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "test",
+          "roles": [
+            "EEI"
+          ]
+        }
+      ],
+      "availableMemoryGB": 6.2,
+      "diskTotalGB": "/ = 12, /u01 = 16",
+      "diskFreeGB": "/ = 2.6, /u01 = 8.6",
+      "java": "openjdk 1.8.0_312",
+      "installedPackages": 1482,
+      "listeningPorts": {
+        "1102": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1453": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "23493": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "30992": {
+          "Process": "sshd",
+          "Port": "6010",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        }
+      }
+    },
+    {
+      "hostname": "bannertpa",
+      "os": "Windows Server 2016 Standard",
+      "osDetails": {},
+      "description": "",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 2,
+      "memoryGB": 8,
+      "internalIp": "172.17.2.218",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "test",
+          "roles": [
+            "Parchment",
+            "TPA"
+          ]
+        }
+      ],
+      "availableMemoryGB": 4.4,
+      "diskTotalGB": "C:\\ = 40",
+      "diskFreeGB": "C:\\ = 19.8",
+      "java": "SE 1.8.0_151",
+      "installedPackages": 0,
+      "listeningPorts": {
+        "4": {
+          "Process": "System",
+          "Port": "47001",
+          "Protocol": "",
+          "Address": "::"
+        },
+        "84": {
+          "Process": "svchost",
+          "Port": "49669",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "380": {
+          "Process": "svchost",
+          "Port": "49665",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "544": {
+          "Process": "wininit",
+          "Port": "49664",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "680": {
+          "Process": "services",
+          "Port": "49722",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "704": {
+          "Process": "lsass",
+          "Port": "63503",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "864": {
+          "Process": "svchost",
+          "Port": "135",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "996": {
+          "Process": "svchost",
+          "Port": "3389",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "2264": {
+          "Process": "spoolsv",
+          "Port": "49695",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "2784": {
+          "Process": "zabbix_agentd",
+          "Port": "10050",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "2964": {
+          "Process": "swi_fc",
+          "Port": "49716",
+          "Protocol": "",
+          "Address": "127.0.0.1"
+        },
+        "4024": {
+          "Process": "SCNotification",
+          "Port": "64407",
+          "Protocol": "",
+          "Address": "127.0.0.1"
+        }
+      }
+    },
+    {
+      "hostname": "coldfells",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "coldfells",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.53.1.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "description": "Portal Tier",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 4,
+      "memoryGB": 16,
+      "internalIp": "172.17.7.10",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "test",
+          "roles": [
+            "Lum"
+          ]
+        }
+      ],
+      "availableMemoryGB": 11.0,
+      "diskTotalGB": "/ = 12, /opt = 16",
+      "diskFreeGB": "/ = 4.5, /opt = 6.6",
+      "java": "java 1.8.0_144",
+      "installedPackages": 1484,
+      "listeningPorts": {
+        "1097": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1486": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "19914": {
+          "Process": "jsvc",
+          "Port": "46544",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "25968": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        }
+      }
+    },
+    {
+      "hostname": "granite",
+      "os": "",
+      "osDetails": {},
+      "description": "",
+      "backup": false,
+      "firewall": false,
+      "cpu": 0,
+      "memoryGB": 0,
+      "internalIp": "",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "JobSub"
+          ]
+        }
+      ]
+    },
+    {
+      "hostname": "harvard",
+      "os": "RHEL 8.9",
+      "osDetails": {
+        "server": "harvard",
+        "os": "Red Hat Enterprise Linux",
+        "version": "8.9",
+        "kernel": "4.18.0-513.24.1.el8",
+        "fullVersion": "8.9 (Ootpa)",
+        "codename": "Ootpa"
+      },
+      "description": "",
+      "backup": "Yes",
+      "firewall": "No",
+      "cpu": 2,
+      "memoryGB": 16,
+      "internalIp": "172.17.2.36",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "JobSub"
+          ]
+        }
+      ],
+      "availableMemoryGB": 9.7,
+      "diskTotalGB": "/ = 41, /u00 = 100, /u01 = 100",
+      "diskFreeGB": "/ = 16, /u00 = 24, /u01 = 18",
+      "java": "openjdk 1.8.0_412",
+      "installedPackages": 1799,
+      "listeningPorts": {
+        "812": {
+          "Process": "rpcbind",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1157": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "0.0.0.0"
+        },
+        "1163": {
+          "Process": "cupsd",
+          "Port": "631",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1167": {
+          "Process": "beam.smp",
+          "Port": "25672",
+          "Protocol": "tcp",
+          "Address": "0.0.0.0"
+        },
+        "1178": {
+          "Process": "rpc.statd",
+          "Port": "41511",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1223": {
+          "Process": "zabbix_agentd",
+          "Port": "10050",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "2152": {
+          "Process": "epmd",
+          "Port": "4369",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "2387": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "2396": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "26420": {
+          "Process": "rpc.mountd",
+          "Port": "20048",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1311518": {
+          "Process": "code-cd4ee3b1c3",
+          "Port": "41945",
+          "Protocol": "tcp",
+          "Address": "127.0.0.1"
+        },
+        "3094586": {
+          "Process": "bootstrap_agent",
+          "Port": "12800",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "3094822": {
+          "Process": "backup_agent_ma",
+          "Port": "12801",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "3595061": {
+          "Process": "httpd",
+          "Port": "5050",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "3736447": {
+          "Process": "awcomm",
+          "Port": "2136",
+          "Protocol": "tcp",
+          "Address": "0.0.0.0"
+        },
+        "3736457": {
+          "Process": "java",
+          "Port": "60010",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "4058107": {
+          "Process": "clnaddrws",
+          "Port": "8097",
+          "Protocol": "tcp",
+          "Address": "127.0.0.1"
+        }
+      }
+    },
+    {
+      "hostname": "adminpages-prod1",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "adminpages-prod1",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.59.1.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "description": "",
+      "backup": "Yes",
+      "firewall": "No",
+      "cpu": 4,
+      "memoryGB": 16,
+      "internalIp": "172.17.2.15",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "AdminPages",
+            "AppNav"
+          ]
+        }
+      ],
+      "availableMemoryGB": 3.2,
+      "diskTotalGB": "/ = 12, /u01 = 50",
+      "diskFreeGB": "/ = 2.6, /u01 = 36",
+      "java": "openjdk 1.8.0_322",
+      "installedPackages": 1496,
+      "listeningPorts": {
+        "394": {
+          "Process": "rpc.statd",
+          "Port": "56896",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "396": {
+          "Process": "rpcbind",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1100": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1115": {
+          "Process": "zabbix_agentd",
+          "Port": "10050",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1289": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "1595": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "1885": {
+          "Process": "java",
+          "Port": "34772",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "9779": {
+          "Process": "sshd",
+          "Port": "6010",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "16376": {
+          "Process": "cupsd",
+          "Port": "631",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "25270": {
+          "Process": "httpd",
+          "Port": "443",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "27278": {
+          "Process": "bootstrap_agent",
+          "Port": "12800",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "27414": {
+          "Process": "backup_agent_ma",
+          "Port": "12801",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        }
+      }
+    },
+    {
+      "hostname": "adminpages-prod2",
+      "os": "RHEL 8.10",
+      "osDetails": {
+        "server": "adminpages-prod2",
+        "os": "Red Hat Enterprise Linux",
+        "version": "8.10",
+        "kernel": "4.18.0-553.36.1.el8",
+        "fullVersion": "8.10 (Ootpa)",
+        "codename": "Ootpa"
+      },
+      "description": "",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 4,
+      "memoryGB": 16,
+      "internalIp": "172.17.2.11",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "AdminPages",
+            "AppNav"
+          ]
+        }
+      ],
+      "availableMemoryGB": 14.0,
+      "diskTotalGB": "/ = 33, /home = 16, /u01 = 50",
+      "diskFreeGB": "/ = 25, /home = 16, /u01 = 50",
+      "java": "openjdk 11.0.25",
+      "installedPackages": 1431,
+      "listeningPorts": {
+        "958": {
+          "Process": "rpcbind",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1052": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1053": {
+          "Process": "cupsd",
+          "Port": "631",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "2959": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "319077": {
+          "Process": "sshd",
+          "Port": "6010",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        }
+      }
+    },
+    {
+      "hostname": "ff-app-sars",
+      "os": "Windows Server 2022 Standard",
+      "osDetails": {
+        "server": "ff-app-sars",
+        "os": "Microsoft Windows Server 2022 Standard",
+        "version": "10.0.20348",
+        "kernel": "Unknown"
+      },
+      "description": "",
+      "backup": "Yes",
+      "firewall": "Yes",
+      "cpu": 2,
+      "memoryGB": 16,
+      "internalIp": "10.1.0.101",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "AdminPages"
+          ]
+        }
+      ],
+      "availableMemoryGB": 8.5,
+      "diskTotalGB": "90",
+      "diskFreeGB": "10.86",
+      "java": "",
+      "installedPackages": 0,
+      "listeningPorts": {
+        "4": {
+          "Process": "System",
+          "Port": "47001",
+          "Protocol": "",
+          "Address": "::"
+        },
+        "644": {
+          "Process": "svchost",
+          "Port": "135",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "688": {
+          "Process": "wininit",
+          "Port": "49665",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "824": {
+          "Process": "services",
+          "Port": "49718",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "848": {
+          "Process": "lsass",
+          "Port": "49671",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "1052": {
+          "Process": "svchost",
+          "Port": "3389",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "1320": {
+          "Process": "svchost",
+          "Port": "49666",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "1784": {
+          "Process": "svchost",
+          "Port": "49668",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "2468": {
+          "Process": "svchost",
+          "Port": "49669",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "2844": {
+          "Process": "spoolsv",
+          "Port": "49674",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "3144": {
+          "Process": "aspnet_state",
+          "Port": "42424",
+          "Protocol": "",
+          "Address": "127.0.0.1"
+        },
+        "3588": {
+          "Process": "svchost",
+          "Port": "50485",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "4068": {
+          "Process": "svchost",
+          "Port": "49709",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "31144": {
+          "Process": "dotnet",
+          "Port": "24226",
+          "Protocol": "",
+          "Address": "127.0.0.1"
+        },
+        "47812": {
+          "Process": "rbs",
+          "Port": "12800",
+          "Protocol": "",
+          "Address": "::"
+        },
+        "76040": {
+          "Process": "rba",
+          "Port": "12801",
+          "Protocol": "",
+          "Address": "::"
+        }
+      }
+    },
+    {
+      "hostname": "ff-db-sars",
+      "os": "Windows Server 2022 Standard",
+      "osDetails": {
+        "server": "ff-db-sars",
+        "os": "Microsoft Windows Server 2022 Standard",
+        "version": "10.0.20348",
+        "kernel": "Unknown"
+      },
+      "description": "",
+      "backup": "Yes",
+      "firewall": "Yes",
+      "cpu": 2,
+      "memoryGB": 16,
+      "internalIp": "10.1.0.102",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "AdminPages"
+          ]
+        }
+      ],
+      "availableMemoryGB": 1.37,
+      "diskTotalGB": "C:\\ = 90, E:\\ = 250",
+      "diskFreeGB": "C:\\ = 62.15, E:\\ = 165.72",
+      "java": "",
+      "installedPackages": 0,
+      "listeningPorts": {
+        "4": {
+          "Process": "System",
+          "Port": "47001",
+          "Protocol": "",
+          "Address": "::"
+        },
+        "620": {
+          "Process": "svchost",
+          "Port": "135",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "668": {
+          "Process": "wininit",
+          "Port": "49665",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "812": {
+          "Process": "services",
+          "Port": "49719",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "836": {
+          "Process": "lsass",
+          "Port": "49671",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "1200": {
+          "Process": "svchost",
+          "Port": "3389",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "1464": {
+          "Process": "svchost",
+          "Port": "49666",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "1940": {
+          "Process": "svchost",
+          "Port": "49668",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "2640": {
+          "Process": "svchost",
+          "Port": "49669",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "3168": {
+          "Process": "spoolsv",
+          "Port": "49676",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "3556": {
+          "Process": "svchost",
+          "Port": "51271",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "3668": {
+          "Process": "svchost",
+          "Port": "51392",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "3696": {
+          "Process": "sqlservr",
+          "Port": "51002",
+          "Protocol": "",
+          "Address": "127.0.0.1"
+        },
+        "7488": {
+          "Process": "rbs",
+          "Port": "12800",
+          "Protocol": "",
+          "Address": "::"
+        },
+        "9184": {
+          "Process": "rba",
+          "Port": "12801",
+          "Protocol": "",
+          "Address": "::"
+        }
+      }
+    },
+    {
+      "hostname": "kea",
+      "os": "Windows Server 2019 Standard",
+      "osDetails": {
+        "server": "kea",
+        "os": "Microsoft Windows Server 2019 Standard",
+        "version": "10.0.17763",
+        "kernel": "Unknown"
+      },
+      "description": "",
+      "backup": "No",
+      "firewall": "Yes",
+      "cpu": 2,
+      "memoryGB": 8,
+      "internalIp": "172.17.2.93",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "AdminPages"
+          ]
+        }
+      ],
+      "availableMemoryGB": 4.58,
+      "diskTotalGB": "C:\\ = 100",
+      "diskFreeGB": "C:\\ = 47.02",
+      "java": "",
+      "installedPackages": 0,
+      "listeningPorts": {
+        "4": {
+          "Process": "System",
+          "Port": "47001",
+          "Protocol": "",
+          "Address": "::"
+        },
+        "612": {
+          "Process": "wininit",
+          "Port": "49664",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "624": {
+          "Process": "svchost",
+          "Port": "3389",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "744": {
+          "Process": "services",
+          "Port": "49730",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "768": {
+          "Process": "lsass",
+          "Port": "49757",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "800": {
+          "Process": "mapssvc",
+          "Port": "27467",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "976": {
+          "Process": "svchost",
+          "Port": "135",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "1176": {
+          "Process": "svchost",
+          "Port": "49665",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "1572": {
+          "Process": "svchost",
+          "Port": "49667",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "2264": {
+          "Process": "svchost",
+          "Port": "49669",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "2768": {
+          "Process": "spoolsv",
+          "Port": "49688",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "3128": {
+          "Process": "zabbix_agentd",
+          "Port": "10050",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "7400": {
+          "Process": "FormFusion.mapplet",
+          "Port": "27468",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        }
+      }
+    },
+    {
+      "hostname": "loa",
+      "os": "Windows Server 2019 Standard",
+      "osDetails": {
+        "server": "loa",
+        "os": "Microsoft Windows Server 2019 Standard",
+        "version": "10.0.17763",
+        "kernel": "Unknown"
+      },
+      "description": "",
+      "backup": "Yes",
+      "firewall": "Yes",
+      "cpu": 2,
+      "memoryGB": 8,
+      "internalIp": "172.17.2.92",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "AdminPages"
+          ]
+        }
+      ],
+      "availableMemoryGB": 4.4,
+      "diskTotalGB": "C:\\ = 100",
+      "diskFreeGB": "C:\\ = 43.25",
+      "java": "",
+      "installedPackages": 0,
+      "listeningPorts": {
+        "4": {
+          "Process": "System",
+          "Port": "47001",
+          "Protocol": "",
+          "Address": "::"
+        },
+        "428": {
+          "Process": "svchost",
+          "Port": "3389",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "608": {
+          "Process": "wininit",
+          "Port": "49664",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "740": {
+          "Process": "services",
+          "Port": "49735",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "764": {
+          "Process": "lsass",
+          "Port": "49771",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "968": {
+          "Process": "svchost",
+          "Port": "135",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "1156": {
+          "Process": "svchost",
+          "Port": "49665",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "1564": {
+          "Process": "svchost",
+          "Port": "49667",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "2240": {
+          "Process": "svchost",
+          "Port": "49669",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "2476": {
+          "Process": "mapssvc",
+          "Port": "27467",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "2772": {
+          "Process": "spoolsv",
+          "Port": "49690",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "2892": {
+          "Process": "rbs",
+          "Port": "12800",
+          "Protocol": "",
+          "Address": "::"
+        },
+        "3116": {
+          "Process": "zabbix_agentd",
+          "Port": "10050",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "3488": {
+          "Process": "rba",
+          "Port": "12801",
+          "Protocol": "",
+          "Address": "::"
+        },
+        "6056": {
+          "Process": "FormFusion.mapplet",
+          "Port": "27468",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        }
+      }
+    },
+    {
+      "hostname": "hubbard",
+      "os": "RHEL 8.9",
+      "osDetails": {
+        "server": "hubbard",
+        "os": "Red Hat Enterprise Linux",
+        "version": "8.9",
+        "kernel": "4.18.0-513.24.1.el8",
+        "fullVersion": "8.9 (Ootpa)",
+        "codename": "Ootpa"
+      },
+      "description": "",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 2,
+      "memoryGB": 16,
+      "internalIp": "172.17.2.37",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "AdminPages"
+          ]
+        }
+      ],
+      "availableMemoryGB": 14.0,
+      "diskTotalGB": "/ = 41, /u00 = 100, /u01 = 150",
+      "diskFreeGB": "/ = 32, /u00 = 100, /u01 = 150",
+      "java": "openjdk 1.8.0_412",
+      "installedPackages": 1715,
+      "listeningPorts": {
+        "1919": {
+          "Process": "cupsd",
+          "Port": "631",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "1923": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "3320": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "3330": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "302709": {
+          "Process": "rpcbind",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "2899173": {
+          "Process": "httpd",
+          "Port": "80",
+          "Protocol": "tcp",
+          "Address": "*"
+        }
+      }
+    },
+    {
+      "hostname": "kangto",
+      "os": "RHEL 8.9",
+      "osDetails": {
+        "server": "kangto",
+        "os": "Red Hat Enterprise Linux",
+        "version": "8.9",
+        "kernel": "4.18.0-513.24.1.el8",
+        "fullVersion": "8.9 (Ootpa)",
+        "codename": "Ootpa"
+      },
+      "description": "",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 4,
+      "memoryGB": 16,
+      "internalIp": "172.17.2.247",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "AdminPages"
+          ]
+        }
+      ],
+      "availableMemoryGB": 14.0,
+      "diskTotalGB": "/ = 41, /u00 = 100, /u01 = 100, /u04 = 400",
+      "diskFreeGB": "/ = 32, /u00 = 100, /u01 = 100, /u04 = 400",
+      "java": "openjdk 1.8.0_412",
+      "installedPackages": 1719,
+      "listeningPorts": {
+        "1751": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1769": {
+          "Process": "cupsd",
+          "Port": "631",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "2479": {
+          "Process": "backup_agent_ma",
+          "Port": "12801",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "2786": {
+          "Process": "bootstrap_agent",
+          "Port": "12800",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "3167": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "3234": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "1000715": {
+          "Process": "httpd",
+          "Port": "80",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "1091060": {
+          "Process": "rpcbind",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "2611407": {
+          "Process": "zabbix_agentd",
+          "Port": "10050",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        }
+      }
+    },
+    {
+      "hostname": "ettenmoors",
+      "os": "RHEL 7.9",
+      "osDetails": {},
+      "description": "",
+      "backup": "No",
+      "firewall": "Yes",
+      "cpu": 4,
+      "memoryGB": 8,
+      "internalIp": "172.17.2.139",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "AdminPages"
+          ]
+        }
+      ],
+      "availableMemoryGB": 6.1,
+      "diskTotalGB": "/ = 12, /u01 = 3.9",
+      "diskFreeGB": "/ = 3.1, /u01 = 2.7",
+      "java": "java 1.7.0",
+      "installedPackages": 1484,
+      "listeningPorts": {
+        "1195": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1438": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "1501": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        }
+      }
+    },
+    {
+      "hostname": "himalaya",
+      "os": "RHEL 7.9",
+      "osDetails": {},
+      "description": "",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 2,
+      "memoryGB": 16,
+      "internalIp": "172.17.2.199",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "AdminPages"
+          ]
+        }
+      ],
+      "availableMemoryGB": 0.38,
+      "diskTotalGB": "/ = 11, /u00 = 50, /u01 = 1,843, /u02 = 50, /u03 = 148, /u04 = 493",
+      "diskFreeGB": "/ = 0.93, /u00 = 13, /u01 = 561, /u02 = 38, /u03 = 47, /u04 = 202",
+      "java": "java 17.0.13",
+      "installedPackages": 1539,
+      "listeningPorts": {
+        "1134": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1699": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "2521": {
+          "Process": "java",
+          "Port": "3872",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "5526": {
+          "Process": "tnslsnr",
+          "Port": "5500",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "17468": {
+          "Process": "ora_d000_devl",
+          "Port": "11768",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        }
+      }
+    },
+    {
+      "hostname": "mather",
+      "os": "Windows Server 2019 Standard",
+      "osDetails": {},
+      "description": "",
+      "backup": "No",
+      "firewall": "Yes",
+      "cpu": 2,
+      "memoryGB": 8,
+      "internalIp": "172.17.2.73",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "AdminPages"
+          ]
+        }
+      ],
+      "availableMemoryGB": 2.0,
+      "diskTotalGB": "C:\\ = 60, E:\\ = 50",
+      "diskFreeGB": "C:\\ = 23.27, E:\\ = 45.04",
+      "java": "",
+      "installedPackages": 0,
+      "listeningPorts": {
+        "4": {
+          "Process": "System",
+          "Port": "47001",
+          "Protocol": "",
+          "Address": "::"
+        },
+        "412": {
+          "Process": "svchost",
+          "Port": "3389",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "576": {
+          "Process": "wininit",
+          "Port": "49664",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "708": {
+          "Process": "services",
+          "Port": "49729",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "732": {
+          "Process": "lsass",
+          "Port": "49717",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "944": {
+          "Process": "svchost",
+          "Port": "135",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "1336": {
+          "Process": "svchost",
+          "Port": "53942",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "1348": {
+          "Process": "svchost",
+          "Port": "49665",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "1776": {
+          "Process": "svchost",
+          "Port": "49667",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "1944": {
+          "Process": "omtsreco",
+          "Port": "2031",
+          "Protocol": "",
+          "Address": "172.17.2.73"
+        },
+        "2360": {
+          "Process": "svchost",
+          "Port": "49668",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "2812": {
+          "Process": "spoolsv",
+          "Port": "49700",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "3444": {
+          "Process": "zabbix_agentd",
+          "Port": "10050",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        }
+      }
+    },
+    {
+      "hostname": "moffit",
+      "os": "Windows Server 2019 Standard",
+      "osDetails": {},
+      "description": "",
+      "backup": "No",
+      "firewall": "Yes",
+      "cpu": 2,
+      "memoryGB": 8,
+      "internalIp": "172.17.2.72",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "AdminPages"
+          ]
+        }
+      ],
+      "availableMemoryGB": 1.07,
+      "diskTotalGB": "C:\\ = 60, E:\\ = 50",
+      "diskFreeGB": "C:\\ = 16.58, E:\\ = 40.62",
+      "java": "",
+      "installedPackages": 0,
+      "listeningPorts": {
+        "4": {
+          "Process": "System",
+          "Port": "49735",
+          "Protocol": "",
+          "Address": "::"
+        },
+        "556": {
+          "Process": "wininit",
+          "Port": "49664",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "688": {
+          "Process": "services",
+          "Port": "49722",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "712": {
+          "Process": "lsass",
+          "Port": "49748",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "768": {
+          "Process": "svchost",
+          "Port": "3389",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "952": {
+          "Process": "svchost",
+          "Port": "135",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "1280": {
+          "Process": "svchost",
+          "Port": "49665",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "1728": {
+          "Process": "svchost",
+          "Port": "49666",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "2432": {
+          "Process": "svchost",
+          "Port": "55752",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "2512": {
+          "Process": "svchost",
+          "Port": "49668",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "2872": {
+          "Process": "omtsreco",
+          "Port": "2031",
+          "Protocol": "",
+          "Address": "172.17.2.72"
+        },
+        "2924": {
+          "Process": "spoolsv",
+          "Port": "49693",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        },
+        "3540": {
+          "Process": "zabbix_agentd",
+          "Port": "10050",
+          "Protocol": "",
+          "Address": "0.0.0.0"
+        }
+      }
+    },
+    {
+      "hostname": "palermo",
+      "os": "RHEL 8.10",
+      "osDetails": {},
+      "description": "",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 4,
+      "memoryGB": 16,
+      "internalIp": "172.17.2.170",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "AdminPages"
+          ]
+        }
+      ],
+      "availableMemoryGB": 5.6,
+      "diskTotalGB": "/ = 32, /u01 = 99",
+      "diskFreeGB": "/ = 23, /u01 = 93",
+      "java": "openjdk 1.8.0_432",
+      "installedPackages": 1789,
+      "listeningPorts": {
+        "1234": {
+          "Process": "cupsd",
+          "Port": "631",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "1236": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1966": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "2027": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "391870": {
+          "Process": "java",
+          "Port": "8443",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "2344242": {
+          "Process": "rpcbind",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "2390106": {
+          "Process": "httpd",
+          "Port": "80",
+          "Protocol": "tcp",
+          "Address": "*"
+        }
+      }
+    },
+    {
+      "hostname": "ssb",
+      "os": "RHEL 7.4",
+      "osDetails": {},
+      "description": "",
+      "backup": false,
+      "firewall": false,
+      "cpu": 0,
+      "memoryGB": 0,
+      "internalIp": "",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "AdminPages"
+          ]
+        }
+      ]
+    },
+    {
+      "hostname": "ssb2",
+      "os": "RHEL 7.9",
+      "osDetails": {},
+      "description": "",
+      "backup": false,
+      "firewall": false,
+      "cpu": 0,
+      "memoryGB": 0,
+      "internalIp": "",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "AdminPages"
+          ]
+        }
+      ]
+    },
+    {
+      "hostname": "tambora",
+      "os": "RHEL 8.10",
+      "osDetails": {},
+      "description": "",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 4,
+      "memoryGB": 16,
+      "internalIp": "172.17.2.25",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "AdminPages"
+          ]
+        }
+      ],
+      "availableMemoryGB": 10.0,
+      "diskTotalGB": "/ = 33, /home = 16, /u01 = 50",
+      "diskFreeGB": "/ = 26, /home = 16, /u01 = 50",
+      "java": "",
+      "installedPackages": 1415,
+      "listeningPorts": {
+        "961": {
+          "Process": "rpcbind",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1048": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1049": {
+          "Process": "cupsd",
+          "Port": "631",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "1963": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        }
+      }
+    },
+    {
+      "hostname": "toba",
+      "os": "RHEL 8.10",
+      "osDetails": {},
+      "description": "",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 4,
+      "memoryGB": 16,
+      "internalIp": "172.17.2.13",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "AdminPages"
+          ]
+        }
+      ],
+      "availableMemoryGB": 14.0,
+      "diskTotalGB": "/ = 33, /home = 16, /u01 = 50",
+      "diskFreeGB": "/ = 26, /home = 16, /u01 = 50",
+      "java": "",
+      "installedPackages": 1415,
+      "listeningPorts": {
+        "938": {
+          "Process": "rpcbind",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1137": {
+          "Process": "cupsd",
+          "Port": "631",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "1141": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "2006": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        }
+      }
+    },
+    {
+      "hostname": "whitney",
+      "os": "RHEL 7.9",
+      "osDetails": {},
+      "description": "",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 8,
+      "memoryGB": 32,
+      "internalIp": "172.17.2.1",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "AdminPages"
+          ]
+        }
+      ],
+      "availableMemoryGB": 17.0,
+      "diskTotalGB": "/ = 11, /u01 = 1,008, /u02 = 99, /u03 = 296",
+      "diskFreeGB": "/ = 4.6, /u01 = 859, /u02 = 93, /u03 = 149",
+      "java": "openjdk 1.8.0_312",
+      "installedPackages": 1460,
+      "listeningPorts": {
+        "1191": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1443": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "1603": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "15747": {
+          "Process": "tnslsnr",
+          "Port": "1521",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "22583": {
+          "Process": "ora_d000_eei510",
+          "Port": "34078",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "28589": {
+          "Process": "ora_d000_eei53t",
+          "Port": "12310",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        }
+      }
+    },
+    {
+      "hostname": "marble",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "marble",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.59.1.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "description": "app",
+      "backup": "Yes",
+      "firewall": "No",
+      "cpu": 4,
+      "memoryGB": 16,
+      "internalIp": "172.17.2.179",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "DW"
+          ]
+        }
+      ],
+      "availableMemoryGB": 1.1,
+      "diskTotalGB": "/ = 12, /u01 = 50",
+      "diskFreeGB": "/ = 5.2, /u01 = 36",
+      "java": "openjdk 1.8.0_322",
+      "installedPackages": 1488,
+      "listeningPorts": {
+        "1127": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1153": {
+          "Process": "zabbix_agentd",
+          "Port": "10050",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1489": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "1549": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "7336": {
+          "Process": "java",
+          "Port": "8449",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "7359": {
+          "Process": "java",
+          "Port": "8450",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "7393": {
+          "Process": "java",
+          "Port": "8446",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "7417": {
+          "Process": "java",
+          "Port": "8444",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "7442": {
+          "Process": "java",
+          "Port": "8447",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "7478": {
+          "Process": "java",
+          "Port": "8443",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "8219": {
+          "Process": "java",
+          "Port": "8445",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "8245": {
+          "Process": "java",
+          "Port": "8448",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "8270": {
+          "Process": "java",
+          "Port": "8451",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "20283": {
+          "Process": "bootstrap_agent",
+          "Port": "12800",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "20438": {
+          "Process": "backup_agent_ma",
+          "Port": "12801",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        }
+      }
+    },
+    {
+      "hostname": "steele",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "steele",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.114.2.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "description": "app classic",
+      "backup": "Yes",
+      "firewall": "No",
+      "cpu": 4,
+      "memoryGB": 12,
+      "internalIp": "",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "DW"
+          ]
+        }
+      ],
+      "availableMemoryGB": 7.8,
+      "diskTotalGB": "/ = 12, /u01 = 99",
+      "diskFreeGB": "/ = 2, /u01 = 76",
+      "java": "openjdk 1.8.0_402",
+      "installedPackages": 1527,
+      "listeningPorts": {
+        "991": {
+          "Process": "dap08x",
+          "Port": "7701",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "1067": {
+          "Process": "beam.smp",
+          "Port": "25672",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "1070": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1113": {
+          "Process": "zabbix_agentd",
+          "Port": "10050",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1127": {
+          "Process": "beremote",
+          "Port": "10000",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1732": {
+          "Process": "epmd",
+          "Port": "4369",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1755": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "2045": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "13946": {
+          "Process": "bootstrap_agent",
+          "Port": "12800",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "14094": {
+          "Process": "backup_agent_ma",
+          "Port": "12801",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        }
+      }
+    },
+    {
+      "hostname": "columbia",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "columbia",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.59.1.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "description": "12c",
+      "backup": "Yes",
+      "firewall": "No",
+      "cpu": 2,
+      "memoryGB": 16,
+      "internalIp": "172.17.2.221",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "DW",
+            "DB"
+          ]
+        }
+      ],
+      "availableMemoryGB": 8.8,
+      "diskTotalGB": "/ = 11, /u00 = 50, /u01 = 689, /u02 = 99, /u03 = 148, /u04 = 394",
+      "diskFreeGB": "/ = 1.3, /u00 = 11, /u01 = 137, /u02 = 94, /u03 = 140, /u04 = 129",
+      "java": "openjdk 1.8.0_322",
+      "installedPackages": 1452,
+      "listeningPorts": {
+        "436": {
+          "Process": "backup_agent_ma",
+          "Port": "12801",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1100": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1125": {
+          "Process": "zabbix_agentd",
+          "Port": "10050",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1200": {
+          "Process": "beremote",
+          "Port": "10000",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1537": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "1609": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "2816": {
+          "Process": "java",
+          "Port": "3872",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "4252": {
+          "Process": "cupsd",
+          "Port": "631",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "4981": {
+          "Process": "sshd",
+          "Port": "6010",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "8944": {
+          "Process": "tnslsnr",
+          "Port": "1521",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "9052": {
+          "Process": "ora_d000_dgwp",
+          "Port": "30901",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "32750": {
+          "Process": "bootstrap_agent",
+          "Port": "12800",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        }
+      }
+    },
+    {
+      "hostname": "cook",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "cook",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.53.1.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "description": "",
+      "backup": "Yes",
+      "firewall": "No",
+      "cpu": 4,
+      "memoryGB": 8,
+      "internalIp": "172.17.7.23",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "EEI"
+          ]
+        }
+      ],
+      "availableMemoryGB": 4.5,
+      "diskTotalGB": "/ = 12, /u01 = 16",
+      "diskFreeGB": "/ = 4.9, /u01 = 5.7",
+      "java": "openjdk 1.8.0_312",
+      "installedPackages": 1486,
+      "listeningPorts": {
+        "1096": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1120": {
+          "Process": "zabbix_agentd",
+          "Port": "10050",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1498": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "12106": {
+          "Process": "bootstrap_agent",
+          "Port": "12800",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "12255": {
+          "Process": "backup_agent_ma",
+          "Port": "12801",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "15693": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "28800": {
+          "Process": "java",
+          "Port": "43271",
+          "Protocol": "tcp",
+          "Address": "*"
+        }
+      }
+    },
+    {
+      "hostname": "tamalpais",
+      "os": "RHEL 8.10",
+      "osDetails": {
+        "server": "tamalpais",
+        "os": "Red Hat Enterprise Linux",
+        "version": "8.10",
+        "kernel": "4.18.0-553.30.1.el8",
+        "fullVersion": "8.10 (Ootpa)",
+        "codename": "Ootpa"
+      },
+      "description": "",
+      "backup": "Yes",
+      "firewall": "No",
+      "cpu": 4,
+      "memoryGB": 8,
+      "internalIp": "172.17.7.19",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "EEI"
+          ]
+        }
+      ],
+      "availableMemoryGB": 3.9,
+      "diskTotalGB": "/ = 33, /home = 16",
+      "diskFreeGB": "/ = 22, /home = 16",
+      "java": "openjdk 11.0.25",
+      "installedPackages": 1426,
+      "listeningPorts": {
+        "942": {
+          "Process": "rpcbind",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1036": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1038": {
+          "Process": "cupsd",
+          "Port": "631",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "2994": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "535365": {
+          "Process": "bootstrap_agent",
+          "Port": "12800",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "535517": {
+          "Process": "backup_agent_ma",
+          "Port": "12801",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "1133563": {
+          "Process": "java",
+          "Port": "37821",
+          "Protocol": "tcp",
+          "Address": "0.0.0.0"
+        }
+      }
+    },
+    {
+      "hostname": "craig",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "craig",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.53.1.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "description": "",
+      "backup": "Yes",
+      "firewall": "No",
+      "cpu": 4,
+      "memoryGB": 8,
+      "internalIp": "172.17.7.24",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "EEI"
+          ]
+        }
+      ],
+      "availableMemoryGB": 4.1,
+      "diskTotalGB": "/ = 12, /u01 = 16",
+      "diskFreeGB": "/ = 4.9, /u01 = 4.5",
+      "java": "openjdk 1.8.0_312",
+      "installedPackages": 1486,
+      "listeningPorts": {
+        "1094": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1135": {
+          "Process": "zabbix_agentd",
+          "Port": "10050",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1496": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "11436": {
+          "Process": "java",
+          "Port": "42391",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "27623": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "30051": {
+          "Process": "bootstrap_agent",
+          "Port": "12800",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "30191": {
+          "Process": "backup_agent_ma",
+          "Port": "12801",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        }
+      }
+    },
+    {
+      "hostname": "blackburn",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "blackburn",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.59.1.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "description": "12c",
+      "backup": "Yes",
+      "firewall": "No",
+      "cpu": 4,
+      "memoryGB": 32,
+      "internalIp": "172.17.2.188",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "EEI",
+            "Lum",
+            "DB"
+          ]
+        }
+      ],
+      "availableMemoryGB": 14.0,
+      "diskTotalGB": "/ = 11, /u00 = 50, /u01 = 591, /u02 = 50, /u03 = 148, /u04 = 394",
+      "diskFreeGB": "/ = 1.6, /u00 = 15, /u01 = 465, /u02 = 44, /u03 = 39, /u04 = 314",
+      "java": "openjdk 1.8.0_322",
+      "installedPackages": 1462,
+      "listeningPorts": {
+        "1143": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1178": {
+          "Process": "zabbix_agentd",
+          "Port": "10050",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1235": {
+          "Process": "beremote",
+          "Port": "10000",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1570": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "2335": {
+          "Process": "java",
+          "Port": "47632",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "6638": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "7438": {
+          "Process": "tnslsnr",
+          "Port": "5500",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "7545": {
+          "Process": "ora_d000_lum5pr",
+          "Port": "18752",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "8004": {
+          "Process": "ora_d000_eei57p",
+          "Port": "25640",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "10705": {
+          "Process": "sshd",
+          "Port": "6010",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "12180": {
+          "Process": "ora_d000_eei510",
+          "Port": "30986",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "27286": {
+          "Process": "bootstrap_agent",
+          "Port": "12800",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "27427": {
+          "Process": "backup_agent_ma",
+          "Port": "12801",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        }
+      }
+    },
+    {
+      "hostname": "diablo",
+      "os": "RHEL 8.10",
+      "osDetails": {
+        "server": "diablo",
+        "os": "Red Hat Enterprise Linux",
+        "version": "8.10",
+        "kernel": "4.18.0-553.30.1.el8",
+        "fullVersion": "8.10 (Ootpa)",
+        "codename": "Ootpa"
+      },
+      "description": "App",
+      "backup": "Yes",
+      "firewall": "No",
+      "cpu": 4,
+      "memoryGB": 8,
+      "internalIp": "172.17.7.18",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "EEI"
+          ]
+        }
+      ],
+      "availableMemoryGB": 3.8,
+      "diskTotalGB": "/ = 33, /home = 16",
+      "diskFreeGB": "/ = 22, /home = 16",
+      "java": "openjdk 11.0.25",
+      "installedPackages": 1427,
+      "listeningPorts": {
+        "941": {
+          "Process": "rpcbind",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1038": {
+          "Process": "cupsd",
+          "Port": "631",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "1040": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "2073": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "507514": {
+          "Process": "bootstrap_agent",
+          "Port": "12800",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "507658": {
+          "Process": "backup_agent_ma",
+          "Port": "12801",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "1111164": {
+          "Process": "java",
+          "Port": "40383",
+          "Protocol": "tcp",
+          "Address": "0.0.0.0"
+        }
+      }
+    },
+    {
+      "hostname": "bighorn",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "bighorn",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.59.1.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "description": "Admin Tier",
+      "backup": "Yes",
+      "firewall": "No",
+      "cpu": 4,
+      "memoryGB": 16,
+      "internalIp": "172.17.2.212",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "Lum"
+          ]
+        }
+      ],
+      "availableMemoryGB": 7.9,
+      "diskTotalGB": "/ = 52, /opt = 20",
+      "diskFreeGB": "/ = 41, /opt = 13",
+      "java": "java 1.8.0_144",
+      "installedPackages": 1494,
+      "listeningPorts": {
+        "1108": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1160": {
+          "Process": "zabbix_agentd",
+          "Port": "10050",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1166": {
+          "Process": "beremote",
+          "Port": "10000",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1559": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "6982": {
+          "Process": "java",
+          "Port": "4444",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "7373": {
+          "Process": "jsvc",
+          "Port": "40552",
+          "Protocol": "tcp",
+          "Address": "172.17.2.212"
+        },
+        "12039": {
+          "Process": "java",
+          "Port": "44874",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "16662": {
+          "Process": "rpc.statd",
+          "Port": "52006",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "16664": {
+          "Process": "rpcbind",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "16671": {
+          "Process": "rpc.mountd",
+          "Port": "20048",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "18221": {
+          "Process": "bootstrap_agent",
+          "Port": "12800",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "18361": {
+          "Process": "backup_agent_ma",
+          "Port": "12801",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "22608": {
+          "Process": "sshd",
+          "Port": "6010",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "24512": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        }
+      }
+    },
+    {
+      "hostname": "boulder",
+      "os": "RHEL 7.1",
+      "osDetails": {
+        "server": "boulder",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.1",
+        "kernel": "3.10.0-229.14.1.el7.x86",
+        "fullVersion": "7.1 (Maipo)",
+        "codename": "Maipo"
+      },
+      "description": "CAS Tier",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 4,
+      "memoryGB": 16,
+      "internalIp": "172.17.2.211",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "Lum"
+          ]
+        }
+      ],
+      "availableMemoryGB": 13.0,
+      "diskTotalGB": "/ = 12, /opt = 20",
+      "diskFreeGB": "/ = 6.9, /opt = 19",
+      "java": "java 1.8.0_60",
+      "installedPackages": 1295,
+      "listeningPorts": {
+        "723": {
+          "Process": "beremote",
+          "Port": "10000",
+          "Protocol": "tcp",
+          "Address": "::"
+        },
+        "984": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "::"
+        },
+        "1670": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "::1"
+        }
+      }
+    },
+    {
+      "hostname": "bridger",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "bridger",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.59.1.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "description": "Portal Tier",
+      "backup": "Yes",
+      "firewall": "No",
+      "cpu": 4,
+      "memoryGB": 16,
+      "internalIp": "172.17.7.14",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "Lum"
+          ]
+        }
+      ],
+      "availableMemoryGB": 8.4,
+      "diskTotalGB": "/ = 12, /opt = 20",
+      "diskFreeGB": "/ = 4.5, /opt = 5",
+      "java": "openjdk 1.8.0_322",
+      "installedPackages": 1491,
+      "listeningPorts": {
+        "1088": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1149": {
+          "Process": "rpc.statd",
+          "Port": "40138",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "1152": {
+          "Process": "rpcbind",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1530": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "3039": {
+          "Process": "zabbix_agentd",
+          "Port": "10050",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "8478": {
+          "Process": "rpc.mountd",
+          "Port": "20048",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "9338": {
+          "Process": "sshd",
+          "Port": "6010",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "10960": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "19534": {
+          "Process": "jsvc",
+          "Port": "44278",
+          "Protocol": "tcp",
+          "Address": "172.17.7.14"
+        },
+        "26332": {
+          "Process": "bootstrap_agent",
+          "Port": "12800",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "26468": {
+          "Process": "backup_agent_ma",
+          "Port": "12801",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        }
+      }
+    },
+    {
+      "hostname": "brooks",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "brooks",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.59.1.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "description": "Portal Tier",
+      "backup": "Yes",
+      "firewall": "No",
+      "cpu": 4,
+      "memoryGB": 16,
+      "internalIp": "172.17.7.15",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "Lum"
+          ]
+        }
+      ],
+      "availableMemoryGB": 8.2,
+      "diskTotalGB": "/ = 12, /opt = 20",
+      "diskFreeGB": "/ = 2.9, /opt = 4.9",
+      "java": "openjdk 1.8.0_322",
+      "installedPackages": 1491,
+      "listeningPorts": {
+        "1096": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1161": {
+          "Process": "rpc.statd",
+          "Port": "49957",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "1165": {
+          "Process": "rpcbind",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1611": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "2198": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "3148": {
+          "Process": "zabbix_agentd",
+          "Port": "10050",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "4056": {
+          "Process": "cupsd",
+          "Port": "631",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "21783": {
+          "Process": "sshd",
+          "Port": "6010",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "28335": {
+          "Process": "bootstrap_agent",
+          "Port": "12800",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "28471": {
+          "Process": "backup_agent_ma",
+          "Port": "12801",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "32430": {
+          "Process": "jsvc",
+          "Port": "39564",
+          "Protocol": "tcp",
+          "Address": "*"
+        }
+      }
+    },
+    {
+      "hostname": "SSB2",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "ssb2",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.105.1.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "description": "",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 2,
+      "memoryGB": 8,
+      "internalIp": "172.17.2.232",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "SSB"
+          ]
+        }
+      ],
+      "availableMemoryGB": 6.4,
+      "diskTotalGB": "/ = 12, /u01 = 16",
+      "diskFreeGB": "/ = 5.2, /u01 = 15",
+      "java": "openjdk 1.8.0_392",
+      "installedPackages": 1516,
+      "listeningPorts": {
+        "1036": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1405": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "1516": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "7073": {
+          "Process": "zabbix_agentd",
+          "Port": "10050",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "23030": {
+          "Process": "haproxy",
+          "Port": "443",
+          "Protocol": "tcp",
+          "Address": "172.17.2.232"
+        },
+        "26781": {
+          "Process": "sshd",
+          "Port": "6010",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "28400": {
+          "Process": "cupsd",
+          "Port": "631",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        }
+      }
+    },
+    {
+      "hostname": "SSB",
+      "os": "RHEL 7.4",
+      "osDetails": {
+        "server": "ssb",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.4",
+        "kernel": "3.10.0-693.5.2.el7.x86",
+        "fullVersion": "7.4 (Maipo)",
+        "codename": "Maipo"
+      },
+      "description": "SSB8",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 2,
+      "memoryGB": 8,
+      "internalIp": "172.17.2.186",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "SSB"
+          ]
+        }
+      ],
+      "availableMemoryGB": 6.4,
+      "diskTotalGB": "/ = 12, /u01 = 16",
+      "diskFreeGB": "/ = 5.5, /u01 = 15",
+      "java": "openjdk 1.8.0_151",
+      "installedPackages": 1411,
+      "listeningPorts": {
+        "1026": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "::"
+        },
+        "1341": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "::1"
+        },
+        "8343": {
+          "Process": "rpcbind",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "::"
+        },
+        "19818": {
+          "Process": "httpd",
+          "Port": "443",
+          "Protocol": "tcp",
+          "Address": "::"
+        }
+      }
+    },
+    {
+      "hostname": "trisul",
+      "os": "RHEL 8.9",
+      "osDetails": {
+        "server": "trisul",
+        "os": "Red Hat Enterprise Linux",
+        "version": "8.9",
+        "kernel": "4.18.0-513.24.1.el8",
+        "fullVersion": "8.9 (Ootpa)",
+        "codename": "Ootpa"
+      },
+      "description": "SSB9",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 2,
+      "memoryGB": 16,
+      "internalIp": "172.17.2.245",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "SSB"
+          ]
+        }
+      ],
+      "availableMemoryGB": 14.0,
+      "diskTotalGB": "/ = 41, /u00 = 100",
+      "diskFreeGB": "/ = 32, /u00 = 100",
+      "java": "openjdk 1.8.0_412",
+      "installedPackages": 1716,
+      "listeningPorts": {
+        "1181": {
+          "Process": "cupsd",
+          "Port": "631",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "1188": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1227": {
+          "Process": "zabbix_agentd",
+          "Port": "10050",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1478": {
+          "Process": "backup_agent_ma",
+          "Port": "12801",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "1786": {
+          "Process": "bootstrap_agent",
+          "Port": "12800",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "2003": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "2060": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "58176": {
+          "Process": "rpcbind",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "223246": {
+          "Process": "httpd",
+          "Port": "80",
+          "Protocol": "tcp",
+          "Address": "*"
+        }
+      }
+    },
+    {
+      "hostname": "warren",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "warren",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.114.2.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "description": "SSB9 emp",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 4,
+      "memoryGB": 16,
+      "internalIp": "172.17.2.122",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "SSB"
+          ]
+        }
+      ],
+      "availableMemoryGB": 4.2,
+      "diskTotalGB": "/ = 41, /u01 = 100",
+      "diskFreeGB": "/ = 32, /u01 = 91",
+      "java": "openjdk 1.8.0_402",
+      "installedPackages": 1437,
+      "listeningPorts": {
+        "1069": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1103": {
+          "Process": "zabbix_agentd",
+          "Port": "10050",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1335": {
+          "Process": "backup_agent_ma",
+          "Port": "12801",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1448": {
+          "Process": "bootstrap_agent",
+          "Port": "12800",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1468": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "1697": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "24227": {
+          "Process": "java",
+          "Port": "8443",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "26001": {
+          "Process": "rpc.statd",
+          "Port": "52439",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "26003": {
+          "Process": "rpcbind",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        }
+      }
+    },
+    {
+      "hostname": "warlow",
+      "os": "RHEL 8.10",
+      "osDetails": {
+        "server": "warlow",
+        "os": "Red Hat Enterprise Linux",
+        "version": "8.10",
+        "kernel": "4.18.0-553.36.1.el8",
+        "fullVersion": "8.10 (Ootpa)",
+        "codename": "Ootpa"
+      },
+      "description": "SSB9",
+      "backup": "No",
+      "firewall": "Yes",
+      "cpu": 4,
+      "memoryGB": 8,
+      "internalIp": "172.17.2.121",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "SSB"
+          ]
+        }
+      ],
+      "availableMemoryGB": 6.2,
+      "diskTotalGB": "/ = 33, /home = 16, /u01 = 100",
+      "diskFreeGB": "/ = 25, /home = 16, /u01 = 100",
+      "java": "openjdk 11.0.25",
+      "installedPackages": 1431,
+      "listeningPorts": {
+        "1": {
+          "Process": "systemd",
+          "Port": "9090",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "961": {
+          "Process": "rpcbind",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "2057": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "2058": {
+          "Process": "cupsd",
+          "Port": "631",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "4319": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        }
+      }
+    },
+    {
+      "hostname": "everest",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "everest",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.114.2.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "description": "",
+      "backup": "Yes",
+      "firewall": "No",
+      "cpu": 4,
+      "memoryGB": 16,
+      "internalIp": "172.17.2.168",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "SSB"
+          ]
+        }
+      ],
+      "availableMemoryGB": 13.0,
+      "diskTotalGB": "/ = 12, /u01 = 99",
+      "diskFreeGB": "/ = 5.9, /u01 = 95",
+      "java": "openjdk 1.8.0_402",
+      "installedPackages": 1497,
+      "listeningPorts": {
+        "1093": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1122": {
+          "Process": "zabbix_agentd",
+          "Port": "10050",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1510": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "1709": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "4182": {
+          "Process": "bootstrap_agent",
+          "Port": "12800",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "4333": {
+          "Process": "backup_agent_ma",
+          "Port": "12801",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "14094": {
+          "Process": "cupsd",
+          "Port": "631",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        }
+      }
+    },
+    {
+      "hostname": "catskill",
+      "os": "RHEL 6.9",
+      "osDetails": {
+        "server": "catskill",
+        "os": "Red Hat Enterprise Linux",
+        "version": "6.9",
+        "kernel": "2.6.32-696.13.2.el6.x86",
+        "codename": "Santiago"
+      },
+      "description": "12c",
+      "backup": "Yes",
+      "firewall": "No",
+      "cpu": 1,
+      "memoryGB": 16,
+      "internalIp": "172.17.2.200",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "SSB",
+            "BanPortals",
+            "PayPlan",
+            "WebLogic",
+            "PCI",
+            "DB"
+          ]
+        }
+      ],
+      "availableMemoryGB": 7.0,
+      "diskTotalGB": "/ = 28, /u00 = 30",
+      "diskFreeGB": "/ = 20, /u00 = 1.8",
+      "java": "java 1.8.0_144",
+      "installedPackages": 1209,
+      "listeningPorts": {
+        "2022": {
+          "Process": "bootstrap_agent",
+          "Port": "12800",
+          "Protocol": "tcp",
+          "Address": ":::"
+        },
+        "27992": {
+          "Process": "httpd.worker",
+          "Port": "9020",
+          "Protocol": "tcp",
+          "Address": ":::"
+        },
+        "2134": {
+          "Process": "backup_agent_ma",
+          "Port": "12801",
+          "Protocol": "tcp",
+          "Address": ":::"
+        },
+        "1913": {
+          "Process": "rpc.statd",
+          "Port": "57370",
+          "Protocol": "tcp",
+          "Address": ":::"
+        },
+        "27730": {
+          "Process": "java",
+          "Port": "9004",
+          "Protocol": "tcp",
+          "Address": "::ffff:172.17.2.200"
+        },
+        "27970": {
+          "Process": "opmn",
+          "Port": "6701",
+          "Protocol": "tcp",
+          "Address": ":::"
+        },
+        "27943": {
+          "Process": "java",
+          "Port": "9005",
+          "Protocol": "tcp",
+          "Address": "::ffff:172.17.2.200"
+        },
+        "27833": {
+          "Process": "java",
+          "Port": "9006",
+          "Protocol": "tcp",
+          "Address": "::ffff:172.17.2.200"
+        },
+        "1855": {
+          "Process": "rpcbind",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "27498": {
+          "Process": "java",
+          "Port": "5556",
+          "Protocol": "tcp",
+          "Address": ":::"
+        },
+        "2424": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "1949": {
+          "Process": "cupsd",
+          "Port": "631",
+          "Protocol": "tcp",
+          "Address": "::1"
+        },
+        "27366": {
+          "Process": "java",
+          "Port": "7001",
+          "Protocol": "tcp",
+          "Address": "fe80::250:56ff:fe95:722b"
+        },
+        "2521": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "127.0.0.1"
+        },
+        "27611": {
+          "Process": "java",
+          "Port": "7002",
+          "Protocol": "tcp",
+          "Address": "::ffff:127.0.0.1"
+        }
+      }
+    },
+    {
+      "hostname": "wallace",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "wallace",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.114.2.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "description": "",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 4,
+      "memoryGB": 16,
+      "internalIp": "172.17.2.120",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "Ethos"
+          ]
+        }
+      ],
+      "availableMemoryGB": 3.5,
+      "diskTotalGB": "/ = 41, /u01 = 100",
+      "diskFreeGB": "/ = 35, /u01 = 98",
+      "java": "openjdk 1.8.0_412",
+      "installedPackages": 1431,
+      "listeningPorts": {
+        "1073": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1090": {
+          "Process": "zabbix_agentd",
+          "Port": "10050",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1349": {
+          "Process": "backup_agent_ma",
+          "Port": "12801",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1476": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "1482": {
+          "Process": "bootstrap_agent",
+          "Port": "12800",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1660": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "21747": {
+          "Process": "java",
+          "Port": "9443",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "22361": {
+          "Process": "rpc.statd",
+          "Port": "57175",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "22363": {
+          "Process": "rpcbind",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        }
+      }
+    },
+    {
+      "hostname": "wasser",
+      "os": "RHEL 8.10",
+      "osDetails": {
+        "server": "wasser",
+        "os": "Red Hat Enterprise Linux",
+        "version": "8.10",
+        "kernel": "4.18.0-553.32.1.el8",
+        "fullVersion": "8.10 (Ootpa)",
+        "codename": "Ootpa"
+      },
+      "description": "api mgmtcenter",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 4,
+      "memoryGB": 16,
+      "internalIp": "172.17.2.22",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "Ethos"
+          ]
+        }
+      ],
+      "availableMemoryGB": 14.0,
+      "diskTotalGB": "/ = 33, /home = 16, /u01 = 50",
+      "diskFreeGB": "/ = 26, /home = 16, /u01 = 50",
+      "java": "",
+      "installedPackages": 1415,
+      "listeningPorts": {
+        "938": {
+          "Process": "rpcbind",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1142": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1143": {
+          "Process": "cupsd",
+          "Port": "631",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "2013": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        }
+      }
+    },
+    {
+      "hostname": "idpprod",
+      "os": "RHEL 8.6",
+      "osDetails": {
+        "server": "idpprod",
+        "os": "Red Hat Enterprise Linux",
+        "version": "8.6",
+        "kernel": "4.18.0-372.32.1.el8",
+        "fullVersion": "8.6 (Ootpa)",
+        "codename": "Ootpa"
+      },
+      "description": "",
+      "backup": "No",
+      "firewall": "Yes",
+      "cpu": 2,
+      "memoryGB": 8,
+      "internalIp": "172.17.2.83",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "IDP"
+          ]
+        }
+      ],
+      "availableMemoryGB": 5.7,
+      "diskTotalGB": "/ = 26",
+      "diskFreeGB": "/ = 16",
+      "java": "",
+      "installedPackages": 1411,
+      "listeningPorts": {
+        "1001": {
+          "Process": "rpcbind",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1107": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1161": {
+          "Process": "cupsd",
+          "Port": "631",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "1800": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "1074100": {
+          "Process": "java",
+          "Port": "8443",
+          "Protocol": "tcp",
+          "Address": "*"
+        }
+      }
+    },
+    {
+      "hostname": "pumori",
+      "os": "RHEL 8.9",
+      "osDetails": {
+        "server": "pumori",
+        "os": "Red Hat Enterprise Linux",
+        "version": "8.9",
+        "kernel": "4.18.0-513.11.1.el8",
+        "fullVersion": "8.9 (Ootpa)",
+        "codename": "Ootpa"
+      },
+      "description": "",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 2,
+      "memoryGB": 16,
+      "internalIp": "172.17.2.239",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "ESM"
+          ]
+        }
+      ],
+      "availableMemoryGB": 6.5,
+      "diskTotalGB": "/ = 41, /u00 = 100, /u01 = 200, /u02 = 400",
+      "diskFreeGB": "/ = 32, /u00 = 100, /u01 = 62, /u02 = 400",
+      "java": "openjdk 1.8.0_402",
+      "installedPackages": 1745,
+      "listeningPorts": {
+        "1194": {
+          "Process": "cupsd",
+          "Port": "631",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "1612": {
+          "Process": "backup_agent_ma",
+          "Port": "12801",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "1815": {
+          "Process": "bootstrap_agent",
+          "Port": "12800",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "1998": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "2055": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "458895": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "458933": {
+          "Process": "zabbix_agentd",
+          "Port": "10050",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "917244": {
+          "Process": "rpcbind",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "2535610": {
+          "Process": "httpd",
+          "Port": "80",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "2630051": {
+          "Process": "java",
+          "Port": "44725",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "2630063": {
+          "Process": "java",
+          "Port": "8081",
+          "Protocol": "tcp",
+          "Address": "*"
+        }
+      }
+    },
+    {
+      "hostname": "castle",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "castle",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.59.1.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "description": "19c",
+      "backup": "Yes",
+      "firewall": "No",
+      "cpu": 16,
+      "memoryGB": 32,
+      "internalIp": "",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "DB"
+          ]
+        }
+      ],
+      "availableMemoryGB": 13.0,
+      "diskTotalGB": "/ = 11, /u00 = 99, /u01 = 2,048, /u02 = 50, /u03 = 345, /u04 = 1,008",
+      "diskFreeGB": "/ = 2.4, /u00 = 41, /u01 = 283, /u02 = 30, /u03 = 231, /u04 = 378",
+      "java": "openjdk 1.8.0_322",
+      "installedPackages": 1483,
+      "listeningPorts": {
+        "540": {
+          "Process": "tnslsnr",
+          "Port": "5500",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1318": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1337": {
+          "Process": "zabbix_agentd",
+          "Port": "10050",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1357": {
+          "Process": "beremote",
+          "Port": "10000",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1983": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "2613": {
+          "Process": "rpc.statd",
+          "Port": "51854",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "2618": {
+          "Process": "rpcbind",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "2772": {
+          "Process": "java",
+          "Port": "47632",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "16699": {
+          "Process": "ora_d000_aprd12",
+          "Port": "31478",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "19860": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "22609": {
+          "Process": "bootstrap_agent",
+          "Port": "12800",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "22755": {
+          "Process": "backup_agent_ma",
+          "Port": "12801",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "30133": {
+          "Process": "ora_d000_prod12",
+          "Port": "27796",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "32398": {
+          "Process": "cupsd",
+          "Port": "631",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        }
+      }
+    },
+    {
+      "hostname": "moroto",
+      "os": "RHEL 7.9",
+      "osDetails": {
+        "server": "moroto",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.9",
+        "kernel": "3.10.0-1160.59.1.el7.x86",
+        "fullVersion": "7.9 (Maipo)",
+        "codename": "Maipo"
+      },
+      "description": "",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 8,
+      "memoryGB": 32,
+      "internalIp": "172.17.2.206",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "ODS"
+          ]
+        }
+      ],
+      "availableMemoryGB": 17.0,
+      "diskTotalGB": "/ = 11, /u00 = 50, /u01 = 591, /u02 = 50, /u03 = 148, /u04 = 788",
+      "diskFreeGB": "/ = 3.1, /u00 = 33, /u01 = 42, /u02 = 45, /u03 = 118, /u04 = 523",
+      "java": "openjdk 1.8.0_322",
+      "installedPackages": 1467,
+      "listeningPorts": {
+        "1373": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1399": {
+          "Process": "zabbix_agentd",
+          "Port": "10050",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1864": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "2657": {
+          "Process": "java",
+          "Port": "21910",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "2789": {
+          "Process": "java",
+          "Port": "47632",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "4715": {
+          "Process": "ora_d000_pods9",
+          "Port": "33824",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "5855": {
+          "Process": "tnslsnr",
+          "Port": "1521",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "14560": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        }
+      }
+    },
+    {
+      "hostname": "ff-app-ords-01",
+      "os": "RHEL 8.9",
+      "osDetails": {},
+      "description": "",
+      "backup": "Yes",
+      "firewall": "Yes",
+      "cpu": 4,
+      "memoryGB": 16,
+      "internalIp": "10.1.2.3",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "ODS"
+          ]
+        }
+      ],
+      "availableMemoryGB": 5.3,
+      "diskTotalGB": "/ = 47, /u01 = 98",
+      "diskFreeGB": "/ = 39, /u01 = 97",
+      "java": "openjdk 11.0.22",
+      "installedPackages": 1401,
+      "listeningPorts": {
+        "945": {
+          "Process": "rpcbind",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1176": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1181": {
+          "Process": "cupsd",
+          "Port": "631",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "2019": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "2665365": {
+          "Process": "java",
+          "Port": "9443",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "2980946": {
+          "Process": "java",
+          "Port": "8443",
+          "Protocol": "tcp",
+          "Address": "*"
+        }
+      }
+    },
+    {
+      "hostname": "ff-app-pods-01",
+      "os": "RHEL 8.9",
+      "osDetails": {},
+      "description": "",
+      "backup": "Yes",
+      "firewall": "Yes",
+      "cpu": 4,
+      "memoryGB": 48,
+      "internalIp": "10.1.2.1",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "ODS"
+          ]
+        }
+      ],
+      "availableMemoryGB": 28.0,
+      "diskTotalGB": "/ = 60, /u00 = 98, /u01 = 787, /u02 = 49, /u03 = 49, /u04 = 492",
+      "diskFreeGB": "/ = 51, /u00 = 67, /u01 = 237, /u02 = 49, /u03 = 49, /u04 = 468",
+      "java": "openjdk 1.8.0_402",
+      "installedPackages": 1408,
+      "listeningPorts": {
+        "1032": {
+          "Process": "rpcbind",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1121": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1122": {
+          "Process": "cupsd",
+          "Port": "631",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "2350": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "2533538": {
+          "Process": "tnslsnr",
+          "Port": "1521",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "2714143": {
+          "Process": "java",
+          "Port": "21910",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "2971241": {
+          "Process": "ora_d000_odsp",
+          "Port": "44279",
+          "Protocol": "tcp",
+          "Address": "*"
+        }
+      }
+    },
+    {
+      "hostname": "spantik",
+      "os": "RHEL 8.9",
+      "osDetails": {
+        "server": "spantik",
+        "os": "Red Hat Enterprise Linux",
+        "version": "8.9",
+        "kernel": "4.18.0-513.24.1.el8",
+        "fullVersion": "8.9 (Ootpa)",
+        "codename": "Ootpa"
+      },
+      "description": "",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 2,
+      "memoryGB": 16,
+      "internalIp": "172.17.2.246",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "BAM"
+          ]
+        }
+      ],
+      "availableMemoryGB": 14.0,
+      "diskTotalGB": "/ = 41, /u00 = 100",
+      "diskFreeGB": "/ = 32, /u00 = 100",
+      "java": "openjdk 1.8.0_412",
+      "installedPackages": 1716,
+      "listeningPorts": {
+        "1568": {
+          "Process": "cupsd",
+          "Port": "631",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "1571": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "1617": {
+          "Process": "zabbix_agentd",
+          "Port": "10050",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "2078": {
+          "Process": "backup_agent_ma",
+          "Port": "12801",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "2541": {
+          "Process": "bootstrap_agent",
+          "Port": "12800",
+          "Protocol": "tcp",
+          "Address": "*"
+        },
+        "2949": {
+          "Process": "dnsmasq",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "192.168.122.1"
+        },
+        "3044": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "[::1]"
+        },
+        "798280": {
+          "Process": "rpcbind",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "3494408": {
+          "Process": "httpd",
+          "Port": "80",
+          "Protocol": "tcp",
+          "Address": "*"
+        }
+      }
+    },
+    {
+      "hostname": "ssomanager",
+      "os": "RHEL 7.4",
+      "osDetails": {
+        "server": "ssomanager",
+        "os": "Red Hat Enterprise Linux Server",
+        "version": "7.4",
+        "kernel": "3.10.0-693.5.2.el7.x86",
+        "fullVersion": "7.4 (Maipo)",
+        "codename": "Maipo"
+      },
+      "description": "",
+      "backup": "No",
+      "firewall": "No",
+      "cpu": 2,
+      "memoryGB": 8,
+      "internalIp": "172.17.2.190",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "SSOManager"
+          ]
+        }
+      ],
+      "availableMemoryGB": 3.4,
+      "diskTotalGB": "/ = 12, /u01 = 16",
+      "diskFreeGB": "/ = 6.1, /u01 = 12",
+      "java": "openjdk 1.8.0_151",
+      "installedPackages": 1413,
+      "listeningPorts": {
+        "1023": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "::"
+        },
+        "1050": {
+          "Process": "zabbix_agentd",
+          "Port": "10050",
+          "Protocol": "tcp",
+          "Address": "::"
+        },
+        "1341": {
+          "Process": "master",
+          "Port": "25",
+          "Protocol": "tcp",
+          "Address": "::1"
+        },
+        "2768": {
+          "Process": "java",
+          "Port": "8443",
+          "Protocol": "tcp",
+          "Address": "::"
+        },
+        "7028": {
+          "Process": "sshd",
+          "Port": "6010",
+          "Protocol": "tcp",
+          "Address": "::1"
+        },
+        "16022": {
+          "Process": "rpcbind",
+          "Port": "111",
+          "Protocol": "tcp",
+          "Address": "::"
+        }
+      }
+    },
+    {
+      "hostname": "ccc-connector-prod",
+      "os": "Ubuntu 22.04.5 LTS (Jammy Jellyfish)",
+      "osDetails": {},
+      "description": "",
+      "backup": "Yes",
+      "firewall": "No",
+      "cpu": 2,
+      "memoryGB": 4,
+      "internalIp": "172.17.2.86",
+      "externalIp": "",
+      "environments": [
+        {
+          "name": "prod",
+          "roles": [
+            "CCCApply",
+            "SuperGlue"
+          ]
+        }
+      ],
+      "availableMemoryGB": 1.7,
+      "diskTotalGB": "/ = 39",
+      "diskFreeGB": "/ = 16",
+      "java": "",
+      "installedPackages": 747,
+      "listeningPorts": {
+        "787": {
+          "Process": "systemd-resolve",
+          "Port": "53",
+          "Protocol": "tcp",
+          "Address": "127.0.0.53%lo"
+        },
+        "882": {
+          "Process": "sshd",
+          "Port": "22",
+          "Protocol": "tcp",
+          "Address": "[::]"
+        },
+        "3382895": {
+          "Process": "k3s-agent",
+          "Port": "10256",
+          "Protocol": "tcp",
+          "Address": "127.0.0.1"
+        },
+        "3382910": {
+          "Process": "containerd",
+          "Port": "10010",
+          "Protocol": "tcp",
+          "Address": "127.0.0.1"
+        }
+      }
+    }
+  ]
+}
